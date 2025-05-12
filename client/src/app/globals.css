@@ -117,11 +117,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background: var(--foreground);
-    font-family: var(--font-sans, sans-serif);
-    color: var(--background);
+    @apply bg-background text-foreground;
   }
 }
+
 body {
   background: var(--foreground);
   font-family: var(--font-sans, sans-serif);
