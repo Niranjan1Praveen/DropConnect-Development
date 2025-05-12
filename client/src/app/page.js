@@ -1,14 +1,18 @@
-import Faqs from '@/components/Faqs'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
+import Faqs from '@/sections/Faqs'
+import Features from '@/sections/Features'
+import Footer from '@/sections/Footer'
+import Hero from '@/sections/Hero'
+import Introduction from '@/sections/Introduction'
+import Navbar from '@/sections/Navbar'
 import React from 'react'
 
 const Home = () => {
   return (
     <div className='flex flex-col overflow-hidden'>
-        <Header/>
+        <Navbar/>
         <Hero/>
+        <Introduction/>
+        <Features/>
         <Faqs/>
         <Footer/>
     </div>
