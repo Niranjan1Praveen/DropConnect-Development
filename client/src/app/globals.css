@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+body {
+  background: var(--foreground);
+  font-family: var(--font-sans, sans-serif);
+  color: var(--background);
+}
