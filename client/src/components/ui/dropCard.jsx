@@ -1,67 +1,67 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
+import { Button } from "./button";
 
-const dropletData = [
-  { id: "01", color: "pink", radius: "57% 43% 43% 57% / 43% 43% 57% 57%" },
-  { id: "02", color: "purple", radius: "73% 27% 59% 41% / 57% 59% 41% 43%" },
-  { id: "03", color: "blue", radius: "49% 51% 70% 30% / 51% 58% 42% 49%" },
-];
+// Function to generate a random border-radius for each corner
+const generateRandomBorderRadius = () => {
+  // Randomize each corner's radius between 30% and 80%
+  const topLeft = `${Math.floor(Math.random() * 50) + 30}%`;
+  const topRight = `${Math.floor(Math.random() * 50) + 30}%`;
+  const bottomLeft = `${Math.floor(Math.random() * 50) + 30}%`;
+  const bottomRight = `${Math.floor(Math.random() * 50) + 30}%`;
+  return `${topLeft} ${topRight} ${bottomLeft} ${bottomRight} / ${topLeft} ${topRight} ${bottomLeft} ${bottomRight}`;
+};
 
-const WaterDropletCards = () => {
+const DropCard = ({ item }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({
+      borderRadius: [
+        generateRandomBorderRadius(),
+        generateRandomBorderRadius(),
+        generateRandomBorderRadius(),
+        generateRandomBorderRadius(),
+        generateRandomBorderRadius(),
+        generateRandomBorderRadius(),
+      ],
+      transition: {
+        duration: 0.6, // Fast animation
+        repeat: Infinity, // Repeat the animation
+        repeatType: "reverse", // Makes it go back to previous state
+        ease: "linear", // Constant rate for erratic motion
+      },
+    });
+  }, [controls]);
+
   return (
-    <div className="w-full px-50 py-12">
-      <div className="flex gap-30 flex-nowrap w-max">
-        {dropletData.map((item) => (
-          <DropletCard key={item.id} item={item} />
-        ))}
+    <motion.div
+      animate={controls}
+      className={twMerge(
+        `
+          relative p-6 bg-white/10 backdrop-blur-2xl min-h-[350px]
+          shadow-[inset_10px_10px_15px_rgba(255,255,255,0.05),_10px_10px_20px_rgba(0,0,0,0.4)]
+          border border-white/10
+          transition-all duration-400 ease-in-out
+        `,
+        item.className
+      )}
+    >
+      <div className="flex flex-col items-center justify-center h-full text-center space-y-4 text-white">
+        <div
+          className={`text-3xl flex items-center justify-center rounded-full bg-${item.color}-500 shadow-lg w-12 h-12`}
+        >
+          {item.id}
+        </div>
+        <h2 className="text-lime-400 text-3xl font-bold">{item.title}</h2>
+        <p className="font-medium text-xl px-2">{item.description}</p>
+        <Button className={"cursor-pointer"}>Register Now</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-const DropletCard = ({ item }) => {
-    const [isHovered, setIsHovered] = useState(false);
-  
-    return (
-      <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        style={{
-          borderRadius: isHovered ? "50%" : item.radius,
-          transition: "border-radius 0.5s ease-in-out",
-        }}
-        className={`
-          relative w-[300px] h-[300px] p-6 
-          bg-white/10 backdrop-blur-2xl
-          shadow-[inset_10px_10px_15px_rgba(255,255,255,0.05),_10px_10px_20px_rgba(0,0,0,0.4)]
-          border border-white/10
-          transition-all duration-500 ease-in-out
-        `}
-      >
-        {/* Reflective Droplets */}
-        <div className="absolute top-10 right-20 w-8 h-8 bg-white/20 rounded-full blur-[3px] shadow-inner" />
-        <div className="absolute top-20 right-15 w-4 h-4 bg-white/20 rounded-full blur-[2px] shadow-inner" />
-  
-        {/* Content */}
-        <div className="flex flex-col items-center justify-center h-full text-center space-y-4 text-white">
-          <div
-            className={`text-3xl font-bold w-14 h-14 flex items-center justify-center rounded-full bg-${item.color}-500 shadow-lg`}
-          >
-            {item.id}
-          </div>
-          <p className="text-gray-300 font-medium text-sm px-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
-            commodi.
-          </p>
-          <button
-            className={`mt-2 px-5 py-2 rounded-full bg-${item.color}-500 text-white font-semibold hover:opacity-90 transition`}
-          >
-            Signup
-          </button>
-        </div>
-      </div>
-    );
-  };
-  
-
-export default WaterDropletCards;
+export default DropCard;

@@ -108,7 +108,6 @@ export default function Features() {
               <Key className={"w-28"}>Interest</Key>
             </div>
           </FeatureCard>
-          <WaterDropletCards/>
         </div>
 
         {/* Other Features */}
