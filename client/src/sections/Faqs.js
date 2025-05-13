@@ -18,7 +18,7 @@ export default function Faqs() {
           FAQs
         </div>
         <h2 className="text-4xl font-bold">
-          Questions? We've got <span className="text-lime-400">answers</span>
+          Questions? We&apos;ve got <span className="text-lime-400">answers</span>
         </h2>
       </div>
       <div className="mt-10 max-w-2xl mx-auto">
