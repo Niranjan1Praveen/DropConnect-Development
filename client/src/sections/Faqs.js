@@ -1,19 +1,21 @@
-"use client";
-import { faqs } from "@/assets/data/faqs";
-import React from "react";
+"use client"
+import { faqs } from "@/assets/data/faqs"
+import Tags from "@/components/ui/tags";
+
+import React from "react"
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
+  AccordionContent
+} from "@/components/ui/accordion"
 
 export default function Faqs() {
   return (
     <section className="text-white py-16 px-4 md:px-12">
       <div className="max-w-3xl mx-auto text-center">
-        <div className="mb-6 inline-block rounded-full border border-lime-400 px-4 py-1 text-xs font-semibold tracking-widest text-lime-400 uppercase">
-          FAQs
+      <div className="flex justify-center py-5">
+                  <Tags title={"FAQs"} />
         </div>
         <h2 className="text-4xl font-bold">
           Questions? We&rsquo;ve got{" "}
