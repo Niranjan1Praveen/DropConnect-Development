@@ -9,7 +9,7 @@ import React, { useState } from "react";
 
 const SignUpOptions = () => {
   return (
-    <section className="py-24 px-4 flex items-center justify-center">
+    <section className="py-24 px-4 flex items-center justify-center" id="signUpOptions">
       <div className="container">
         <div className="flex justify-center">
           <Tags title={"Sign Up Options"} />

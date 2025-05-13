@@ -4,7 +4,7 @@ import integrations from "@/assets/data/integrations";
 
 export default function Integrations() {
   return (
-    <section className="px-4 py-24 overflow-hidden">
+    <section className="px-4 py-24 overflow-hidden" id="integrations">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 items-center lg:gap-16">
           <div>

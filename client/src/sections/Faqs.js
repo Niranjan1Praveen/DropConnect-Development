@@ -12,7 +12,7 @@ import {
 
 export default function Faqs() {
   return (
-    <section className="text-white py-16 px-4 md:px-12">
+    <section className="text-white py-16 px-4 md:px-12" id="faqs">
       <div className="max-w-3xl mx-auto text-center">
         <div className="flex justify-center mb-6">
                   <Tags title={"FAQs"}/>
