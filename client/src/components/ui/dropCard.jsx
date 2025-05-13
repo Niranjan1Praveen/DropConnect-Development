@@ -29,10 +29,10 @@ const DropCard = ({ item }) => {
         generateRandomBorderRadius(),
       ],
       transition: {
-        duration: 0.6, // Fast animation
-        repeat: Infinity, // Repeat the animation
-        repeatType: "reverse", // Makes it go back to previous state
-        ease: "linear", // Constant rate for erratic motion
+        duration: 1, 
+        repeat: Infinity, 
+        repeatType: "reverse", 
+        ease: "linear", 
       },
     });
   }, [controls]);
@@ -45,7 +45,7 @@ const DropCard = ({ item }) => {
           relative p-6 bg-white/10 backdrop-blur-2xl min-h-[350px]
           shadow-[inset_10px_10px_15px_rgba(255,255,255,0.05),_10px_10px_20px_rgba(0,0,0,0.4)]
           border border-white/10
-          transition-all duration-400 ease-in-out
+          transition-all duration-500 ease-in-out
         `,
         item.className
       )}
