@@ -39,8 +39,8 @@ const DropletCard = ({ item }) => {
         `}
       >
         {/* Reflective Droplets */}
-        <div className="absolute top-6 left-6 w-8 h-8 bg-white/70 rounded-full blur-[3px] shadow-inner" />
-        <div className="absolute top-4 right-6 w-4 h-4 bg-white/60 rounded-full blur-[2px] shadow-inner" />
+        <div className="absolute top-10 right-20 w-8 h-8 bg-white/20 rounded-full blur-[3px] shadow-inner" />
+        <div className="absolute top-20 right-15 w-4 h-4 bg-white/20 rounded-full blur-[2px] shadow-inner" />
   
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full text-center space-y-4 text-white">

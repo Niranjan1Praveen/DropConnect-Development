@@ -7,6 +7,7 @@ import Image from "next/image";
 import Avatar from "@/components/ui/avatar";
 import Key from "@/components/ui/key";
 import dashboard from "@/assets/images/dashboard.png";
+import WaterDropletCards from "@/components/ui/dropCard";
 const features = [
   "CSR Impact Dashboards",
   "Verified Internships",
@@ -107,6 +108,7 @@ export default function Features() {
               <Key className={"w-28"}>Interest</Key>
             </div>
           </FeatureCard>
+          <WaterDropletCards/>
         </div>
 
         {/* Other Features */}
