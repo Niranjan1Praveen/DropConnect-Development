@@ -7,14 +7,16 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import Tags from "@/components/ui/tags";
 
 export default function Faqs() {
   return (
     <section className="text-white py-16 px-4 md:px-12">
       <div className="max-w-3xl mx-auto text-center">
-        <div className="mb-6 inline-block rounded-full border border-lime-400 px-4 py-1 text-xs font-semibold tracking-widest text-lime-400 uppercase">
-          FAQs
-        </div>
+        <div className="flex justify-center mb-6">
+                  <Tags title={"FAQs"}/>
+          </div>
+        
         <h2 className="text-4xl font-bold">
           Questions? We&rsquo;ve got{" "}
           <span className="text-lime-400">answers</span>
