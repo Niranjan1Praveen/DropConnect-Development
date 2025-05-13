@@ -87,8 +87,8 @@ export default function Features() {
           >
             <div className="aspect-video flex items-center justify-center">
               <p className="text-3xl font-bold text-white/20 text-center leading-relaxed">
-                Impact shouldn’t go unnoticed. <br />
-                <span className="text-lime-400">We reward it.</span>
+                Impact shouldn’t go unnoticed. <br /> We 
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text"> reward </span> it
               </p>
             </div>
           </FeatureCard>
@@ -114,9 +114,9 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature}
-              className="bg-neutral-900 border-white/10 inline-flex gap-3 items-center px-3 md:px-5 py-1.5 md:py-2 rounded-2xl"
+              className="bg-neutral-900 border-white/10 inline-flex gap-3 items-center px-3 md:px-5 py-1.5 md:py-2 rounded-2xl hover:scale-105 transition duration-500 group"
             >
-              <span className="bg-lime-400 text-neutral-950 size-5 rounded-full inline-flex items-center justify-center text-xl">
+              <span className="bg-lime-400 text-neutral-950 size-5 rounded-full inline-flex items-center justify-center text-xl group-hover:rotate-45 transition duration-500">
                 &#10038;
               </span>
               <span className="font-medium md:text-lg">{feature}</span>

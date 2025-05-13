@@ -1,20 +1,63 @@
+"use client";
 import Tags from "@/components/ui/tags";
+import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const text = `Despite growing CSR funding and a motivated youth population, real-world volunteer impact remains fragmented, untracked, and undervalued.`;
-
+const words = text.split(" ");
 export default function Introduction() {
-    return (
-        <section className="py-28 px-4 lg:py-40 flex items-center justify-center">
-            <div className="container">
-                <div className="flex justify-center">
-                    <Tags title={"Introducing Layers"}/>
-                </div>
-                <div className="text-4xl md:text-5xl text-center font-medium mt-10">
-                    <span>Social impact should be measurable and meaningful.</span>{" "}
-                    <span className="text-white/15 leading-tight">{text}</span>
-                    <span className="text-lime-400 block">That’s why we built Layers.</span>
-                </div>
-            </div>
-        </section>
-    );
+  const scrollTarget = useRef();
+  const { scrollYProgress } = useScroll({
+    target: scrollTarget,
+    offset: ["start end", "end end"],
+  });
+  const [currentWord, setCurrentWord] = useState(0);
+  const wordIndex = useTransform(scrollYProgress, [0, 1], [0, words.length]);
+  useEffect(() => {
+    wordIndex.on("change", (latest) => {
+      setCurrentWord(latest);
+    });
+  }, [wordIndex]);
+  return (
+    <section className="py-28 px-4 lg:py-40 flex items-center justify-center">
+      <div className="container">
+        <div className="sticky top-20 md:top-28 lg:top-40">
+          <div className="flex justify-center">
+            <Tags title={"Introducing Layers"} />
+          </div>
+          <div className="text-4xl md:text-5xl text-center font-medium mt-10">
+            <span>Social impact should be measurable and meaningful.</span>{" "}
+            <span className="text-white/15 leading-tight">
+              {words.map((word, index) => {
+                const isVisible = index < currentWord;
+                const shouldUnderline =
+                  isVisible &&
+                  (word.toLowerCase().includes("funding") ||
+                    word.toLowerCase().includes("youth"));
+
+                return (
+                  <span
+                    key={index}
+                    className={twMerge(
+                      "transition duration-500",
+                      isVisible ? "text-white" : "text-white/15",
+                      shouldUnderline &&
+                        "underline decoration-lime-400 underline-offset-8 italic transition"
+                    )}
+                  >
+                    {word + " "}
+                  </span>
+                );
+              })}
+            </span>
+            <span className="text-lime-400 block">
+              That’s why we built Layers.
+            </span>
+          </div>
+        </div>
+        <div className="h-[150vh]" ref={scrollTarget}></div>
+      </div>
+    </section>
+  );
 }
