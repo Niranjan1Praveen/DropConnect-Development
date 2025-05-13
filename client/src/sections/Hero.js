@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="py-24 px-4 flex items-center justify-center overflow-x-clip">
       <div className="container relative">
         <div className="absolute -left-32 top-16 hidden lg:block z-[-10]">
-          <Image src={design1} alt="hero-design-1-example" />
+          <Image src={design1} alt="hero-design-1-example"/>
         </div>
         <div className="absolute -right-64 -top-16 hidden lg:block z-[-10]">
           <Image src={design2} alt="hero-design-2-example" />
