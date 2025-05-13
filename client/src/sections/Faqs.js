@@ -7,29 +7,18 @@ import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
-<<<<<<< HEAD
   AccordionContent,
 } from "@/components/ui/accordion";
 import Tags from "@/components/ui/tags";
-=======
-  AccordionContent
-} from "@/components/ui/accordion"
->>>>>>> 34846b8ce2ea7c36534c71527a6523e8b370e9cb
 
 export default function Faqs() {
   return (
     <section className="text-white py-16 px-4 md:px-12">
       <div className="max-w-3xl mx-auto text-center">
-<<<<<<< HEAD
         <div className="flex justify-center mb-6">
                   <Tags title={"FAQs"}/>
           </div>
         
-=======
-      <div className="flex justify-center py-5">
-                  <Tags title={"FAQs"} />
-        </div>
->>>>>>> 34846b8ce2ea7c36534c71527a6523e8b370e9cb
         <h2 className="text-4xl font-bold">
           Questions? We&rsquo;ve got{" "}
           <span className="text-lime-400">answers</span>
