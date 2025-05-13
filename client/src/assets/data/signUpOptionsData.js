@@ -7,6 +7,7 @@ export default [
     cta: "Join as Volunteer",
     radius: "57% 43% 43% 57% / 43% 43% 57% 57%",
     className: "md:col-span-2 lg:col-span-1",
+    to: "/register/volunteers",
   },
   {
     id: "02",
@@ -16,6 +17,7 @@ export default [
     cta: "Partner as NGO",
     radius: "73% 27% 59% 41% / 57% 59% 41% 43%",
     className: "md:col-span-2 lg:col-span-1",
+    to: "/register/ngo",
   },
   {
     id: "03",
@@ -25,5 +27,6 @@ export default [
     cta: "Join as Corporate",
     radius: "49% 51% 70% 30% / 51% 58% 42% 49%",
     className: "md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto",
+    to: "/register/corporates",
   },
 ];

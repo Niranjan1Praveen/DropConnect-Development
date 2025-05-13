@@ -4,6 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
+import Link from "next/link";
 
 // Function to generate a random border-radius for each corner
 const generateRandomBorderRadius = () => {
@@ -58,7 +59,7 @@ const DropCard = ({ item }) => {
         </div>
         <h2 className="text-lime-400 text-3xl font-bold">{item.title}</h2>
         <p className="font-medium text-xl px-2">{item.description}</p>
-        <Button className={"cursor-pointer"}>Register Now</Button>
+        <Button className={"cursor-pointer"}><Link href={item.to}>Register Now</Link></Button>
       </div>
     </motion.div>
   );
