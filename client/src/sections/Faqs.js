@@ -9,7 +9,6 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import Tags from "@/components/ui/tags";
 
 export default function Faqs() {
   return (
