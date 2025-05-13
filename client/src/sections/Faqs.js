@@ -1,14 +1,12 @@
-"use client"
-import { faqs } from "@/assets/data/faqs"
-import React from "react"
+"use client";
+import { faqs } from "@/assets/data/faqs";
+import React from "react";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent
-} from "@/components/ui/accordion"
-
-
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export default function Faqs() {
   return (
@@ -18,7 +16,8 @@ export default function Faqs() {
           FAQs
         </div>
         <h2 className="text-4xl font-bold">
-          Questions? We&apos;ve got <span className="text-lime-400">answers</span>
+          Questions? We&rsquo;ve got{" "}
+          <span className="text-lime-400">answers</span>
         </h2>
       </div>
       <div className="mt-10 max-w-2xl mx-auto">
@@ -40,5 +39,5 @@ export default function Faqs() {
         </Accordion>
       </div>
     </section>
-  )
+  );
 }
