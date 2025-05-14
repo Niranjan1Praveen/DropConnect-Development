@@ -6,9 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
 import Link from "next/link";
 
-// Function to generate a random border-radius for each corner
 const generateRandomBorderRadius = () => {
-  // Randomize each corner's radius between 30% and 80%
   const topLeft = `${Math.floor(Math.random() * 50) + 30}%`;
   const topRight = `${Math.floor(Math.random() * 50) + 30}%`;
   const bottomLeft = `${Math.floor(Math.random() * 50) + 30}%`;
