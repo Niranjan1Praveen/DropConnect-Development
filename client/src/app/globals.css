@@ -112,7 +112,6 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -120,9 +119,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  body.default-theme {
+    @apply bg-foreground text-background;
+  }
 }
+/* 
 body {
   background: var(--foreground);
   font-family: var(--font-poppins, sans-serif);
   color: var(--background);
-}
+} */

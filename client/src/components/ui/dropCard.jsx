@@ -14,6 +14,8 @@ const generateRandomBorderRadius = () => {
   return `${topLeft} ${topRight} ${bottomLeft} ${bottomRight} / ${topLeft} ${topRight} ${bottomLeft} ${bottomRight}`;
 };
 
+
+
 const DropCard = ({ item }) => {
   const controls = useAnimation();
 
@@ -28,10 +30,10 @@ const DropCard = ({ item }) => {
         generateRandomBorderRadius(),
       ],
       transition: {
-        duration: 0.3, // Fast animation
-        repeat: Infinity, // Repeat the animation
-        repeatType: "reverse", // Makes it go back to previous state
-        ease: "linear", // Constant rate for erratic motion
+        duration: 0.3,
+        repeat: Infinity, 
+        repeatType: "reverse",
+        ease: "linear", 
       },
     });
   }, [controls]);
@@ -41,10 +43,10 @@ const DropCard = ({ item }) => {
       animate={controls}
       className={twMerge(
         `
-          relative p-6 bg-white/10 backdrop-blur-2xl min-h-[350px]
+          relative p-10 md:p-6 bg-white/10 backdrop-blur-2xl min-h-[350px]
           shadow-[inset_10px_10px_15px_rgba(255,255,255,0.05),_10px_10px_20px_rgba(0,0,0,0.4)]
           border border-white/10
-          transition-all duration-500 ease-in-out
+          transition-all duration-500 ease-in-out overflow-hidden
         `,
         item.className
       )}
@@ -55,9 +57,21 @@ const DropCard = ({ item }) => {
         >
           {item.id}
         </div>
-        <h2 className="text-lime-400 text-3xl font-bold">{item.title}</h2>
-        <p className="font-medium text-xl px-2">{item.description}</p>
-        <Button className={"cursor-pointer"}><Link href={item.to}>Register Now</Link></Button>
+        <h2 className="text-lime-400 text-3xl font-bold">{item.cta}</h2>
+        <p className="font-medium text-xl px-2 leading-normal">
+          {item.description}
+        </p>
+        <ul className="text-md text-white/80 mt-4 space-y-2">
+          {item.features?.map((point, i) => (
+            <li key={i} className="flex items-center gap-2">
+              <span className="text-lime-400">✓</span> {point}
+            </li>
+          ))}
+        </ul>
+
+        <Button className={"cursor-pointer"}>
+          <Link href={item.to}>Register Now</Link>
+        </Button>
       </div>
     </motion.div>
   );

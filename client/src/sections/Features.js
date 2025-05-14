@@ -41,24 +41,24 @@ export default function Features() {
           >
             {/* Avatars */}
             <div className="aspect-video flex items-center justify-center">
-              <Avatar className={"z-40"}>
+              <div className={"z-40"}>
                 <Image
                   src={avatar1}
                   alt="NGO Leader"
                   className="rounded-full"
                 />
-              </Avatar>
-              <Avatar className={"-ml-6 border-indigo-500 z-30"}>
+              </div>
+              <div className={"-ml-6 border-indigo-500 z-30"}>
                 <Image src={avatar2} alt="Student" className="rounded-full" />
-              </Avatar>
-              <Avatar className={"-ml-6 border-amber-500 z-20"}>
+              </div>
+              <div className={"-ml-6 border-amber-500 z-20"}>
                 <Image
                   src={avatar3}
                   alt="Corporate Executive"
                   className="rounded-full"
                 />
-              </Avatar>
-              <Avatar className={"-ml-6 border-transparent rounded-full"}>
+              </div>
+              <div className={"-ml-6 border-transparent rounded-full"}>
                 <div className="size-full rounded-full bg-neutral-700 inline-flex items-center justify-center gap-1">
                   {Array.from({ length: 3 }).map((_, i) => (
                     <span
@@ -67,15 +67,8 @@ export default function Features() {
                     ></span>
                   ))}
                 </div>
-              </Avatar>
+              </div>
             </div>
-            {/* <div className="aspect-video flex items-center justify-center">
-              <Image
-                src={dashboard}
-                alt="dashboard image"
-                className="size-full"
-              />
-            </div> */}
           </FeatureCard>
 
           {/* Card-2 */}

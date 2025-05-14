@@ -4,7 +4,7 @@ import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const text = `Despite growing CSR funding and a motivated youth population, real-world volunteer impact remains fragmented, untracked, and undervalued.`;
+const text = `Despite growing CSR funding and a motivated youth population, real-world volunteer impact remains fragmented, impulsively untracked, and severely undervalued.`;
 const words = text.split(" ");
 export default function Introduction() {
   const scrollTarget = useRef();
@@ -35,6 +35,11 @@ export default function Introduction() {
                   isVisible &&
                   (word.toLowerCase().includes("funding") ||
                     word.toLowerCase().includes("youth"));
+                const shouldHightlight =
+                  (isVisible &&
+                    (word.toLowerCase().includes("fragmented") ||
+                      word.toLowerCase().includes("untracked"))) ||
+                  word.toLowerCase().includes("undervalued");
 
                 return (
                   <span
@@ -42,8 +47,12 @@ export default function Introduction() {
                     className={twMerge(
                       "transition duration-500",
                       isVisible ? "text-white" : "text-white/15",
-                      shouldUnderline &&
-                        "underline decoration-lime-400 underline-offset-8 italic transition"
+                      isVisible &&
+                        shouldHightlight &&
+                        "text-red-500 italic transition",
+                      isVisible &&
+                        shouldUnderline &&
+                        "underline decoration-lime-400 underline-offset-8 transition"
                     )}
                   >
                     {word + " "}
@@ -51,7 +60,7 @@ export default function Introduction() {
                 );
               })}
             </span>
-            <span className="text-lime-400 block">
+            <span className="text-lime-400 block mt-3">
               That’s why we built Layers.
             </span>
           </div>

@@ -42,6 +42,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+import logo from "@/assets/images/avatar-ashwin-santiago.jpg";
 const items = [
   {
     title: "Home",
@@ -73,19 +74,17 @@ const items = [
 const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="py-4">
+      <SidebarHeader className="py-4 ">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/">
-                <Image src="/logo.svg" alt="logo" width={20} height={20} />
-                <span>Lama Dev</span>
-              </Link>
+            <SidebarMenuButton>
+                <Image src={logo} alt="logo" width={30} height={30} className="rounded-full"/>
+                <span>Layers</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarSeparator />
+      <hr/>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
