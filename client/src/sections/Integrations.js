@@ -10,11 +10,11 @@ export default function Integrations() {
           <div>
             <Tags title={"Integrations"} />
             <h2 className="text-5xl font-medium mt-6">
-              Plays well with <span className="text-lime-400">others</span>
+              Ecosystem-friendly by{" "}
+              <span className="text-lime-400">design</span>
             </h2>
             <p className="text-white/50 mt-4 text-lg">
-              Layers seamlessly connects with your favorite tools, making it
-              easy to plug into any workflow and collaborate across platforms.
+              Connected for Good <br/>Each integration powers a smoother, smarter way to drive real-world social impact.
             </p>
           </div>
 

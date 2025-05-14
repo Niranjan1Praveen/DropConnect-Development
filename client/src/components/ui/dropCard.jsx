@@ -28,10 +28,10 @@ const DropCard = ({ item }) => {
         generateRandomBorderRadius(),
       ],
       transition: {
-        duration: 1, 
-        repeat: Infinity, 
-        repeatType: "reverse", 
-        ease: "linear", 
+        duration: 0.3, // Fast animation
+        repeat: Infinity, // Repeat the animation
+        repeatType: "reverse", // Makes it go back to previous state
+        ease: "linear", // Constant rate for erratic motion
       },
     });
   }, [controls]);
