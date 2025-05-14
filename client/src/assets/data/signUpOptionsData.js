@@ -7,7 +7,7 @@ export default [
       "Join our community of volunteers and help build resilient water infrastructure, raise awareness, and support climate-affected areas.",
     cta: "Join as Volunteer",
     className: "md:col-span-2 lg:col-span-1",
-    to: "/register/volunteers",
+    to: "/register/volunteer",
     features: [
       "Internship certificates & recognition",
       "On-ground disaster resilience training",
@@ -41,7 +41,7 @@ export default [
       "Support impactful initiatives through your CSR programs. Fund projects that enhance water security and climate adaptation.",
     cta: "Join as Corporate",
     className: "md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto",
-    to: "/register/corporates",
+    to: "/register/corporate",
     features: [
       "Seamless CSR integration & reporting",
       "Project portfolio with measurable impact",

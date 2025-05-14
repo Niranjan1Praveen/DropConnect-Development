@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/images/logo.svg";
@@ -16,12 +17,17 @@ export default function Register(props) {
     handleGoogleLogin,
     handleLogout,
   } = props;
-  const router = useRouter();
 
-  if (session) {
-    router.push("/volunteer"); 
-    return null;
-  }
+  const router = useRouter();
+  const params = useParams();
+  const slugArray = params?.slug;
+  const entity = Array.isArray(slugArray) ? slugArray[0] : null;
+
+  useEffect(() => {
+    if (session) {
+      router.push(`/${entity}`);
+    }
+  }, [session, router]);
 
   return (
     <section className="px-4 h-screen w-screen flex items-center justify-center">

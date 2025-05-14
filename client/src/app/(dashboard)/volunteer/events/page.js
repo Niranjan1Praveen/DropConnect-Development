@@ -3,7 +3,7 @@ import React from 'react';
 function Page(props) {
     return (
         <div>
-            Hello Corporate
+            Events will be listed here!
         </div>
     );
 }

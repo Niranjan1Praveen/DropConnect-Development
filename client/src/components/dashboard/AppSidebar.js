@@ -46,17 +46,17 @@ import logo from "@/assets/images/avatar-ashwin-santiago.jpg";
 const items = [
   {
     title: "Home",
-    url: "/",
+    url: "/volunteer",
     icon: Home,
   },
   {
     title: "Inbox",
-    url: "#",
+    url: "/volunteer/inbox",
     icon: Inbox,
   },
   {
-    title: "Calendar",
-    url: "#",
+    title: "Events",
+    url: "/volunteer/events",
     icon: Calendar,
   },
   {

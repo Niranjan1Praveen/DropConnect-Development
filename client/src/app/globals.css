@@ -119,13 +119,13 @@
   body {
     @apply bg-background text-foreground;
   }
-  body.default-theme {
+  /* body.default-theme {
     @apply bg-foreground text-background;
-  }
+  } */
 }
-/* 
+
 body {
   background: var(--foreground);
   font-family: var(--font-poppins, sans-serif);
   color: var(--background);
-} */
+}
