@@ -1,4 +1,4 @@
-export default [
+const signUpOptionsData = [
   {
     id: "01",
     color: "pink",
@@ -51,3 +51,4 @@ export default [
     ],
   },
 ];
+export default signUpOptionsData;
