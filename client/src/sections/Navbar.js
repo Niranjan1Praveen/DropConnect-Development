@@ -5,6 +5,7 @@ import logo from "@/assets/images/logo.svg";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 const navLinks = [
   { label: "Home", href: "" },
   { label: "Features", href: "#features" },
@@ -78,12 +79,14 @@ export default function Navbar() {
                     )}
                   ></line>
                 </svg>
-                <Button
-                  variant={"login"}
-                  className="cursor-pointer hidden md:inline-flex items-center"
-                >
-                  Log in
-                </Button>
+                <LoginLink>
+                  <Button
+                    variant={"login"}
+                    className="cursor-pointer hidden md:inline-flex items-center"
+                  >
+                    Log in
+                  </Button>
+                </LoginLink>
                 <Button
                   variant={"signup"}
                   className="cursor-pointer hidden md:inline-flex items-center"

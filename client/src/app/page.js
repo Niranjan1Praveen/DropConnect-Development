@@ -8,7 +8,7 @@ import Navbar from '@/sections/Navbar'
 import Integrations from '@/sections/Integrations'
 import React from 'react'
 import SignUpOptions from '@/sections/SignupOptions'
-import Link from 'next/link'
+
 
 const Home = () => {
   return (
@@ -21,7 +21,6 @@ const Home = () => {
         <Integrations/>
         <SignUpOptions/>
         <Faqs/>
-        <Link href={"http://127.0.0.1:5000"}>Click here to view the map!</Link>
         <Footer/>
     </>
   )
