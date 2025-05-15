@@ -1,7 +1,6 @@
 "use client";
 
 import { LogOut, Moon, Settings, Sun, User } from "lucide-react";
-import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -13,22 +12,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { supabase } from "@/lib/supabaseClient";
-import { usePathname, useRouter } from "next/navigation";
-
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import AppLogout from "./AppLogout";
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
-
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const entity = pathname.split("/")[1];
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push(`/register/${entity}`);
-  };
+  const { setTheme } = useTheme();
 
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 z-10">
@@ -76,9 +63,11 @@ const Navbar = () => {
               <Settings className="h-[1.2rem] w-[1.2rem] mr-2" />
               Settings
             </DropdownMenuItem>
-            <DropdownMenuItem variant="destructive" onClick={handleLogout}>
-              <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
-              Logout
+            <DropdownMenuItem variant="destructive" asChild>
+              <div>
+                <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
+                <AppLogout />
+              </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

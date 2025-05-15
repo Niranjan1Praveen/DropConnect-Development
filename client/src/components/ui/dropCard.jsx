@@ -4,7 +4,12 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
-import Link from "next/link";
+
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+
 
 const generateRandomBorderRadius = () => {
   const topLeft = `${Math.floor(Math.random() * 50) + 30}%`;
@@ -13,8 +18,6 @@ const generateRandomBorderRadius = () => {
   const bottomRight = `${Math.floor(Math.random() * 50) + 30}%`;
   return `${topLeft} ${topRight} ${bottomLeft} ${bottomRight} / ${topLeft} ${topRight} ${bottomLeft} ${bottomRight}`;
 };
-
-
 
 const DropCard = ({ item }) => {
   const controls = useAnimation();
@@ -31,9 +34,9 @@ const DropCard = ({ item }) => {
       ],
       transition: {
         duration: 0.3,
-        repeat: Infinity, 
+        repeat: Infinity,
         repeatType: "reverse",
-        ease: "linear", 
+        ease: "linear",
       },
     });
   }, [controls]);
@@ -69,9 +72,9 @@ const DropCard = ({ item }) => {
           ))}
         </ul>
 
-        <Button className={"cursor-pointer"}>
-          <Link href={item.to}>Register Now</Link>
-        </Button>
+          <RegisterLink>
+            <Button className={"cursor-pointer"}>Register Now</Button>
+          </RegisterLink>
       </div>
     </motion.div>
   );

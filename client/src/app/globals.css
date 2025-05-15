@@ -119,9 +119,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  /* body.default-theme {
-    @apply bg-foreground text-background;
-  } */
 }
 
 body {
