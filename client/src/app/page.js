@@ -21,7 +21,7 @@ const Home = () => {
         <Integrations/>
         <SignUpOptions/>
         <Faqs/>
-        <Link href={""}>Click here to view the map!</Link>
+        <Link href={"http://127.0.0.1:5000"}>Click here to view the map!</Link>
         <Footer/>
     </>
   )
