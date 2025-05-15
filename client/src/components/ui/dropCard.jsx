@@ -22,34 +22,34 @@ const generateRandomBorderRadius = () => {
 const DropCard = ({ item }) => {
   const controls = useAnimation();
 
-  useEffect(() => {
-    controls.start({
-      borderRadius: [
-        generateRandomBorderRadius(),
-        generateRandomBorderRadius(),
-        generateRandomBorderRadius(),
-        generateRandomBorderRadius(),
-        generateRandomBorderRadius(),
-        generateRandomBorderRadius(),
-      ],
-      transition: {
-        duration: 0.3,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "linear",
-      },
-    });
-  }, [controls]);
+  // useEffect(() => {
+  //   controls.start({
+  //     borderRadius: [
+  //       generateRandomBorderRadius(),
+  //       generateRandomBorderRadius(),
+  //       generateRandomBorderRadius(),
+  //       generateRandomBorderRadius(),
+  //       generateRandomBorderRadius(),
+  //       generateRandomBorderRadius(),
+  //     ],
+  //     transition: {
+  //       duration: 0.3,
+  //       repeat: Infinity,
+  //       repeatType: "reverse",
+  //       ease: "linear",
+  //     },
+  //   });
+  // }, [controls]);
 
   return (
     <motion.div
-      animate={controls}
+      // animate={controls}
       className={twMerge(
         `
           relative p-10 md:p-6 bg-white/10 backdrop-blur-2xl min-h-[350px]
           shadow-[inset_10px_10px_15px_rgba(255,255,255,0.05),_10px_10px_20px_rgba(0,0,0,0.4)]
           border border-white/10
-          transition-all duration-500 ease-in-out overflow-hidden
+          transition-all duration-500 ease-in-out overflow-hidden rounded-xl
         `,
         item.className
       )}
