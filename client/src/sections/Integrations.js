@@ -1,6 +1,6 @@
 import Tags from "@/components/ui/tags";
 import IntegrationColumn from "@/components/ui/integrationColumn";
-import integrations from "@/assets/data/integrations";
+import integrations from "../assets/data/integrations";
 
 export default function Integrations() {
   return (

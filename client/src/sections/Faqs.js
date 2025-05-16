@@ -1,5 +1,5 @@
 "use client"
-import { faqs } from "@/assets/data/faqs"
+import { faqs } from "../assets/data/faqs"
 import Tags from "@/components/ui/tags";
 
 import React from "react"

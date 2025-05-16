@@ -1,5 +1,5 @@
 "use client";
-import signUpOptionsData from "@/assets/data/signUpOptionsData";
+import signUpOptionsData from "../assets/data/signUpOptionsData";
 import DropCard from "@/components/ui/dropCard";
 import Tags from "@/components/ui/tags";
 import React, { useState } from "react";
