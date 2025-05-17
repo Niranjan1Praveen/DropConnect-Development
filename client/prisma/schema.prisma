@@ -17,3 +17,21 @@ model User {
   profileImage String
   createdAt DateTime @default(now())
 }
+
+model Event {
+  id                String   @id @default(cuid())
+  eventName         String?
+  eventDescription  String?
+  organizerName     String?
+  email             String?
+  phone             String?
+  location          String?
+  date              DateTime?
+  time              String?
+  category          String?
+  requirements      String[]
+  capacity          Int?
+  registrationLink  String?  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

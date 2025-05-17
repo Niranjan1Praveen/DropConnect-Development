@@ -109,8 +109,20 @@ export default function Navbar() {
                         {link.label}
                       </a>
                     ))}
-                    <Button variant={"login"}>Log in</Button>
-                    <Button variant={"signup"}>Sign Up</Button>
+                    <LoginLink>
+                      <Button
+                        variant={"login"}
+                        className="cursor-pointer md:inline-flex items-center"
+                      >
+                        Log in
+                      </Button>
+                    </LoginLink>
+                    <Button
+                      variant={"signup"}
+                      className="cursor-pointer md:inline-flex items-center"
+                    >
+                      <a href="#signUpOptions">Sign Up</a>
+                    </Button>
                   </div>
                 </motion.div>
               )}

@@ -1,6 +1,5 @@
-import { PrismaClient } from '@/generated/prisma'; // use alias if you have one
-// or if you're not using alias
-// import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from '@/generated/prisma'; 
+
 
 const globalForPrisma = globalThis;
 

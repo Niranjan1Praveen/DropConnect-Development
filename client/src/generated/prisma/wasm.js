@@ -129,6 +129,24 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  eventName: 'eventName',
+  eventDescription: 'eventDescription',
+  organizerName: 'organizerName',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  date: 'date',
+  time: 'time',
+  category: 'category',
+  requirements: 'requirements',
+  capacity: 'capacity',
+  registrationLink: 'registrationLink',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -139,9 +157,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Event: 'Event'
 };
 
 /**
