@@ -1,5 +1,5 @@
 import AppSidebar from "@/components/dashboard/AppSidebar";
-import Navbar from "@/components/dashboard/Navbar";
+import AppNavbar from "@/components/dashboard/AppNavbar";
 import { ClientThemeProvider } from "@/components/providers/ClientThemeProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }) {
         <SidebarProvider defaultOpen={defaultOpen}>
           <AppSidebar />
           <main className="w-full">
-            <Navbar />
+            <AppNavbar />
             <div className="px-4">{children}</div>
           </main>
         </SidebarProvider>

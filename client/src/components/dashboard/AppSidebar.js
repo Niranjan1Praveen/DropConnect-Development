@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import Image from "next/image";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -71,20 +72,30 @@ const items = [
   },
 ];
 
-const AppSidebar = () => {
+const AppSidebar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  console.log(user);
+  
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4 ">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton>
-                <Image src={logo} alt="logo" width={30} height={30} className="rounded-full"/>
-                <span>Layers</span>
+              <Image
+                src={user.picture}
+                alt="logo"
+                width={30}
+                height={30}
+                className="rounded-full"
+              />
+              <span>Welcome {user.given_name}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <hr/>
+      <hr />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

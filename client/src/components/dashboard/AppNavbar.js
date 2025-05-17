@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import AppLogout from "./AppLogout";
-const Navbar = () => {
+const AppNavbar = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -76,4 +76,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AppNavbar;
