@@ -1,31 +1,38 @@
-// app/api/events/route.ts
-import { NextResponse } from 'next/server';
-import prisma from '@/app/utils/db';
+import { NextResponse } from "next/server";
+import prisma from "@/app/utils/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { eventSchema } from "@/lib/validations/event";
 
 export async function POST(req) {
   try {
-    const data = await req.json();
+    const body = await req.json();
+    const parsed = eventSchema.safeParse(body);
 
-    const newEvent = await prisma.event.create({
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: parsed.error.errors.map((e) => e.message).join(", ") },
+        { status: 400 }
+      );
+    }
+
+    const { eventName, eventDescription, organizerName } = parsed.data;
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+    const event = await prisma.event.create({
       data: {
-        eventName: data.eventName,
-        eventDescription: data.eventDescription,
-        organizerName: data.organizerName,
-        email: data.email,
-        phone: data.phone,
-        location: data.location,
-        date: new Date(data.date),
-        time: data.time,
-        category: data.category,
-        requirements: data.requirements,
-        capacity: parseInt(data.capacity),
-        registrationLink: data.registrationLink || null,
+        eventName,
+        eventDescription: eventDescription || null,
+        organizerName: organizerName || null,
+        userId: user.id,
       },
     });
 
-    return NextResponse.json(newEvent, { status: 201 });
+    return NextResponse.json(event);
   } catch (error) {
-    console.error('[EVENT_CREATE_ERROR]', error);
-    return NextResponse.json({ message: 'Error creating event' }, { status: 500 });
+    console.error("Server Error:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

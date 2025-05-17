@@ -134,17 +134,9 @@ exports.Prisma.EventScalarFieldEnum = {
   eventName: 'eventName',
   eventDescription: 'eventDescription',
   organizerName: 'organizerName',
-  email: 'email',
-  phone: 'phone',
-  location: 'location',
-  date: 'date',
-  time: 'time',
-  category: 'category',
-  requirements: 'requirements',
-  capacity: 'capacity',
-  registrationLink: 'registrationLink',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {

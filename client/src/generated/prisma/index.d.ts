@@ -955,6 +955,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    Event: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Event?: boolean | UserCountOutputTypeCountEventArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountEventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventWhereInput
+  }
+
 
   /**
    * Models
@@ -1132,6 +1162,8 @@ export namespace Prisma {
     lastName?: boolean
     profileImage?: boolean
     createdAt?: boolean
+    Event?: boolean | User$EventArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1162,10 +1194,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "profileImage" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Event?: boolean | User$EventArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      Event: Prisma.$EventPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
@@ -1567,6 +1607,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Event<T extends User$EventArgs<ExtArgs> = {}>(args?: Subset<T, User$EventArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1619,6 +1660,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1637,6 +1682,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1654,6 +1703,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1703,6 +1756,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1751,6 +1808,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1793,6 +1854,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1841,6 +1906,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1908,6 +1977,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1934,6 +2007,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1954,6 +2031,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.Event
+   */
+  export type User$EventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    where?: EventWhereInput
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    cursor?: EventWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1965,6 +2066,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -1974,18 +2079,8 @@ export namespace Prisma {
 
   export type AggregateEvent = {
     _count: EventCountAggregateOutputType | null
-    _avg: EventAvgAggregateOutputType | null
-    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
-  }
-
-  export type EventAvgAggregateOutputType = {
-    capacity: number | null
-  }
-
-  export type EventSumAggregateOutputType = {
-    capacity: number | null
   }
 
   export type EventMinAggregateOutputType = {
@@ -1993,16 +2088,9 @@ export namespace Prisma {
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
-    email: string | null
-    phone: string | null
-    location: string | null
-    date: Date | null
-    time: string | null
-    category: string | null
-    capacity: number | null
-    registrationLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type EventMaxAggregateOutputType = {
@@ -2010,16 +2098,9 @@ export namespace Prisma {
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
-    email: string | null
-    phone: string | null
-    location: string | null
-    date: Date | null
-    time: string | null
-    category: string | null
-    capacity: number | null
-    registrationLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type EventCountAggregateOutputType = {
@@ -2027,44 +2108,21 @@ export namespace Prisma {
     eventName: number
     eventDescription: number
     organizerName: number
-    email: number
-    phone: number
-    location: number
-    date: number
-    time: number
-    category: number
-    requirements: number
-    capacity: number
-    registrationLink: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
-
-  export type EventAvgAggregateInputType = {
-    capacity?: true
-  }
-
-  export type EventSumAggregateInputType = {
-    capacity?: true
-  }
 
   export type EventMinAggregateInputType = {
     id?: true
     eventName?: true
     eventDescription?: true
     organizerName?: true
-    email?: true
-    phone?: true
-    location?: true
-    date?: true
-    time?: true
-    category?: true
-    capacity?: true
-    registrationLink?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type EventMaxAggregateInputType = {
@@ -2072,16 +2130,9 @@ export namespace Prisma {
     eventName?: true
     eventDescription?: true
     organizerName?: true
-    email?: true
-    phone?: true
-    location?: true
-    date?: true
-    time?: true
-    category?: true
-    capacity?: true
-    registrationLink?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type EventCountAggregateInputType = {
@@ -2089,17 +2140,9 @@ export namespace Prisma {
     eventName?: true
     eventDescription?: true
     organizerName?: true
-    email?: true
-    phone?: true
-    location?: true
-    date?: true
-    time?: true
-    category?: true
-    requirements?: true
-    capacity?: true
-    registrationLink?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -2141,18 +2184,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: EventAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: EventSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: EventMinAggregateInputType
@@ -2183,8 +2214,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EventCountAggregateInputType | true
-    _avg?: EventAvgAggregateInputType
-    _sum?: EventSumAggregateInputType
     _min?: EventMinAggregateInputType
     _max?: EventMaxAggregateInputType
   }
@@ -2192,22 +2221,12 @@ export namespace Prisma {
   export type EventGroupByOutputType = {
     id: string
     eventName: string
-    eventDescription: string
-    organizerName: string
-    email: string
-    phone: string
-    location: string
-    date: Date
-    time: string
-    category: string
-    requirements: string[]
-    capacity: number
-    registrationLink: string | null
+    eventDescription: string | null
+    organizerName: string | null
     createdAt: Date
     updatedAt: Date
+    userId: string | null
     _count: EventCountAggregateOutputType | null
-    _avg: EventAvgAggregateOutputType | null
-    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
   }
@@ -2231,17 +2250,10 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
-    email?: boolean
-    phone?: boolean
-    location?: boolean
-    date?: boolean
-    time?: boolean
-    category?: boolean
-    requirements?: boolean
-    capacity?: boolean
-    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
+    User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2249,17 +2261,10 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
-    email?: boolean
-    phone?: boolean
-    location?: boolean
-    date?: boolean
-    time?: boolean
-    category?: boolean
-    requirements?: boolean
-    capacity?: boolean
-    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
+    User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2267,17 +2272,10 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
-    email?: boolean
-    phone?: boolean
-    location?: boolean
-    date?: boolean
-    time?: boolean
-    category?: boolean
-    requirements?: boolean
-    capacity?: boolean
-    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
+    User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectScalar = {
@@ -2285,40 +2283,35 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
-    email?: boolean
-    phone?: boolean
-    location?: boolean
-    date?: boolean
-    time?: boolean
-    category?: boolean
-    requirements?: boolean
-    capacity?: boolean
-    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "phone" | "location" | "date" | "time" | "category" | "requirements" | "capacity" | "registrationLink" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["event"]>
+  export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User?: boolean | Event$UserArgs<ExtArgs>
+  }
+  export type EventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User?: boolean | Event$UserArgs<ExtArgs>
+  }
+  export type EventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    User?: boolean | Event$UserArgs<ExtArgs>
+  }
 
   export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Event"
-    objects: {}
+    objects: {
+      User: Prisma.$UserPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       eventName: string
-      eventDescription: string
-      organizerName: string
-      email: string
-      phone: string
-      location: string
-      date: Date
-      time: string
-      category: string
-      requirements: string[]
-      capacity: number
-      registrationLink: string | null
+      eventDescription: string | null
+      organizerName: string | null
       createdAt: Date
       updatedAt: Date
+      userId: string | null
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -2713,6 +2706,7 @@ export namespace Prisma {
    */
   export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    User<T extends Event$UserArgs<ExtArgs> = {}>(args?: Subset<T, Event$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2746,17 +2740,9 @@ export namespace Prisma {
     readonly eventName: FieldRef<"Event", 'String'>
     readonly eventDescription: FieldRef<"Event", 'String'>
     readonly organizerName: FieldRef<"Event", 'String'>
-    readonly email: FieldRef<"Event", 'String'>
-    readonly phone: FieldRef<"Event", 'String'>
-    readonly location: FieldRef<"Event", 'String'>
-    readonly date: FieldRef<"Event", 'DateTime'>
-    readonly time: FieldRef<"Event", 'String'>
-    readonly category: FieldRef<"Event", 'String'>
-    readonly requirements: FieldRef<"Event", 'String[]'>
-    readonly capacity: FieldRef<"Event", 'Int'>
-    readonly registrationLink: FieldRef<"Event", 'String'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
+    readonly userId: FieldRef<"Event", 'String'>
   }
     
 
@@ -2773,6 +2759,10 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Event to fetch.
      */
@@ -2792,6 +2782,10 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    /**
      * Filter, which Event to fetch.
      */
     where: EventWhereUniqueInput
@@ -2809,6 +2803,10 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Event to fetch.
      */
@@ -2858,6 +2856,10 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    /**
      * Filter, which Event to fetch.
      */
     where?: EventWhereInput
@@ -2906,6 +2908,10 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    /**
      * Filter, which Events to fetch.
      */
     where?: EventWhereInput
@@ -2949,6 +2955,10 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    /**
      * The data needed to create a Event.
      */
     data: XOR<EventCreateInput, EventUncheckedCreateInput>
@@ -2982,6 +2992,10 @@ export namespace Prisma {
      */
     data: EventCreateManyInput | EventCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -2996,6 +3010,10 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
     /**
      * The data needed to update a Event.
      */
@@ -3048,6 +3066,10 @@ export namespace Prisma {
      * Limit how many Events to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3062,6 +3084,10 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
     /**
      * The filter to search for the Event to update in case it exists.
      */
@@ -3089,6 +3115,10 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    /**
      * Filter which Event to delete.
      */
     where: EventWhereUniqueInput
@@ -3109,6 +3139,25 @@ export namespace Prisma {
   }
 
   /**
+   * Event.User
+   */
+  export type Event$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Event without action
    */
   export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3120,6 +3169,10 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
   }
 
 
@@ -3154,17 +3207,9 @@ export namespace Prisma {
     eventName: 'eventName',
     eventDescription: 'eventDescription',
     organizerName: 'organizerName',
-    email: 'email',
-    phone: 'phone',
-    location: 'location',
-    date: 'date',
-    time: 'time',
-    category: 'category',
-    requirements: 'requirements',
-    capacity: 'capacity',
-    registrationLink: 'registrationLink',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -3239,20 +3284,6 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
   /**
    * Deep Input Types
    */
@@ -3268,6 +3299,7 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     profileImage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    Event?: EventListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3277,6 +3309,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    Event?: EventOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3289,6 +3322,7 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     profileImage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    Event?: EventListRelationFilter
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -3321,37 +3355,23 @@ export namespace Prisma {
     NOT?: EventWhereInput | EventWhereInput[]
     id?: StringFilter<"Event"> | string
     eventName?: StringFilter<"Event"> | string
-    eventDescription?: StringFilter<"Event"> | string
-    organizerName?: StringFilter<"Event"> | string
-    email?: StringFilter<"Event"> | string
-    phone?: StringFilter<"Event"> | string
-    location?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    time?: StringFilter<"Event"> | string
-    category?: StringFilter<"Event"> | string
-    requirements?: StringNullableListFilter<"Event">
-    capacity?: IntFilter<"Event"> | number
-    registrationLink?: StringNullableFilter<"Event"> | string | null
+    eventDescription?: StringNullableFilter<"Event"> | string | null
+    organizerName?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
+    userId?: StringNullableFilter<"Event"> | string | null
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type EventOrderByWithRelationInput = {
     id?: SortOrder
     eventName?: SortOrder
-    eventDescription?: SortOrder
-    organizerName?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    location?: SortOrder
-    date?: SortOrder
-    time?: SortOrder
-    category?: SortOrder
-    requirements?: SortOrder
-    capacity?: SortOrder
-    registrationLink?: SortOrderInput | SortOrder
+    eventDescription?: SortOrderInput | SortOrder
+    organizerName?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    User?: UserOrderByWithRelationInput
   }
 
   export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -3360,42 +3380,25 @@ export namespace Prisma {
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
     eventName?: StringFilter<"Event"> | string
-    eventDescription?: StringFilter<"Event"> | string
-    organizerName?: StringFilter<"Event"> | string
-    email?: StringFilter<"Event"> | string
-    phone?: StringFilter<"Event"> | string
-    location?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    time?: StringFilter<"Event"> | string
-    category?: StringFilter<"Event"> | string
-    requirements?: StringNullableListFilter<"Event">
-    capacity?: IntFilter<"Event"> | number
-    registrationLink?: StringNullableFilter<"Event"> | string | null
+    eventDescription?: StringNullableFilter<"Event"> | string | null
+    organizerName?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
+    userId?: StringNullableFilter<"Event"> | string | null
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type EventOrderByWithAggregationInput = {
     id?: SortOrder
     eventName?: SortOrder
-    eventDescription?: SortOrder
-    organizerName?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    location?: SortOrder
-    date?: SortOrder
-    time?: SortOrder
-    category?: SortOrder
-    requirements?: SortOrder
-    capacity?: SortOrder
-    registrationLink?: SortOrderInput | SortOrder
+    eventDescription?: SortOrderInput | SortOrder
+    organizerName?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: EventCountOrderByAggregateInput
-    _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
     _min?: EventMinOrderByAggregateInput
-    _sum?: EventSumOrderByAggregateInput
   }
 
   export type EventScalarWhereWithAggregatesInput = {
@@ -3404,19 +3407,11 @@ export namespace Prisma {
     NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Event"> | string
     eventName?: StringWithAggregatesFilter<"Event"> | string
-    eventDescription?: StringWithAggregatesFilter<"Event"> | string
-    organizerName?: StringWithAggregatesFilter<"Event"> | string
-    email?: StringWithAggregatesFilter<"Event"> | string
-    phone?: StringWithAggregatesFilter<"Event"> | string
-    location?: StringWithAggregatesFilter<"Event"> | string
-    date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    time?: StringWithAggregatesFilter<"Event"> | string
-    category?: StringWithAggregatesFilter<"Event"> | string
-    requirements?: StringNullableListFilter<"Event">
-    capacity?: IntWithAggregatesFilter<"Event"> | number
-    registrationLink?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    eventDescription?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    organizerName?: StringNullableWithAggregatesFilter<"Event"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    userId?: StringNullableWithAggregatesFilter<"Event"> | string | null
   }
 
   export type UserCreateInput = {
@@ -3426,6 +3421,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    Event?: EventCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3435,6 +3431,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    Event?: EventUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -3444,6 +3441,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Event?: EventUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3453,6 +3451,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Event?: EventUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3485,107 +3484,58 @@ export namespace Prisma {
   export type EventCreateInput = {
     id?: string
     eventName: string
-    eventDescription: string
-    organizerName: string
-    email: string
-    phone: string
-    location: string
-    date: Date | string
-    time: string
-    category: string
-    requirements?: EventCreaterequirementsInput | string[]
-    capacity: number
-    registrationLink?: string | null
+    eventDescription?: string | null
+    organizerName?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    User?: UserCreateNestedOneWithoutEventInput
   }
 
   export type EventUncheckedCreateInput = {
     id?: string
     eventName: string
-    eventDescription: string
-    organizerName: string
-    email: string
-    phone: string
-    location: string
-    date: Date | string
-    time: string
-    category: string
-    requirements?: EventCreaterequirementsInput | string[]
-    capacity: number
-    registrationLink?: string | null
+    eventDescription?: string | null
+    organizerName?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: string | null
   }
 
   export type EventUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
-    eventDescription?: StringFieldUpdateOperationsInput | string
-    organizerName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    time?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    requirements?: EventUpdaterequirementsInput | string[]
-    capacity?: IntFieldUpdateOperationsInput | number
-    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    User?: UserUpdateOneWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
-    eventDescription?: StringFieldUpdateOperationsInput | string
-    organizerName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    time?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    requirements?: EventUpdaterequirementsInput | string[]
-    capacity?: IntFieldUpdateOperationsInput | number
-    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventCreateManyInput = {
     id?: string
     eventName: string
-    eventDescription: string
-    organizerName: string
-    email: string
-    phone: string
-    location: string
-    date: Date | string
-    time: string
-    category: string
-    requirements?: EventCreaterequirementsInput | string[]
-    capacity: number
-    registrationLink?: string | null
+    eventDescription?: string | null
+    organizerName?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId?: string | null
   }
 
   export type EventUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
-    eventDescription?: StringFieldUpdateOperationsInput | string
-    organizerName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    time?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    requirements?: EventUpdaterequirementsInput | string[]
-    capacity?: IntFieldUpdateOperationsInput | number
-    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3593,19 +3543,11 @@ export namespace Prisma {
   export type EventUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
-    eventDescription?: StringFieldUpdateOperationsInput | string
-    organizerName?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    time?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    requirements?: EventUpdaterequirementsInput | string[]
-    capacity?: IntFieldUpdateOperationsInput | number
-    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3632,6 +3574,16 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type EventListRelationFilter = {
+    every?: EventWhereInput
+    some?: EventWhereInput
+    none?: EventWhereInput
+  }
+
+  export type EventOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -3693,25 +3645,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3727,6 +3660,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -3737,21 +3675,9 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    location?: SortOrder
-    date?: SortOrder
-    time?: SortOrder
-    category?: SortOrder
-    requirements?: SortOrder
-    capacity?: SortOrder
-    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type EventAvgOrderByAggregateInput = {
-    capacity?: SortOrder
+    userId?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
@@ -3759,16 +3685,9 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    location?: SortOrder
-    date?: SortOrder
-    time?: SortOrder
-    category?: SortOrder
-    capacity?: SortOrder
-    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
@@ -3776,36 +3695,9 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    location?: SortOrder
-    date?: SortOrder
-    time?: SortOrder
-    category?: SortOrder
-    capacity?: SortOrder
-    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type EventSumOrderByAggregateInput = {
-    capacity?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    userId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3826,6 +3718,20 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type EventCreateNestedManyWithoutUserInput = {
+    create?: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput> | EventCreateWithoutUserInput[] | EventUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutUserInput | EventCreateOrConnectWithoutUserInput[]
+    createMany?: EventCreateManyUserInputEnvelope
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+  }
+
+  export type EventUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput> | EventCreateWithoutUserInput[] | EventUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutUserInput | EventCreateOrConnectWithoutUserInput[]
+    createMany?: EventCreateManyUserInputEnvelope
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3834,25 +3740,52 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type EventCreaterequirementsInput = {
-    set: string[]
+  export type EventUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput> | EventCreateWithoutUserInput[] | EventUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutUserInput | EventCreateOrConnectWithoutUserInput[]
+    upsert?: EventUpsertWithWhereUniqueWithoutUserInput | EventUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EventCreateManyUserInputEnvelope
+    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    update?: EventUpdateWithWhereUniqueWithoutUserInput | EventUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EventUpdateManyWithWhereWithoutUserInput | EventUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
   }
 
-  export type EventUpdaterequirementsInput = {
-    set?: string[]
-    push?: string | string[]
+  export type EventUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput> | EventCreateWithoutUserInput[] | EventUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutUserInput | EventCreateOrConnectWithoutUserInput[]
+    upsert?: EventUpsertWithWhereUniqueWithoutUserInput | EventUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EventCreateManyUserInputEnvelope
+    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    update?: EventUpdateWithWhereUniqueWithoutUserInput | EventUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EventUpdateManyWithWhereWithoutUserInput | EventUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type UserCreateNestedOneWithoutEventInput = {
+    create?: XOR<UserCreateWithoutEventInput, UserUncheckedCreateWithoutEventInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEventInput
+    connect?: UserWhereUniqueInput
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type UserUpdateOneWithoutEventNestedInput = {
+    create?: XOR<UserCreateWithoutEventInput, UserUncheckedCreateWithoutEventInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEventInput
+    upsert?: UserUpsertWithoutEventInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventInput, UserUpdateWithoutEventInput>, UserUncheckedUpdateWithoutEventInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3936,33 +3869,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3989,6 +3895,151 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type EventCreateWithoutUserInput = {
+    id?: string
+    eventName: string
+    eventDescription?: string | null
+    organizerName?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventUncheckedCreateWithoutUserInput = {
+    id?: string
+    eventName: string
+    eventDescription?: string | null
+    organizerName?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventCreateOrConnectWithoutUserInput = {
+    where: EventWhereUniqueInput
+    create: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput>
+  }
+
+  export type EventCreateManyUserInputEnvelope = {
+    data: EventCreateManyUserInput | EventCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EventUpsertWithWhereUniqueWithoutUserInput = {
+    where: EventWhereUniqueInput
+    update: XOR<EventUpdateWithoutUserInput, EventUncheckedUpdateWithoutUserInput>
+    create: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput>
+  }
+
+  export type EventUpdateWithWhereUniqueWithoutUserInput = {
+    where: EventWhereUniqueInput
+    data: XOR<EventUpdateWithoutUserInput, EventUncheckedUpdateWithoutUserInput>
+  }
+
+  export type EventUpdateManyWithWhereWithoutUserInput = {
+    where: EventScalarWhereInput
+    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type EventScalarWhereInput = {
+    AND?: EventScalarWhereInput | EventScalarWhereInput[]
+    OR?: EventScalarWhereInput[]
+    NOT?: EventScalarWhereInput | EventScalarWhereInput[]
+    id?: StringFilter<"Event"> | string
+    eventName?: StringFilter<"Event"> | string
+    eventDescription?: StringNullableFilter<"Event"> | string | null
+    organizerName?: StringNullableFilter<"Event"> | string | null
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
+    userId?: StringNullableFilter<"Event"> | string | null
+  }
+
+  export type UserCreateWithoutEventInput = {
+    id: string
+    email: string
+    firstName: string
+    lastName: string
+    profileImage: string
+    createdAt?: Date | string
+  }
+
+  export type UserUncheckedCreateWithoutEventInput = {
+    id: string
+    email: string
+    firstName: string
+    lastName: string
+    profileImage: string
+    createdAt?: Date | string
+  }
+
+  export type UserCreateOrConnectWithoutEventInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutEventInput, UserUncheckedCreateWithoutEventInput>
+  }
+
+  export type UserUpsertWithoutEventInput = {
+    update: XOR<UserUpdateWithoutEventInput, UserUncheckedUpdateWithoutEventInput>
+    create: XOR<UserCreateWithoutEventInput, UserUncheckedCreateWithoutEventInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutEventInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutEventInput, UserUncheckedUpdateWithoutEventInput>
+  }
+
+  export type UserUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    profileImage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    profileImage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventCreateManyUserInput = {
+    id?: string
+    eventName: string
+    eventDescription?: string | null
+    organizerName?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    eventName?: StringFieldUpdateOperationsInput | string
+    eventDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    organizerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

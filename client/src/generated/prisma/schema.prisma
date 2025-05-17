@@ -21,17 +21,7 @@ model User {
 model Event {
   id               String   @id @default(cuid())
   eventName        String
-  eventDescription String
-  organizerName    String
-  email            String
-  phone            String
-  location         String
-  date             DateTime
-  time             String
-  category         String
-  requirements     String[] // Array of skills (stored as text array)
-  capacity         Int
-  registrationLink String? // Optional external URL
+  eventDescription String?
+  organizerName    String?
   createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
 }
