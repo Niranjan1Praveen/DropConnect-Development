@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { redirect } from "next/navigation";
 import prisma from "@/app/utils/db";
+
 import {
   Card,
   CardDescription,
@@ -33,6 +34,7 @@ async function Page(props) {
     return data;
   }
   const data = await getData(user.id);
+  console.log(data);
 
   return (
     <>
@@ -61,9 +63,9 @@ async function Page(props) {
           </Button>
         </div>
       ) : (
-        <main className="flex flex-col gap-10 ">
+        <main className="flex flex-col gap-10">
           <div className="flex gap-4 flex-wrap md:flex-nowrap rounded-md items-center justify-center">
-            <Input className={"p-5"} placeholder="Search Events"/>
+            <Input className={"p-5"} placeholder="Search Events" />
             <Button
               variant="secondary"
               size="lg"
@@ -77,9 +79,9 @@ async function Page(props) {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-            {data.map((item) => (
-              <Card key={item.id} className={"p-0 pb-5"}>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            {data.map((item, index) => (
+              <Card className="p-0 pb-5" key={item.id}>
                 <Image
                   src={item.imgUrl ?? "/assets/images/ngo.png"}
                   width={800}
@@ -88,17 +90,20 @@ async function Page(props) {
                   className="rounded-t-lg object-cover w-full h-[200px]"
                 />
                 <CardHeader>
-                  <CardTitle>{item.eventName}</CardTitle>
+                  <div className="flex justify-between items-center">
+                    <CardTitle>{item.eventName}</CardTitle>
+                    <p className="text-sm">Organized by {item.organizerName}</p>
+                  </div>
                   <CardDescription>{item.eventDescription}</CardDescription>
                 </CardHeader>
                 <CardFooter>
                   <Button
-                    variant={"secondary"}
-                    size={"lg"}
-                    className={"bg-indigo-600 text-white"}
+                    variant="secondary"
+                    size="lg"
+                    className="bg-indigo-600 text-white"
                     asChild
                   >
-                    <Link href={"/"}>View Entire Details</Link>
+                    <Link href={`/volunteer/events/${item.id}`}>View Entire Details</Link>
                   </Button>
                 </CardFooter>
               </Card>
