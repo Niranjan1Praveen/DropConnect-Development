@@ -92,6 +92,11 @@ export default function EventForm() {
               {...register("eventDescription")}
               disabled={isSubmitting}
             />
+            {errors.eventDescription && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.eventDescription.message}
+              </p>
+            )}
           </div>
 
           {/* Organizer */}
@@ -99,10 +104,15 @@ export default function EventForm() {
             <Label htmlFor="organizerName">Organizer Name</Label>
             <Input
               id="organizerName"
-              placeholder="NGO Name"
+              placeholder="Name of the organization"
               {...register("organizerName")}
               disabled={isSubmitting}
             />
+            {errors.organizerName && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.organizerName.message}
+              </p>
+            )}
           </div>
         </CardContent>
 

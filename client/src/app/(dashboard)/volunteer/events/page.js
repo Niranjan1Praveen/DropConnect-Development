@@ -63,7 +63,7 @@ async function Page(props) {
           </Button>
         </div>
       ) : (
-        <main className="flex flex-col gap-10">
+        <main className="flex flex-col gap-10 p-8">
           <div className="flex gap-4 flex-wrap md:flex-nowrap rounded-md items-center justify-center">
             <Input className={"p-5"} placeholder="Search Events" />
             <Button
@@ -97,14 +97,28 @@ async function Page(props) {
                   <CardDescription>{item.eventDescription}</CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="bg-indigo-600 text-white"
-                    asChild
-                  >
-                    <Link href={`/volunteer/events/${item.id}`}>View Entire Details</Link>
-                  </Button>
+                  <div className="flex w-full justify-between flex-wrap gap-4">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="bg-indigo-600 text-white w-full md:w-auto"
+                      asChild
+                    >
+                      <Link href={`/volunteer/events/${item.id}`}>
+                        View Entire Details
+                      </Link>
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="bg-indigo-600 text-white w-full md:w-auto"
+                      asChild
+                    >
+                      <Link href={`/volunteer/events/update/${item.id}`}>
+                        Update Details
+                      </Link>
+                    </Button>
+                  </div>
                 </CardFooter>
               </Card>
             ))}

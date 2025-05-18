@@ -18,7 +18,7 @@ export async function POST(req) {
     const { eventName, eventDescription, organizerName } = parsed.data;
     const { getUser } = getKindeServerSession();
     const user = await getUser();
-    const event = await prisma.event.create({
+    const event = await prisma.Event.create({
       data: {
         eventName,
         eventDescription: eventDescription || null,

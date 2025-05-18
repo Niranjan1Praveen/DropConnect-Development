@@ -7,8 +7,6 @@ import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import Image from "next/image";
 
 const DropCard = ({ item }) => {
-  console.log(item);
-  
   return (
     <motion.div
       className={twMerge(
