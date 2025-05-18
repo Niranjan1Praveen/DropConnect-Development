@@ -2079,8 +2079,18 @@ export namespace Prisma {
 
   export type AggregateEvent = {
     _count: EventCountAggregateOutputType | null
+    _avg: EventAvgAggregateOutputType | null
+    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
+  }
+
+  export type EventAvgAggregateOutputType = {
+    volunteerCapacity: number | null
+  }
+
+  export type EventSumAggregateOutputType = {
+    volunteerCapacity: number | null
   }
 
   export type EventMinAggregateOutputType = {
@@ -2088,6 +2098,11 @@ export namespace Prisma {
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
+    email: string | null
+    contact: string | null
+    eventLocation: string | null
+    volunteerCapacity: number | null
+    registrationLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2098,6 +2113,11 @@ export namespace Prisma {
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
+    email: string | null
+    contact: string | null
+    eventLocation: string | null
+    volunteerCapacity: number | null
+    registrationLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2108,6 +2128,11 @@ export namespace Prisma {
     eventName: number
     eventDescription: number
     organizerName: number
+    email: number
+    contact: number
+    eventLocation: number
+    volunteerCapacity: number
+    registrationLink: number
     createdAt: number
     updatedAt: number
     userId: number
@@ -2115,11 +2140,24 @@ export namespace Prisma {
   }
 
 
+  export type EventAvgAggregateInputType = {
+    volunteerCapacity?: true
+  }
+
+  export type EventSumAggregateInputType = {
+    volunteerCapacity?: true
+  }
+
   export type EventMinAggregateInputType = {
     id?: true
     eventName?: true
     eventDescription?: true
     organizerName?: true
+    email?: true
+    contact?: true
+    eventLocation?: true
+    volunteerCapacity?: true
+    registrationLink?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2130,6 +2168,11 @@ export namespace Prisma {
     eventName?: true
     eventDescription?: true
     organizerName?: true
+    email?: true
+    contact?: true
+    eventLocation?: true
+    volunteerCapacity?: true
+    registrationLink?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2140,6 +2183,11 @@ export namespace Prisma {
     eventName?: true
     eventDescription?: true
     organizerName?: true
+    email?: true
+    contact?: true
+    eventLocation?: true
+    volunteerCapacity?: true
+    registrationLink?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2184,6 +2232,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: EventAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EventSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: EventMinAggregateInputType
@@ -2214,6 +2274,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EventCountAggregateInputType | true
+    _avg?: EventAvgAggregateInputType
+    _sum?: EventSumAggregateInputType
     _min?: EventMinAggregateInputType
     _max?: EventMaxAggregateInputType
   }
@@ -2223,10 +2285,17 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink: string | null
     createdAt: Date
     updatedAt: Date
     userId: string | null
     _count: EventCountAggregateOutputType | null
+    _avg: EventAvgAggregateOutputType | null
+    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
   }
@@ -2250,6 +2319,11 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
+    email?: boolean
+    contact?: boolean
+    eventLocation?: boolean
+    volunteerCapacity?: boolean
+    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -2261,6 +2335,11 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
+    email?: boolean
+    contact?: boolean
+    eventLocation?: boolean
+    volunteerCapacity?: boolean
+    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -2272,6 +2351,11 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
+    email?: boolean
+    contact?: boolean
+    eventLocation?: boolean
+    volunteerCapacity?: boolean
+    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -2283,12 +2367,17 @@ export namespace Prisma {
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
+    email?: boolean
+    contact?: boolean
+    eventLocation?: boolean
+    volunteerCapacity?: boolean
+    registrationLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "contact" | "eventLocation" | "volunteerCapacity" | "registrationLink" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | Event$UserArgs<ExtArgs>
   }
@@ -2309,6 +2398,11 @@ export namespace Prisma {
       eventName: string
       eventDescription: string
       organizerName: string
+      email: string
+      contact: string
+      eventLocation: string
+      volunteerCapacity: number
+      registrationLink: string | null
       createdAt: Date
       updatedAt: Date
       userId: string | null
@@ -2740,6 +2834,11 @@ export namespace Prisma {
     readonly eventName: FieldRef<"Event", 'String'>
     readonly eventDescription: FieldRef<"Event", 'String'>
     readonly organizerName: FieldRef<"Event", 'String'>
+    readonly email: FieldRef<"Event", 'String'>
+    readonly contact: FieldRef<"Event", 'String'>
+    readonly eventLocation: FieldRef<"Event", 'String'>
+    readonly volunteerCapacity: FieldRef<"Event", 'Int'>
+    readonly registrationLink: FieldRef<"Event", 'String'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
     readonly userId: FieldRef<"Event", 'String'>
@@ -3207,6 +3306,11 @@ export namespace Prisma {
     eventName: 'eventName',
     eventDescription: 'eventDescription',
     organizerName: 'organizerName',
+    email: 'email',
+    contact: 'contact',
+    eventLocation: 'eventLocation',
+    volunteerCapacity: 'volunteerCapacity',
+    registrationLink: 'registrationLink',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId'
@@ -3284,6 +3388,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -3357,6 +3475,11 @@ export namespace Prisma {
     eventName?: StringFilter<"Event"> | string
     eventDescription?: StringFilter<"Event"> | string
     organizerName?: StringFilter<"Event"> | string
+    email?: StringFilter<"Event"> | string
+    contact?: StringFilter<"Event"> | string
+    eventLocation?: StringFilter<"Event"> | string
+    volunteerCapacity?: IntFilter<"Event"> | number
+    registrationLink?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
@@ -3368,6 +3491,11 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
+    email?: SortOrder
+    contact?: SortOrder
+    eventLocation?: SortOrder
+    volunteerCapacity?: SortOrder
+    registrationLink?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
@@ -3382,6 +3510,11 @@ export namespace Prisma {
     eventName?: StringFilter<"Event"> | string
     eventDescription?: StringFilter<"Event"> | string
     organizerName?: StringFilter<"Event"> | string
+    email?: StringFilter<"Event"> | string
+    contact?: StringFilter<"Event"> | string
+    eventLocation?: StringFilter<"Event"> | string
+    volunteerCapacity?: IntFilter<"Event"> | number
+    registrationLink?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
@@ -3393,12 +3526,19 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
+    email?: SortOrder
+    contact?: SortOrder
+    eventLocation?: SortOrder
+    volunteerCapacity?: SortOrder
+    registrationLink?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     _count?: EventCountOrderByAggregateInput
+    _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
     _min?: EventMinOrderByAggregateInput
+    _sum?: EventSumOrderByAggregateInput
   }
 
   export type EventScalarWhereWithAggregatesInput = {
@@ -3409,6 +3549,11 @@ export namespace Prisma {
     eventName?: StringWithAggregatesFilter<"Event"> | string
     eventDescription?: StringWithAggregatesFilter<"Event"> | string
     organizerName?: StringWithAggregatesFilter<"Event"> | string
+    email?: StringWithAggregatesFilter<"Event"> | string
+    contact?: StringWithAggregatesFilter<"Event"> | string
+    eventLocation?: StringWithAggregatesFilter<"Event"> | string
+    volunteerCapacity?: IntWithAggregatesFilter<"Event"> | number
+    registrationLink?: StringNullableWithAggregatesFilter<"Event"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"Event"> | string | null
@@ -3486,6 +3631,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     User?: UserCreateNestedOneWithoutEventInput
@@ -3496,6 +3646,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
@@ -3506,6 +3661,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneWithoutEventNestedInput
@@ -3516,6 +3676,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3526,6 +3691,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
@@ -3536,6 +3706,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3545,6 +3720,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3645,6 +3825,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3675,9 +3866,18 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
+    email?: SortOrder
+    contact?: SortOrder
+    eventLocation?: SortOrder
+    volunteerCapacity?: SortOrder
+    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+  }
+
+  export type EventAvgOrderByAggregateInput = {
+    volunteerCapacity?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
@@ -3685,6 +3885,11 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
+    email?: SortOrder
+    contact?: SortOrder
+    eventLocation?: SortOrder
+    volunteerCapacity?: SortOrder
+    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -3695,9 +3900,34 @@ export namespace Prisma {
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
+    email?: SortOrder
+    contact?: SortOrder
+    eventLocation?: SortOrder
+    volunteerCapacity?: SortOrder
+    registrationLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+  }
+
+  export type EventSumOrderByAggregateInput = {
+    volunteerCapacity?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3774,6 +4004,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type UserUpdateOneWithoutEventNestedInput = {
     create?: XOR<UserCreateWithoutEventInput, UserUncheckedCreateWithoutEventInput>
     connectOrCreate?: UserCreateOrConnectWithoutEventInput
@@ -3782,10 +4024,6 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventInput, UserUpdateWithoutEventInput>, UserUncheckedUpdateWithoutEventInput>
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3869,6 +4107,33 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3902,6 +4167,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3911,6 +4181,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3949,6 +4224,11 @@ export namespace Prisma {
     eventName?: StringFilter<"Event"> | string
     eventDescription?: StringFilter<"Event"> | string
     organizerName?: StringFilter<"Event"> | string
+    email?: StringFilter<"Event"> | string
+    contact?: StringFilter<"Event"> | string
+    eventLocation?: StringFilter<"Event"> | string
+    volunteerCapacity?: IntFilter<"Event"> | number
+    registrationLink?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
@@ -4011,6 +4291,11 @@ export namespace Prisma {
     eventName: string
     eventDescription: string
     organizerName: string
+    email: string
+    contact: string
+    eventLocation: string
+    volunteerCapacity: number
+    registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4020,6 +4305,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4029,6 +4319,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4038,6 +4333,11 @@ export namespace Prisma {
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    eventLocation?: StringFieldUpdateOperationsInput | string
+    volunteerCapacity?: IntFieldUpdateOperationsInput | number
+    registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -134,6 +134,11 @@ exports.Prisma.EventScalarFieldEnum = {
   eventName: 'eventName',
   eventDescription: 'eventDescription',
   organizerName: 'organizerName',
+  email: 'email',
+  contact: 'contact',
+  eventLocation: 'eventLocation',
+  volunteerCapacity: 'volunteerCapacity',
+  registrationLink: 'registrationLink',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'

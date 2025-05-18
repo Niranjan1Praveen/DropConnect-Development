@@ -30,31 +30,31 @@ export default function EventForm() {
     resolver: zodResolver(eventSchema),
   });
 
- const onSubmit = async (data) => {
-  try {
-    const res = await fetch("/api/events", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...data,
-      }),
-    });
+  const onSubmit = async (data) => {
+    try {
+      const res = await fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+        }),
+      });
 
-    if (!res.ok) {
-      const { error } = await res.json();
-      toast.error(error || "Something went wrong");
-      return;
+      if (!res.ok) {
+        const { error } = await res.json();
+        toast.error(error || "Something went wrong");
+        return;
+      }
+
+      toast.success("Event created successfully!");
+      reset();
+      setTimeout(() => {
+        router.push("/volunteer/events");
+      }, 1000);
+    } catch {
+      toast.error("Failed to create event");
     }
-
-    toast.success("Event created successfully!");
-    reset();
-    setTimeout(() => {
-      router.push("/volunteer/events");
-    }, 1000);
-  } catch {
-    toast.error("Failed to create event");
-  }
-};
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
@@ -114,6 +114,89 @@ export default function EventForm() {
               </p>
             )}
           </div>
+          {/* Email */}
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="email">Organizer Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="example@domain.com"
+              {...register("email")}
+              disabled={isSubmitting}
+            />
+            {errors.email && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          {/* Contact */}
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="contact">Contact Number</Label>
+            <Input
+              id="contact"
+              placeholder="+91 9876543210"
+              {...register("contact")}
+              disabled={isSubmitting}
+            />
+            {errors.contact && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.contact.message}
+              </p>
+            )}
+          </div>
+
+          {/* Event Location */}
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="eventLocation">Event Location</Label>
+            <Input
+              id="eventLocation"
+              placeholder="City, Venue, or Address"
+              {...register("eventLocation")}
+              disabled={isSubmitting}
+            />
+            {errors.eventLocation && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.eventLocation.message}
+              </p>
+            )}
+          </div>
+
+          {/* Volunteer Capacity */}
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="volunteerCapacity">Volunteer Capacity</Label>
+            <Input
+              id="volunteerCapacity"
+              type="number"
+              min={1}
+              placeholder="Number of volunteers needed"
+              {...register("volunteerCapacity", { valueAsNumber: true })}
+              disabled={isSubmitting}
+            />
+            {errors.volunteerCapacity && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.volunteerCapacity.message}
+              </p>
+            )}
+          </div>
+
+          {/* External Registration Link */}
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="registrationLink">External Registration Link</Label>
+            <Input
+              id="registrationLink"
+              type="url"
+              placeholder="https://example.com/register"
+              {...register("registrationLink")}
+              disabled={isSubmitting}
+            />
+            {errors.registrationLink && (
+              <p className="text-sm text-red-500 mt-1">
+                {errors.registrationLink.message}
+              </p>
+            )}
+          </div>
         </CardContent>
 
         <CardFooter>
@@ -128,7 +211,7 @@ export default function EventForm() {
           </Button>
         </CardFooter>
       </Card>
-       <Toaster richColor/>
+      <Toaster richColor />
     </form>
   );
 }

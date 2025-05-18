@@ -15,7 +15,7 @@ export async function POST(req) {
       );
     }
 
-    const { eventName, eventDescription, organizerName } = parsed.data;
+    const { eventName, eventDescription, organizerName,email, contact, eventLocation, volunteerCapacity, registrationLink } = parsed.data;
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     const event = await prisma.Event.create({
@@ -23,6 +23,11 @@ export async function POST(req) {
         eventName,
         eventDescription: eventDescription || null,
         organizerName: organizerName || null,
+        email: email || null, 
+        contact: contact || null,
+        eventLocation: eventLocation || null,
+        volunteerCapacity: volunteerCapacity ? Number(volunteerCapacity) : 0,
+        registrationLink: registrationLink || null,
         userId: user.id,
       },
     });

@@ -20,12 +20,17 @@ model User {
 }
 
 model Event {
-  id               String   @id @default(cuid())
-  eventName        String
-  eventDescription String
-  organizerName    String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  User             User?    @relation(fields: [userId], references: [id])
-  userId           String?
+  id                String   @id @default(cuid())
+  eventName         String
+  eventDescription  String
+  organizerName     String
+  email             String
+  contact           String
+  eventLocation     String
+  volunteerCapacity Int
+  registrationLink  String? 
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  User              User?    @relation(fields: [userId], references: [id])
+  userId            String?
 }

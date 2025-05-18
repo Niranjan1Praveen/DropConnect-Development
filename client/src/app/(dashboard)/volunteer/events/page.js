@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { FileIcon, PlusIcon, SearchCheckIcon, SearchIcon } from "lucide-react";
+import {
+  MailIcon,
+  PhoneIcon,
+  MapPinIcon,
+  UsersIcon,
+  ExternalLinkIcon,
+  PlusIcon,
+} from "lucide-react";
+
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import React from "react";
@@ -8,6 +16,7 @@ import prisma from "@/app/utils/db";
 
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -22,17 +31,15 @@ async function Page(props) {
   if (!user) {
     return redirect("/api/auth/login");
   }
-  async function getData(userId) {
+  async function getData() {
     const data = await prisma.Event.findMany({
-      where: {
-        userId: user.id,
-      },
       orderBy: {
         createdAt: "desc",
       },
     });
     return data;
   }
+
   const data = await getData(user.id);
   console.log(data);
 
@@ -90,12 +97,49 @@ async function Page(props) {
                   className="rounded-t-lg object-cover w-full h-[200px]"
                 />
                 <CardHeader>
-                  <div className="flex justify-between items-center">
-                    <CardTitle>{item.eventName}</CardTitle>
-                    <p className="text-sm">Organized by {item.organizerName}</p>
-                  </div>
+                  <CardTitle className={"text-2xl"}>{item.eventName}</CardTitle>
                   <CardDescription>{item.eventDescription}</CardDescription>
                 </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <strong>Organized by:</strong> {item.organizerName}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <MailIcon className="h-4 w-4" />
+                    <span>{item.email}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <PhoneIcon className="h-4 w-4" />
+                    <span>{item.contact}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <MapPinIcon className="h-4 w-4" />
+                    <span>{item.eventLocation}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <UsersIcon className="h-4 w-4" />
+                    <span>{item.volunteerCapacity} Volunteers</span>
+                  </div>
+
+                  {item.registrationLink && (
+                    <div className="flex items-center gap-2">
+                      <ExternalLinkIcon className="h-4 w-4" />
+                      <a
+                        href={item.registrationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        Registration Link
+                      </a>
+                    </div>
+                  )}
+                </CardContent>
+
                 <CardFooter>
                   <div className="flex w-full justify-between flex-wrap gap-4">
                     <Button
@@ -108,16 +152,18 @@ async function Page(props) {
                         View Entire Details
                       </Link>
                     </Button>
-                    <Button
-                      variant="secondary"
-                      size="lg"
-                      className="bg-indigo-600 text-white w-full md:w-auto"
-                      asChild
-                    >
-                      <Link href={`/volunteer/events/update/${item.id}`}>
-                        Update Details
-                      </Link>
-                    </Button>
+                    {item.userId === user.id && (
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        className="bg-indigo-600 text-white w-full md:w-auto"
+                        asChild
+                      >
+                        <Link href={`/volunteer/events/update/${item.id}`}>
+                          Update Details
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </CardFooter>
               </Card>

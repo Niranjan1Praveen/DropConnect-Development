@@ -84,7 +84,7 @@ const AppSidebar = async () => {
           <SidebarMenuItem>
             <SidebarMenuButton>
               <Image
-                src={user.picture}
+                src={user?.picture}
                 alt="logo"
                 width={30}
                 height={30}
