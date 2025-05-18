@@ -82,3 +82,38 @@ export async function GET(req, { params }) {
     );
   }
 }
+
+export async function DELETE(
+  req,
+  { params }
+) {
+  try {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || !user.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const existingEvent = await prisma.Event.findUnique({
+      where: { id: params.eventId },
+    });
+
+    if (!existingEvent) {
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    }
+
+    if (existingEvent.userId !== user.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+    }
+
+    await prisma.Event.delete({
+      where: { id: params.eventId },
+    });
+
+    return NextResponse.json({ message: "Event deleted successfully" });
+  } catch (error) {
+    console.error("DELETE Error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}
