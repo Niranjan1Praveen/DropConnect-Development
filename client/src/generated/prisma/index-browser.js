@@ -144,6 +144,71 @@ exports.Prisma.EventScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.CSR_Main_TableScalarFieldEnum = {
+  EventID: 'EventID',
+  ActivityName: 'ActivityName',
+  LocationVillageCity: 'LocationVillageCity',
+  District: 'District',
+  State: 'State',
+  DateOfImplementation: 'DateOfImplementation',
+  NumberOfVolunteers: 'NumberOfVolunteers',
+  CorporateSponsor: 'CorporateSponsor',
+  NGOPartner: 'NGOPartner',
+  VolunteerHoursLogged: 'VolunteerHoursLogged',
+  GenderDistribution: 'GenderDistribution',
+  CommunityBeneficiaries: 'CommunityBeneficiaries',
+  CSRBudgetAllocated: 'CSRBudgetAllocated',
+  CSRBudgetUtilized: 'CSRBudgetUtilized',
+  VolunteerFeedbackScore: 'VolunteerFeedbackScore',
+  CommunitySatisfactionScore: 'CommunitySatisfactionScore',
+  RemarksChallenges: 'RemarksChallenges'
+};
+
+exports.Prisma.VeltrixGlobalSolutionsScalarFieldEnum = {
+  EventID: 'EventID',
+  HouseholdsCovered: 'HouseholdsCovered',
+  AwarenessKitsDistributed: 'AwarenessKitsDistributed',
+  MockDrillsConducted: 'MockDrillsConducted',
+  EarlyWarningSystemInstalled: 'EarlyWarningSystemInstalled',
+  LocalAuthorityCollaboration: 'LocalAuthorityCollaboration'
+};
+
+exports.Prisma.NoventraTechnologiesIncScalarFieldEnum = {
+  EventID: 'EventID',
+  AreaRestoredSqM: 'AreaRestoredSqM',
+  NativeFloraPlanted: 'NativeFloraPlanted',
+  WasteRemovedKg: 'WasteRemovedKg',
+  BiodiversitySpeciesCount: 'BiodiversitySpeciesCount',
+  WaterQualityImprovementScore: 'WaterQualityImprovementScore'
+};
+
+exports.Prisma.AureviaInternationalHoldingsScalarFieldEnum = {
+  EventID: 'EventID',
+  TreesPlanted: 'TreesPlanted',
+  SaplingSurvivalRatePercent: 'SaplingSurvivalRatePercent',
+  SpeciesDiversityCount: 'SpeciesDiversityCount',
+  GeoTaggingEnabled: 'GeoTaggingEnabled',
+  PostPlantationCareProvided: 'PostPlantationCareProvided'
+};
+
+exports.Prisma.ZentaraDynamicsCorporationScalarFieldEnum = {
+  EventID: 'EventID',
+  TreesPlanted: 'TreesPlanted',
+  SaplingSurvivalRatePercent: 'SaplingSurvivalRatePercent',
+  SpeciesDiversityCount: 'SpeciesDiversityCount',
+  GeoTaggingEnabled: 'GeoTaggingEnabled',
+  PostPlantationCareProvided: 'PostPlantationCareProvided'
+};
+
+exports.Prisma.TrionyxSystemsWorldwideScalarFieldEnum = {
+  EventID: 'EventID',
+  TankersSupplied: 'TankersSupplied',
+  WaterDeliveredLiters: 'WaterDeliveredLiters',
+  HouseholdsReached: 'HouseholdsReached',
+  WaterDistributionPoints: 'WaterDistributionPoints',
+  HygieneKitsDistributed: 'HygieneKitsDistributed'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -162,7 +227,13 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Event: 'Event'
+  Event: 'Event',
+  CSR_Main_Table: 'CSR_Main_Table',
+  VeltrixGlobalSolutions: 'VeltrixGlobalSolutions',
+  NoventraTechnologiesInc: 'NoventraTechnologiesInc',
+  AureviaInternationalHoldings: 'AureviaInternationalHoldings',
+  ZentaraDynamicsCorporation: 'ZentaraDynamicsCorporation',
+  TrionyxSystemsWorldwide: 'TrionyxSystemsWorldwide'
 };
 
 /**
