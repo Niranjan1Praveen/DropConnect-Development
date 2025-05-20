@@ -36,22 +36,22 @@ import {
 const items = [
   {
     title: "Home",
-    url: "/volunteer",
+    url: "/dashboard",
     icon: Home,
   },
   {
     title: "Inbox",
-    url: "/volunteer/inbox",
+    url: "/dashboard/inbox",
     icon: Inbox,
   },
   {
     title: "Events",
-    url: "/volunteer/events",
+    url: "/dashboard/events",
     icon: Calendar,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/dashboard",
     icon: Settings,
   },
 ];
@@ -103,8 +103,8 @@ const AppSidebar = async () => {
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupLabel>Events</SidebarGroupLabel>
-          <SidebarGroupAction>
-            <Link href={"/volunteer/events/new"} asChild>
+          <SidebarGroupAction asChild>
+            <Link href={"/dashboard/events/new"}>
               <Plus /> <span className="sr-only">Add event</span>
             </Link>
           </SidebarGroupAction>
@@ -112,7 +112,7 @@ const AppSidebar = async () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/volunteer/events">
+                  <Link href="/dashboard/events">
                     <Projector />
                     See All Events
                   </Link>
@@ -120,7 +120,7 @@ const AppSidebar = async () => {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/volunteer/events/new">
+                  <Link href="/dashboard/events/new">
                     <Plus />
                     Add Event
                   </Link>

@@ -46,7 +46,7 @@ async function Page(props) {
   return (
     <>
       {data === undefined || data.length === 0 ? (
-        <div className="flex flex-col items-center justify-center border border-dashed p-8 text-center animate-in fade-in-50 rounded-md">
+        <div className="flex flex-col items-center justify-center border border-dashed p-8 text-center animate-in fade-in-50 rounded-md border-4 border-indigo-600">
           <div className="bg-primary/15 flex items-center justify-center rounded-full size-20">
             <FileIcon className="size-10 text-indigo-600" />
           </div>
@@ -79,7 +79,7 @@ async function Page(props) {
               className="bg-indigo-600 text-white max-w-sm"
               asChild
             >
-              <Link href="/volunteer/events/new">
+              <Link href="/dashboard/events/new">
                 <PlusIcon className="mr-2" />
                 Create a New Event
               </Link>
@@ -148,7 +148,7 @@ async function Page(props) {
                       className="bg-indigo-600 text-white w-full md:w-auto"
                       asChild
                     >
-                      <Link href={`/volunteer/events/${item.id}`}>
+                      <Link href={`/dashboard/events/${item.id}`}>
                         View Entire Details
                       </Link>
                     </Button>
@@ -159,7 +159,7 @@ async function Page(props) {
                         className="bg-indigo-600 text-white w-full md:w-auto"
                         asChild
                       >
-                        <Link href={`/volunteer/events/update/${item.id}`}>
+                        <Link href={`/dashboard/events/update/${item.id}`}>
                           Update Details
                         </Link>
                       </Button>
@@ -175,7 +175,7 @@ async function Page(props) {
             className={"bg-indigo-600 text-white max-w-sm mx-auto"}
             asChild
           >
-            <Link href={"/volunteer/events/new"}>
+            <Link href={"/dashboard/events/new"}>
               <PlusIcon />
               Create a New Event
             </Link>
