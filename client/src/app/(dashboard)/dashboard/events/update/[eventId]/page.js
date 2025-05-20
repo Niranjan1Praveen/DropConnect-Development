@@ -75,7 +75,7 @@ export default function UpdateEventPage(promiseParams) {
       }
 
       toast.success("Event updated successfully!");
-      router.push("/volunteer/events");
+      router.push("/dashboard/events");
     } catch {
       toast.error("Something went wrong");
     }
@@ -105,7 +105,7 @@ export default function UpdateEventPage(promiseParams) {
       }
 
       toast.success("Event deleted successfully!");
-      router.push("/volunteer/events");
+      router.push("/dashboard/events");
     } catch {
       toast.error("Something went wrong during deletion");
     }
@@ -157,6 +157,71 @@ export default function UpdateEventPage(promiseParams) {
             {errors.organizerName && (
               <p className="text-sm text-red-500">
                 {errors.organizerName.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="email">Organizer Email</Label>
+            <Input id="email" {...register("email")} disabled={isSubmitting} />
+            {errors.email && (
+              <p className="text-sm text-red-500">{errors.email.message}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="contact">Contact Number</Label>
+            <Input
+              id="contact"
+              {...register("contact")}
+              disabled={isSubmitting}
+            />
+            {errors.contact && (
+              <p className="text-sm text-red-500">{errors.contact.message}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="eventLocation">Event Location</Label>
+            <Input
+              id="eventLocation"
+              {...register("eventLocation")}
+              disabled={isSubmitting}
+            />
+            {errors.eventLocation && (
+              <p className="text-sm text-red-500">
+                {errors.eventLocation.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="volunteerCapacity">Volunteer Capacity</Label>
+            <Input
+              type="number"
+              id="volunteerCapacity"
+              {...register("volunteerCapacity", { valueAsNumber: true })}
+              disabled={isSubmitting}
+            />
+            {errors.volunteerCapacity && (
+              <p className="text-sm text-red-500">
+                {errors.volunteerCapacity.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="registrationLink">
+              Registration Link (optional)
+            </Label>
+            <Input
+              id="registrationLink"
+              {...register("registrationLink")}
+              disabled={isSubmitting}
+            />
+            {errors.registrationLink && (
+              <p className="text-sm text-red-500">
+                {errors.registrationLink.message}
               </p>
             )}
           </div>

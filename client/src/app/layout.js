@@ -20,7 +20,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Aligned CSR Platform",
+  title: "DropConnect",
   description: "Mobilizing youth and CSR for water resilience",
 };
 

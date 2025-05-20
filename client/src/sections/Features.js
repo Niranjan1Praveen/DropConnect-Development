@@ -68,7 +68,7 @@ export default function Features() {
                   ))}
                 </div>
               </div> */}
-              <Image src={dashboard} className="rounded-xl" height={250}/>
+              <Image src={dashboard} className="rounded-xl" height={650} width={650}/>
             </div>
           </FeatureCard>
 

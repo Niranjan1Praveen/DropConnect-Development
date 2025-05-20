@@ -7,6 +7,7 @@ import {
   ExternalLinkIcon,
   PlusIcon,
   FileIcon,
+  Search,
 } from "lucide-react";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -34,12 +35,12 @@ async function Page(props) {
   }
   async function getData() {
     const data = await prisma.Event.findMany({
-        where: {
-            userId: user.id,
-        },
+      where: {
+        userId: user.id,
+      },
       orderBy: {
         createdAt: "desc",
-      },    
+      },
     });
     return data;
   }
@@ -89,7 +90,6 @@ async function Page(props) {
               </Link>
             </Button>
           </div>
-
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {data.map((item, index) => (
               <Card className="p-0 pb-5" key={item.id}>
@@ -107,16 +107,6 @@ async function Page(props) {
                 <CardContent className="space-y-3">
                   <div className="flex items-center gap-2">
                     <strong>Organized by:</strong> {item.organizerName}
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <MailIcon className="h-4 w-4" />
-                    <span>{item.email}</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <PhoneIcon className="h-4 w-4" />
-                    <span>{item.contact}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
