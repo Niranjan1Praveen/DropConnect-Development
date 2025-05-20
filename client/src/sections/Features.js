@@ -6,7 +6,7 @@ import avatar3 from "@/assets/images/avatar-owen-garcia.jpg";
 import Image from "next/image";
 import Avatar from "@/components/ui/avatar";
 import Key from "@/components/ui/key";
-import dashboard from "@/assets/images/dashboard.png";
+import dashboard from "@/assets/images/dashboard-new.png";
 import WaterDropletCards from "@/components/ui/dropCard";
 const features = [
   "CSR Impact Dashboards",
@@ -41,7 +41,7 @@ export default function Features() {
           >
             {/* Avatars */}
             <div className="aspect-video flex items-center justify-center">
-              <div className={"z-40"}>
+              {/* <div className={"z-40"}>
                 <Image
                   src={avatar1}
                   alt="NGO Leader"
@@ -67,7 +67,8 @@ export default function Features() {
                     ></span>
                   ))}
                 </div>
-              </div>
+              </div> */}
+              <Image src={dashboard} className="rounded-xl" height={250}/>
             </div>
           </FeatureCard>
 

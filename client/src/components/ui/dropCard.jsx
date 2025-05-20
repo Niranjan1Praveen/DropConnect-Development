@@ -18,7 +18,7 @@ const DropCard = ({ item }) => {
         item.className
       )}
     >
-      <Image src={item?.img ?? ""} className="h-[250px] w-full" alt="Image" height={250} width={800}/>
+      <Image src={item?.img ?? ""} className="w-full" alt="Image" height={300} width={800}/>
 
       <div className="flex flex-col items-center justify-center text-center space-y-4 text-white p-4">
         <h2 className="text-lime-400 text-3xl font-bold">{item.cta}</h2>
