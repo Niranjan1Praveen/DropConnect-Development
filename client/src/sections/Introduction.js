@@ -24,7 +24,7 @@ export default function Introduction() {
       <div className="container">
         <div className="sticky top-20 md:top-28 lg:top-40">
           <div className="flex justify-center">
-            <Tags title={"Introducing Layers"} />
+            <Tags title={"Introduction"} />
           </div>
           <div className="text-4xl md:text-5xl text-center font-medium mt-10">
             <span>Social impact should be measurable and meaningful.</span>{" "}
@@ -61,7 +61,7 @@ export default function Introduction() {
               })}
             </span>
             <span className="text-lime-400 block mt-3">
-              That’s why we built Layers.
+              That’s why we built DropConnect.
             </span>
           </div>
         </div>

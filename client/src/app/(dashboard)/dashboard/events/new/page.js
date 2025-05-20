@@ -49,7 +49,7 @@ export default function EventForm() {
       toast.success("Event created successfully!");
       reset();
       setTimeout(() => {
-        router.push("/volunteer/events");
+        router.push("/dashboard/events");
       }, 1000);
     } catch {
       toast.error("Failed to create event");

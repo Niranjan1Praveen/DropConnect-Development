@@ -34,9 +34,12 @@ async function Page(props) {
   }
   async function getData() {
     const data = await prisma.Event.findMany({
+        where: {
+            userId: user.id,
+        },
       orderBy: {
         createdAt: "desc",
-      },
+      },    
     });
     return data;
   }
@@ -52,10 +55,10 @@ async function Page(props) {
             <FileIcon className="size-10 text-indigo-600" />
           </div>
           <h2 className="mt-6 font-semibold text-2xl">
-            There are no events at the moment!
+            You dont have any events created
           </h2>
           <p className="mb-8 mt-2 text-center text-xl text-muted-foreground max-w-lg">
-            There are currently no events here. Please create some so you can
+            You currently dont have any events. Please create some so you can
             see them right here!
           </p>
           <Button
@@ -87,9 +90,9 @@ async function Page(props) {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {data.map((item, index) => (
-              <Card className="p-0 pb-5 flex flex-col h-full" key={item.id}>
+              <Card className="p-0 pb-5" key={item.id}>
                 <Image
                   src={item.imgUrl ?? "/assets/images/ngo.png"}
                   width={800}
@@ -101,7 +104,7 @@ async function Page(props) {
                   <CardTitle className={"text-2xl"}>{item.eventName}</CardTitle>
                   <CardDescription>{item.eventDescription}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3 flex-1">
+                <CardContent className="space-y-3">
                   <div className="flex items-center gap-2">
                     <strong>Organized by:</strong> {item.organizerName}
                   </div>
@@ -128,12 +131,12 @@ async function Page(props) {
 
                   {item.registrationLink && (
                     <div className="flex items-center gap-2">
-                      <ExternalLinkIcon className="h-4 w-4 text-blue-600" />
+                      <ExternalLinkIcon className="h-4 w-4" />
                       <a
                         href={item.registrationLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600"
+                        className="text-blue-600 underline"
                       >
                         Registration Link
                       </a>

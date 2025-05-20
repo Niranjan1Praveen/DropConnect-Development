@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import logo from "@/assets/images/logo.svg";
+import logo from "@/assets/images/logo.png";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
@@ -21,12 +21,13 @@ export default function Navbar() {
         <div className="container max-w-5xl">
           <div className="border border-white/15 rounded-[27px] md:rounded-full bg-neutral-950/70 backdrop-blur">
             <div className="grid grid-cols-2 lg:grid-cols-3 p-2 items-center px-4 md:pr-2">
-              <div>
+              <div className="flex items-center">
                 <Image
                   src={logo}
                   alt="Logo Icon"
-                  className="h-9 w-auto md:h-auto"
+                  className="h-10 w-14"
                 />
+                <h2 className="font-bold text-2xl md:inline-flex hidden text-lime-400">DropConnect</h2>
               </div>
               <div className="lg:flex justify-center items-center hidden">
                 <nav className="flex gap-6 font-medium">
