@@ -22,7 +22,7 @@ const DropCard = ({ item }) => {
           {item.description}
         </p>
         <RegisterLink>
-          <Button className="cursor-pointer w-full" variant={"outline"}>
+          <Button className="cursor-pointer w-full">
             Register Now
           </Button>
         </RegisterLink>

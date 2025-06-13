@@ -10,6 +10,7 @@ import {
   BarChart,
   MapIcon,
   Send,
+  FormInput,
 } from "lucide-react";
 import {
   Sidebar,
@@ -66,10 +67,20 @@ const AppSidebar = async () => {
         <SidebarGroup>
           <SidebarGroupLabel>Volunteer</SidebarGroupLabel>
           <SidebarGroupContent>
+             <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/dashboard/volunteer/volunteerForm"}>
+                    <FormInput/>
+                    <span>Volunteer Form</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"/dashboard/volunteer"}>
+                  <Link href={"/dashboard/volunteer/events"}>
                     <Send/>
                     <span>Apply Now</span>
                   </Link>

@@ -30,7 +30,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-6xl font-medium text-center mt-6 max-w-6xl mx-auto leading-[1.15]">
+        <h1 className="text-5xl md:text-7xl font-medium text-center mt-6 max-w-6xl mx-auto leading-[1.15]">
           Drive Real-World Impact Through Purposeful{" "}
           <strong
             className={`transition font-medium fade-up ${

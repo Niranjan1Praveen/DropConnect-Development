@@ -38,7 +38,7 @@ import {
 
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import AppSearchBar from "@/components/dashboard/AppSearchBar";
+import AppSearchBar from "@/components/dashboard/AppSearchEvents";
 
 // Number of items per page
 const ITEMS_PER_PAGE = 10;
