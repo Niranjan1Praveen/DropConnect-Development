@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Region Suitability Analyzer – India</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon Section - Add these lines -->
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/static/site.webmanifest" />
+
+    <!-- Existing assets -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+
+    <style>
+      #map {
+        height: 100vh;
+      }
+      .leaflet-popup-content {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      const map = L.map("map").setView([22.0, 78.0], 5);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      let indiaBoundary, indiaAdmin, marker;
+
+      // Load boundaries
+      Promise.all([
+        fetch("/static/india-composite.geojson").then((r) => r.json()),
+        fetch("/static/india-admin.geojson").then((r) => r.json()),
+      ]).then(([boundary, admin]) => {
+        indiaBoundary = boundary;
+        indiaAdmin = admin;
+
+        // Show India boundary
+        L.geoJSON(indiaBoundary, { style: { color: "blue", weight: 1 } }).addTo(
+          map
+        );
+      });
+
+      // On map click
+      map.on("click", function (e) {
+        const point = turf.point([e.latlng.lng, e.latlng.lat]);
+
+        if (!indiaBoundary || !indiaAdmin)
+          return alert("India map not loaded yet");
+
+        const inside = turf.booleanPointInPolygon(
+          point,
+          indiaBoundary.features[0]
+        );
+        if (!inside) return alert("Please click inside India's land area.");
+
+        // Find region name
+        let regionName = "Unknown region";
+        for (const feature of indiaAdmin.features) {
+          if (turf.booleanPointInPolygon(point, feature)) {
+            regionName =
+              feature.properties.NAME_1 ||
+              feature.properties.STATE ||
+              feature.properties.NAME;
+            break;
+          }
+        }
+
+        fetch("/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            latitude: e.latlng.lat,
+            longitude: e.latlng.lng,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (marker) map.removeLayer(marker);
+            marker = L.marker([data.latitude, data.longitude]).addTo(map);
+            marker
+              .bindPopup(
+                `
+          <b>${regionName}</b><br>
+          <b>Suitability Score:</b> ${data.score}<br>
+          <b>Vegetation:</b> ${data.vegetation_index}<br>
+          <b>Water Index:</b> ${data.water_index}<br>
+          <b>Elevation:</b> ${data.elevation} m<br>
+          <b>Urban Proximity:</b> ${data.urban_proximity} km<br>
+          <b>Recommendation:</b> ${data.recommendation}
+        `
+              )
+              .openPopup();
+          });
+      });
+    </script>
+  </body>
+</html>

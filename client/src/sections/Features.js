@@ -1,13 +1,8 @@
 import FeatureCard from "@/components/ui/featureCard";
 import Tags from "@/components/ui/tags";
-import avatar1 from "@/assets/images/avatar-ashwin-santiago.jpg";
-import avatar2 from "@/assets/images/avatar-lula-meyers.jpg";
-import avatar3 from "@/assets/images/avatar-owen-garcia.jpg";
 import Image from "next/image";
-import Avatar from "@/components/ui/avatar";
 import Key from "@/components/ui/key";
 import dashboard from "@/assets/images/dashboard-new.png";
-import WaterDropletCards from "@/components/ui/dropCard";
 const features = [
   "CSR Impact Dashboards",
   "Verified Internships",

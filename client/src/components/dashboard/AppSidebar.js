@@ -8,6 +8,8 @@ import {
   Projector,
   Handshake,
   BarChart,
+  MapIcon,
+  Send,
 } from "lucide-react";
 import {
   Sidebar,
@@ -33,23 +35,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const items = [
-  {
-    title: "Home",
-    url: "/dashboard",
-    icon: Home,
-  },
-  {
-    title: "Your Events",
-    url: "/dashboard/yourevents",
-    icon: Calendar,
-  },
-  {
-    title: "Inbox",
-    url: "/dashboard/inbox",
-    icon: Inbox,
-  },
-];
+
 
 const AppSidebar = async () => {
   const { getUser } = getKindeServerSession();
@@ -76,66 +62,48 @@ const AppSidebar = async () => {
       </SidebarHeader>
       <hr />
       <SidebarContent>
-        {/* Applocation */}
+         {/* Volunteer */}
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                  {item.title === "Inbox" && (
-                    <SidebarMenuBadge>0</SidebarMenuBadge>
-                  )}
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        {/* CSR */}
-        <SidebarGroup>
-          <SidebarGroupLabel>CSR</SidebarGroupLabel>
+          <SidebarGroupLabel>Volunteer</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={""}>
-                    <Handshake/>
-                    <span>CSR Dashboard</span>
+                  <Link href={"/dashboard/volunteer"}>
+                    <Send/>
+                    <span>Apply Now</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        {/* NGO */}
-        <SidebarGroup>
-          <SidebarGroupLabel>NGO</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
+             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={""}>
-                    <BarChart/>
-                    <span>Impact Dashboard</span>
+                  <Link href={"/dashboard/volunteer/inbox"}>
+                    <Inbox/>
+                    <span>Inbox</span>
                   </Link>
                 </SidebarMenuButton>
+                <SidebarMenuBadge>0</SidebarMenuBadge>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {/* All Events */}
         <SidebarGroup>
           <SidebarGroupLabel>Events</SidebarGroupLabel>
-          <SidebarGroupAction asChild>
-            <Link href={"/dashboard/events/new"}>
-              <Plus /> <span className="sr-only">Add event</span>
-            </Link>
-          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/dashboard/yourEvents"}>
+                    <Calendar/>
+                    <span>Your Events</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu> 
+          </SidebarGroupContent>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
@@ -157,7 +125,55 @@ const AppSidebar = async () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        {/* All Events */}
+        {/* CSR */}
+        <SidebarGroup>
+          <SidebarGroupLabel>CSR</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"http://127.0.0.1:9050/"}>
+                    <Handshake/>
+                    <span>CSR Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* NGO */}
+        <SidebarGroup>
+          <SidebarGroupLabel>NGO</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"http://127.0.0.1:8050/"}>
+                    <BarChart/>
+                    <span>Impact Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* Region Suitability */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Region Suitability</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"http://127.0.0.1:5000"}>
+                    <MapIcon/>
+                    <span>View Map</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+       
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

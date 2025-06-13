@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import {
-  MailIcon,
-  PhoneIcon,
   MapPinIcon,
   UsersIcon,
   ExternalLinkIcon,
@@ -32,7 +30,6 @@ import {
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -42,24 +39,38 @@ import {
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import AppSearchBar from "@/components/dashboard/AppSearchBar";
-async function Page(props) {
+
+// Number of items per page
+const ITEMS_PER_PAGE = 10;
+
+async function Page({ searchParams }) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
     return redirect("/api/auth/login");
   }
+
+  // Get current page from search params or default to 1
+  const currentPage = Number(searchParams?.page) || 1;
+  
   async function getData() {
     const data = await prisma.Event.findMany({
-      take: 10,
+      skip: (currentPage - 1) * ITEMS_PER_PAGE,
+      take: ITEMS_PER_PAGE,
       orderBy: {
         createdAt: "desc",
       },
     });
-    return data;
+
+    // Get total count for pagination
+    const totalCount = await prisma.Event.count();
+    const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
+
+    return { data, totalPages };
   }
 
-  const data = await getData(user.id);
-  console.log(data);
+  const { data, totalPages } = await getData();
+
   function getEventImg(companyName) {
     if (!companyName || typeof companyName !== "string") {
       return "/assets/images/ngo.png";
@@ -73,8 +84,50 @@ async function Page(props) {
     if (normalized.includes("veltrix")) return veltrix;
     if (normalized.includes("zentara")) return zentara;
 
-    return "/assets/images/ngo.png"; // <-- fallback return if no match
+    return "/assets/images/ngo.png";
   }
+
+  // Generate pagination links
+  const getPaginationLinks = () => {
+    const links = [];
+    const maxVisiblePages = 5; // Maximum number of visible page links
+    
+    let startPage, endPage;
+    if (totalPages <= maxVisiblePages) {
+      startPage = 1;
+      endPage = totalPages;
+    } else {
+      const maxPagesBeforeCurrent = Math.floor(maxVisiblePages / 2);
+      const maxPagesAfterCurrent = Math.ceil(maxVisiblePages / 2) - 1;
+      
+      if (currentPage <= maxPagesBeforeCurrent) {
+        startPage = 1;
+        endPage = maxVisiblePages;
+      } else if (currentPage + maxPagesAfterCurrent >= totalPages) {
+        startPage = totalPages - maxVisiblePages + 1;
+        endPage = totalPages;
+      } else {
+        startPage = currentPage - maxPagesBeforeCurrent;
+        endPage = currentPage + maxPagesAfterCurrent;
+      }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      links.push(
+        <PaginationItem key={i}>
+          <PaginationLink 
+            href={`?page=${i}`} 
+            isActive={i === currentPage}
+          >
+            {i}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    return links;
+  };
+
   return (
     <>
       {data === undefined || data.length === 0 ? (
@@ -108,7 +161,7 @@ async function Page(props) {
             <AppSearchBar />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">
-            {data.map((item, index) => (
+            {data.map((item) => (
               <Card className="p-0 pb-5 flex flex-col h-full" key={item.id}>
                 <Image
                   src={getEventImg(item.organizerName)}
@@ -180,22 +233,28 @@ async function Page(props) {
               </Card>
             ))}
           </div>
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+          
+          {totalPages > 1 && (
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    href={`?page=${Math.max(1, currentPage - 1)}`} 
+                    aria-disabled={currentPage <= 1}
+                  />
+                </PaginationItem>
+                
+                {getPaginationLinks()}
+                
+                <PaginationItem>
+                  <PaginationNext 
+                    href={`?page=${Math.min(totalPages, currentPage + 1)}`}
+                    aria-disabled={currentPage >= totalPages}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          )}
         </main>
       )}
     </>
