@@ -6,6 +6,8 @@ import {
   ChevronUp,
   Plus,
   Projector,
+  Handshake,
+  BarChart,
 } from "lucide-react";
 import {
   Sidebar,
@@ -74,6 +76,7 @@ const AppSidebar = async () => {
       </SidebarHeader>
       <hr />
       <SidebarContent>
+        {/* Applocation */}
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -91,6 +94,38 @@ const AppSidebar = async () => {
                   )}
                 </SidebarMenuItem>
               ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* CSR */}
+        <SidebarGroup>
+          <SidebarGroupLabel>CSR</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={""}>
+                    <Handshake/>
+                    <span>CSR Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* NGO */}
+        <SidebarGroup>
+          <SidebarGroupLabel>NGO</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={""}>
+                    <BarChart/>
+                    <span>Impact Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -122,6 +157,7 @@ const AppSidebar = async () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {/* All Events */}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

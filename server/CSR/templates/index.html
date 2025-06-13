@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSR Dashboard</title>
+    {%metas%} {%favicon%} {%css%}
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        color: #ffffff;
+        margin-bottom: 30px;
+      }
+      .dash-tabs {
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      .dash-tab {
+        background-color: #2d2d2d;
+        color: #b0b0b0;
+        border: 1px solid #333;
+        padding: 10px 20px;
+        border-radius: 5px 5px 0 0;
+      }
+      .dash-tab--selected {
+        background-color: #333;
+        color: #ffffff;
+        border-bottom: 2px solid #4caf50;
+      }
+      .dash-graph {
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      .js-plotly-plot {
+        background-color: #1e1e1e !important;
+      }
+      .modebar {
+        background-color: #1e1e1e !important;
+      }
+      .modebar-btn path {
+        fill: #b0b0b0 !important;
+      }
+      .modebar-btn.active path {
+        fill: #4caf50 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Combined CSR Dashboard</h1>
+    {%app_entry%}
+    <footer>{%config%} {%scripts%} {%renderer%}</footer>
+  </body>
+</html>
