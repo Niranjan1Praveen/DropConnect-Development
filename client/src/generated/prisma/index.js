@@ -219,7 +219,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\DropConnect\\DropConnect-Development\\client\\src\\generated\\prisma",
+      "value": "C:\\Users\\nithi\\Desktop\\DropConnect\\client\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -233,7 +233,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\DropConnect\\DropConnect-Development\\client\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\nithi\\Desktop\\DropConnect\\client\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
