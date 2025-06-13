@@ -104,7 +104,7 @@ async function Page(props) {
       ) : (
         <main className="flex flex-col gap-10 p-8">
           <div className="flex gap-4 flex-wrap md:flex-nowrap rounded-md items-center justify-center">
-            <Input className={"p-5"} placeholder="🔍 Search Events" />
+            <Input className={"p-5"} placeholder="Search Events" disabled/>
             <AppSearchBar />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">

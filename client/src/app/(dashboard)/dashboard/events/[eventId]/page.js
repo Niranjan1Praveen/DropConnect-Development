@@ -9,7 +9,6 @@ import {
   ArrowLeftIcon,
 } from "lucide-react";
 import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function EventIdRoute({ params }) {
@@ -28,17 +27,10 @@ export default async function EventIdRoute({ params }) {
 
   return (
     <div className="p-8 space-y-4 max-w-3xl">
-      <Button
-        variant="secondary"
-        size="lg"
-        className="bg-indigo-600 text-white max-w-sm"
-        asChild
-      >
-        <Link href="/dashboard/events">
-          <ArrowLeftIcon/>
-          Go Back
-        </Link>
-      </Button>
+      <Link href="/dashboard/events" className="text-indigo-600 flex items-center gap-1 hover:underline">
+        <ArrowLeftIcon />
+        Go Back
+      </Link>
       <Image
         src={event.eventImg ?? "/assets/images/ngo.png"}
         alt={event.eventName}
@@ -46,15 +38,15 @@ export default async function EventIdRoute({ params }) {
         height={600}
         className="rounded-md"
       />
-      <h1 className="text-3xl font-bold">{event.eventName}</h1>
+      <h1 className="text-4xl font-bold">{event.eventName}</h1>
 
       {event.eventDescription && (
-        <p className="text-base">{event.eventDescription}</p>
+        <p className="text-xl text-muted-foreground">
+          {event.eventDescription}
+        </p>
       )}
 
-      <p className="text-lg text-muted-foreground">
-        Organized by {event.organizerName}
-      </p>
+      <p className="text-lg">Organized by {event.organizerName}</p>
       <div className="flex items-center gap-2">
         <MailIcon className="h-4 w-4" />
         <span>{event.email}</span>

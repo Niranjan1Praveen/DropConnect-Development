@@ -57,12 +57,12 @@ export default function EventForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
-      <Card>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1 max-w-5xl">
+      <Card className={"bg-transparent border-0"}>
         <CardHeader>
-          <CardTitle>Create Event</CardTitle>
+          <CardTitle className={"text-2xl"}>Create an Event</CardTitle>
           <CardDescription>
-            Create your event. Click the button below once you are done.
+            Fill all the required details. Click the button below once you are done.
           </CardDescription>
         </CardHeader>
 

@@ -38,14 +38,14 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "/dashboard/inbox",
-    icon: Inbox,
-  },
-  {
     title: "Your Events",
     url: "/dashboard/yourevents",
     icon: Calendar,
+  },
+  {
+    title: "Inbox",
+    url: "/dashboard/inbox",
+    icon: Inbox,
   },
 ];
 

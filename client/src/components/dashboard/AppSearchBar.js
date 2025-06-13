@@ -8,7 +8,7 @@ import {
 
 function AppSearchBar(props) {
   return (
-      <Select>
+      <Select disabled>
         <SelectTrigger className="w-3xl p-5">
           <SelectValue placeholder="All Categories" />
         </SelectTrigger>
