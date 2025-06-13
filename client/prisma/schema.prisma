@@ -28,11 +28,11 @@ model Event {
   contact           String
   eventLocation     String
   volunteerCapacity Int
-  registrationLink  String? 
+  registrationLink  String?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  User              User?    @relation(fields: [userId], references: [id])
   userId            String?
+  User              User?    @relation(fields: [userId], references: [id])
 }
 
 model CSR_Main_Table {
@@ -56,43 +56,43 @@ model CSR_Main_Table {
 }
 
 model VeltrixGlobalSolutions {
-  EventID                     String   @id @db.VarChar(8)
+  EventID                     String @id @db.VarChar(8)
   HouseholdsCovered           Int
   AwarenessKitsDistributed    Int
   MockDrillsConducted         Int
-  EarlyWarningSystemInstalled String   @db.VarChar(5)
-  LocalAuthorityCollaboration String   @db.VarChar(5)
+  EarlyWarningSystemInstalled String @db.VarChar(5)
+  LocalAuthorityCollaboration String @db.VarChar(5)
 }
 
 model NoventraTechnologiesInc {
-  EventID                      String   @id @db.VarChar(8)
-  AreaRestoredSqM              Decimal  @db.Decimal(7, 2)
+  EventID                      String  @id @db.VarChar(8)
+  AreaRestoredSqM              Decimal @db.Decimal(7, 2)
   NativeFloraPlanted           Int
-  WasteRemovedKg               Decimal  @db.Decimal(6, 2)
+  WasteRemovedKg               Decimal @db.Decimal(6, 2)
   BiodiversitySpeciesCount     Int
-  WaterQualityImprovementScore String   @db.VarChar(29)
+  WaterQualityImprovementScore String  @db.VarChar(29)
 }
 
 model AureviaInternationalHoldings {
-  EventID                    String   @id @db.VarChar(8)
+  EventID                    String  @id @db.VarChar(8)
   TreesPlanted               Int
-  SaplingSurvivalRatePercent Decimal  @db.Decimal(5, 2)
+  SaplingSurvivalRatePercent Decimal @db.Decimal(5, 2)
   SpeciesDiversityCount      Int
-  GeoTaggingEnabled          String   @db.VarChar(5)
-  PostPlantationCareProvided String   @db.VarChar(5)
+  GeoTaggingEnabled          String  @db.VarChar(5)
+  PostPlantationCareProvided String  @db.VarChar(5)
 }
 
 model ZentaraDynamicsCorporation {
-  EventID                    String   @id @db.VarChar(8)
+  EventID                    String  @id @db.VarChar(8)
   TreesPlanted               Int
   SaplingSurvivalRatePercent Decimal @db.Decimal(5, 0)
   SpeciesDiversityCount      Int
-  GeoTaggingEnabled          String   @db.VarChar(5)
-  PostPlantationCareProvided String   @db.VarChar(5)
+  GeoTaggingEnabled          String  @db.VarChar(5)
+  PostPlantationCareProvided String  @db.VarChar(5)
 }
 
 model TrionyxSystemsWorldwide {
-  EventID                 String   @id @db.VarChar(8)
+  EventID                 String @id @db.VarChar(8)
   TankersSupplied         Int
   WaterDeliveredLiters    Int
   HouseholdsReached       Int

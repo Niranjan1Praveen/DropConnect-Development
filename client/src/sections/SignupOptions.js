@@ -6,7 +6,6 @@ import React, { useState } from "react";
 
 
 
-
 const SignUpOptions = () => {
   return (
     <section className="py-24 px-4 flex items-center justify-center" id="signUpOptions">

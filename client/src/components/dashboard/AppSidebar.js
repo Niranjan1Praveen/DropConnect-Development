@@ -2,8 +2,6 @@ import {
   Home,
   Inbox,
   Calendar,
-  Search,
-  Settings,
   User2,
   ChevronUp,
   Plus,
@@ -45,14 +43,9 @@ const items = [
     icon: Inbox,
   },
   {
-    title: "Events",
+    title: "Your Events",
     url: "/dashboard/yourevents",
     icon: Calendar,
-  },
-  {
-    title: "Settings",
-    url: "/dashboard",
-    icon: Settings,
   },
 ];
 
@@ -136,7 +129,7 @@ const AppSidebar = async () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> John Doe <ChevronUp className="ml-auto" />
+                  <User2 /> {user.given_name} <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

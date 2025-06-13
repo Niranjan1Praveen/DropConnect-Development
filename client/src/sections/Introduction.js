@@ -20,7 +20,7 @@ export default function Introduction() {
     });
   }, [wordIndex]);
   return (
-    <section className="py-28 px-4 lg:py-40 flex items-center justify-center">
+    <section className="py-28 px-4 lg:py-30 flex items-center justify-center">
       <div className="container">
         <div className="sticky top-20 md:top-28 lg:top-40">
           <div className="flex justify-center">
@@ -31,10 +31,6 @@ export default function Introduction() {
             <span className="text-white/15 leading-tight">
               {words.map((word, index) => {
                 const isVisible = index < currentWord;
-                const shouldUnderline =
-                  isVisible &&
-                  (word.toLowerCase().includes("funding") ||
-                    word.toLowerCase().includes("youth"));
                 const shouldHightlight =
                   (isVisible &&
                     (word.toLowerCase().includes("fragmented") ||
@@ -50,9 +46,6 @@ export default function Introduction() {
                       isVisible &&
                         shouldHightlight &&
                         "text-red-500 italic transition",
-                      isVisible &&
-                        shouldUnderline &&
-                        "underline decoration-lime-400 underline-offset-8 transition"
                     )}
                   >
                     {word + " "}

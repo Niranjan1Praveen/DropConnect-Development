@@ -9,7 +9,6 @@ import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 const navLinks = [
   { label: "Home", href: "" },
   { label: "Features", href: "#features" },
-  { label: "Integrations", href: "#integrations" },
   { label: "FAQs", href: "#faqs" },
 ];
 
@@ -27,7 +26,7 @@ export default function Navbar() {
                   alt="Logo Icon"
                   className="h-10 w-14"
                 />
-                <h2 className="font-bold text-2xl md:inline-flex hidden text-lime-400">DropConnect</h2>
+                <h2 className="font-semibold text-2xl md:inline-flex hidden text-lime-400">DropConnect</h2>
               </div>
               <div className="lg:flex justify-center items-center hidden">
                 <nav className="flex gap-6 font-medium">
