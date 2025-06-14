@@ -145,6 +145,31 @@ exports.Prisma.EventScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.VolunteerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  salutation: 'salutation',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  homeStreet: 'homeStreet',
+  homeCity: 'homeCity',
+  homeState: 'homeState',
+  postalCode: 'postalCode',
+  homeCountry: 'homeCountry',
+  mobilePhone: 'mobilePhone',
+  employer: 'employer',
+  educationalLevel: 'educationalLevel',
+  maritalStatus: 'maritalStatus',
+  employmentStatus: 'employmentStatus',
+  willingTravelDistance: 'willingTravelDistance',
+  helpInDisaster: 'helpInDisaster',
+  hasDisability: 'hasDisability',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.CSR_Main_TableScalarFieldEnum = {
   EventID: 'EventID',
   ActivityName: 'ActivityName',
@@ -233,6 +258,7 @@ exports.Role = exports.$Enums.Role = {
 exports.Prisma.ModelName = {
   User: 'User',
   Event: 'Event',
+  Volunteer: 'Volunteer',
   CSR_Main_Table: 'CSR_Main_Table',
   VeltrixGlobalSolutions: 'VeltrixGlobalSolutions',
   NoventraTechnologiesInc: 'NoventraTechnologiesInc',

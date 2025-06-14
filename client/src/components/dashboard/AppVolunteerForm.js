@@ -1,27 +1,106 @@
-'use client'
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Button } from '../ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "../ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Toaster } from "../ui/sonner";
 
 export default function AppVolunteerForm() {
+  const [formData, setFormData] = useState({
+    salutation: "",
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    gender: "",
+    homeStreet: "",
+    homeCity: "",
+    homeState: "",
+    postalCode: "",
+    homeCountry: "India",
+    mobilePhone: "",
+    employer: "",
+    educationalLevel: "",
+    maritalStatus: "",
+    employmentStatus: "",
+    willingTravelDistance: "",
+    helpInDisaster: false,
+    hasDisability: false,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleRadioChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value === "yes" }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const dob = formData.dateOfBirth
+        ? new Date(
+            `${formData.dateOfBirth.year}-${formData.dateOfBirth.month}-${formData.dateOfBirth.day}`
+          )
+        : null;
+
+      const response = await fetch("/api/volunteer/put", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          dateOfBirth: dob,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save volunteer data");
+      }
+
+      const result = await response.json();
+      console.log("Volunteer data saved successfully:", result);
+      toast.success("Your information has been saved successfully!");
+    } catch (error) {
+      console.error("Error saving volunteer data:", error);
+      toast.error("There was an error saving your information. Please try again.");
+    }
+  };
+
   return (
-    <div className="space-y-4 max-w-5xl p-8">
-      <h2 className='font-bold text-3xl'>Register for a Volunteer Account</h2>
-      <p className='text-muted-foreground'>Please complete the information below to get started!</p>
+    <form className="space-y-4 max-w-5xl p-8" onSubmit={handleSubmit}>
+      <h2 className="font-bold text-3xl">Register for a Volunteer Account</h2>
+      <p className="text-muted-foreground">
+        Please complete the information below to get started!
+      </p>
+
       {/* Basic Info */}
       <Card className={"bg-transparent"}>
         <CardHeader>
           <CardTitle>Basic Info</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6 md:grid-cols-2">
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Salutation</Label>
-            <Select>
+            <Select
+              value={formData.salutation}
+              onValueChange={(value) => handleSelectChange("salutation", value)}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Select One" />
               </SelectTrigger>
@@ -32,26 +111,72 @@ export default function AppVolunteerForm() {
               </SelectContent>
             </Select>
           </div>
-          <div className='space-y-3'>
-            <Label>First Name <span className="text-red-500">*</span></Label>
-            <Input placeholder="Enter first name" required />
+          <div className="space-y-3">
+            <Label>
+              First Name <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="Enter first name"
+              required
+            />
           </div>
-          <div className='space-y-3'>
-            <Label>Last Name <span className="text-red-500">*</span></Label>
-            <Input placeholder="Enter last name" required />
+          <div className="space-y-3">
+            <Label>
+              Last Name <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Enter last name"
+              required
+            />
           </div>
           <div className="grid grid-cols-3 gap-2">
-            <div className='space-y-3'>
+            <div className="space-y-3">
               <Label>Date of Birth - Day</Label>
-              <Input placeholder="DD" />
+              <Input
+                name="dateOfBirth.day"
+                value={formData.dateOfBirth?.day || ""}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    dateOfBirth: { ...prev.dateOfBirth, day: e.target.value },
+                  }))
+                }
+                placeholder="DD"
+              />
             </div>
-            <div className='space-y-3'>
+            <div className="space-y-3">
               <Label>Month</Label>
-              <Input placeholder="MM" />
+              <Input
+                name="dateOfBirth.month"
+                value={formData.dateOfBirth?.month || ""}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    dateOfBirth: { ...prev.dateOfBirth, month: e.target.value },
+                  }))
+                }
+                placeholder="MM"
+              />
             </div>
-            <div className='space-y-3'>
+            <div className="space-y-3">
               <Label>Year</Label>
-              <Input placeholder="YYYY" />
+              <Input
+                name="dateOfBirth.year"
+                value={formData.dateOfBirth?.year || ""}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    dateOfBirth: { ...prev.dateOfBirth, year: e.target.value },
+                  }))
+                }
+                placeholder="YYYY"
+              />
             </div>
           </div>
         </CardContent>
@@ -63,33 +188,71 @@ export default function AppVolunteerForm() {
           <CardTitle>Contact Info</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Home Street</Label>
-            <Input placeholder="Ex. F-2/2 Vasant Vihar" />
+            <Input
+              name="homeStreet"
+              value={formData.homeStreet}
+              onChange={handleChange}
+              placeholder="Ex. F-2/2 Vasant Vihar"
+            />
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Home City</Label>
-            <Input placeholder="Ex. New Delhi" />
+            <Input
+              name="homeCity"
+              value={formData.homeCity}
+              onChange={handleChange}
+              placeholder="Ex. New Delhi"
+            />
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Home State</Label>
-            <Input placeholder="Ex. FL" />
+            <Input
+              name="homeState"
+              value={formData.homeState}
+              onChange={handleChange}
+              placeholder="Ex. FL"
+            />
           </div>
-          <div className='space-y-3'>
-            <Label>Postal Code Notification</Label>
-            <Input placeholder="Ex. 110001" />
+          <div className="space-y-3">
+            <Label>Postal Code</Label>
+            <Input
+              name="postalCode"
+              value={formData.postalCode}
+              onChange={handleChange}
+              placeholder="Ex. 110001"
+            />
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Home Country</Label>
-            <Input value="India" readOnly />
+            <Input
+              name="homeCountry"
+              value={formData.homeCountry}
+              onChange={handleChange}
+              readOnly
+            />
           </div>
-          <div className='space-y-3'>
-            <Label>Mobile Phone <span className="text-red-500">*</span></Label>
-            <Input placeholder="081234 56789" required />
+          <div className="space-y-3">
+            <Label>
+              Mobile Phone <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              name="mobilePhone"
+              value={formData.mobilePhone}
+              onChange={handleChange}
+              placeholder="081234 56789"
+              required
+            />
           </div>
           <div className="md:col-span-2 space-y-3">
             <Label>Employer</Label>
-            <Input placeholder="Ex. HandsOn Connect" />
+            <Input
+              name="employer"
+              value={formData.employer}
+              onChange={handleChange}
+              placeholder="Ex. HandsOn Connect"
+            />
           </div>
         </CardContent>
       </Card>
@@ -100,10 +263,15 @@ export default function AppVolunteerForm() {
           <CardTitle>Volunteer Profile</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Gender</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
+            <Select
+              value={formData.gender}
+              onValueChange={(value) => handleSelectChange("gender", value)}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select One" />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="male">Male</SelectItem>
                 <SelectItem value="female">Female</SelectItem>
@@ -111,10 +279,17 @@ export default function AppVolunteerForm() {
               </SelectContent>
             </Select>
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Educational Level</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
+            <Select
+              value={formData.educationalLevel}
+              onValueChange={(value) =>
+                handleSelectChange("educationalLevel", value)
+              }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select One" />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="highschool">High School</SelectItem>
                 <SelectItem value="graduate">Graduate</SelectItem>
@@ -122,20 +297,34 @@ export default function AppVolunteerForm() {
               </SelectContent>
             </Select>
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Marital Status</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
+            <Select
+              value={formData.maritalStatus}
+              onValueChange={(value) =>
+                handleSelectChange("maritalStatus", value)
+              }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select One" />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="single">Single</SelectItem>
                 <SelectItem value="married">Married</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div className='space-y-3'>
+          <div className="space-y-3">
             <Label>Employment Status</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
+            <Select
+              value={formData.employmentStatus}
+              onValueChange={(value) =>
+                handleSelectChange("employmentStatus", value)
+              }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select One" />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="employed">Employed</SelectItem>
                 <SelectItem value="student">Student</SelectItem>
@@ -143,9 +332,51 @@ export default function AppVolunteerForm() {
               </SelectContent>
             </Select>
           </div>
-          <div className="md:col-span-2 space-y-3">
+
+          <div className="space-y-3">
+            <Label>Distance Willing to Travel?</Label>
+            <Select
+              value={formData.willingTravelDistance}
+              onValueChange={(value) =>
+                handleSelectChange("willingTravelDistance", value)
+              }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select One" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="5km">5 km</SelectItem>
+                <SelectItem value="10km">10 km</SelectItem>
+                <SelectItem value="more">More</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-3">
+            <Label>Please check if you want to help in a disaster</Label>
+            <RadioGroup
+              value={formData.helpInDisaster ? "yes" : "no"}
+              onValueChange={(value) =>
+                handleRadioChange("helpInDisaster", value)
+              }
+              className="flex gap-4 mt-2"
+            >
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="yes" id="disaster-yes" />
+                <Label htmlFor="disaster-yes">Yes</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="no" id="disaster-no" />
+                <Label htmlFor="disaster-no">No</Label>
+              </div>
+            </RadioGroup>
             <Label>Do you consider yourself a person with a disability?</Label>
-            <RadioGroup defaultValue="no" className="flex gap-4 mt-2">
+            <RadioGroup
+              value={formData.hasDisability ? "yes" : "no"}
+              onValueChange={(value) =>
+                handleRadioChange("hasDisability", value)
+              }
+              className="flex gap-4 mt-2"
+            >
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="yes" id="disability-yes" />
                 <Label htmlFor="disability-yes">Yes</Label>
@@ -156,47 +387,19 @@ export default function AppVolunteerForm() {
               </div>
             </RadioGroup>
           </div>
-          <div className='space-y-3'>
-            <Label>Distance Willing to Travel?</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="5km">5 km</SelectItem>
-                <SelectItem value="10km">10 km</SelectItem>
-                <SelectItem value="more">More</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className='space-y-3'>
-            <Label>Please check if you want to help in a disaster</Label>
-            <RadioGroup defaultValue="no" className="flex gap-4 mt-2">
-              <div className="flex items-center gap-2">
-                <RadioGroupItem value="yes" id="disaster-yes" />
-                <Label htmlFor="disaster-yes">Yes</Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <RadioGroupItem value="no" id="disaster-no" />
-                <Label htmlFor="disaster-no">No</Label>
-              </div>
-            </RadioGroup>
-          </div>
-          <div className="md:col-span-2 space-y-3">
-            <Label>How did you hear about us?</Label>
-            <Select>
-              <SelectTrigger><SelectValue placeholder="Select One" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="social">Social Media</SelectItem>
-                <SelectItem value="friend">Friend</SelectItem>
-                <SelectItem value="ad">Advertisement</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </CardContent>
       </Card>
-      <div className='flex flex-col gap-4 items-center justify-center'>
-        <small className='text-muted-foreground'>By clicking the button, you are indicating your acceptance with the <span className='text-indigo-600 cursor-pointer'>Terms and Conditions</span> for this site. </small>
-        <Button>Save Now</Button>
+      <div className="flex flex-col gap-4 items-center justify-center">
+        <small className="text-muted-foreground">
+          By clicking the button, you are indicating your acceptance with the{" "}
+          <span className="text-indigo-600 cursor-pointer">
+            Terms and Conditions
+          </span>{" "}
+          for this site.{" "}
+        </small>
+        <Button type="submit">Save Now</Button>
       </div>
-    </div>
-  )
+      <Toaster richColor />
+    </form>
+  );
 }

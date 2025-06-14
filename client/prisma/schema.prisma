@@ -16,14 +16,15 @@ enum Role {
 }
 
 model User {
-  id           String   @id @unique
-  email        String   @unique
+  id           String      @id @unique
+  email        String      @unique
   firstName    String
   lastName     String
   profileImage String
-  createdAt    DateTime @default(now())
-  role         Role     @default(VOLUNTEER)
+  createdAt    DateTime    @default(now())
+  role         Role        @default(VOLUNTEER)
   Event        Event[]
+  Volunteer    Volunteer?
 }
 
 model Event {
@@ -40,6 +41,32 @@ model Event {
   updatedAt         DateTime @updatedAt
   userId            String?
   User              User?    @relation(fields: [userId], references: [id])
+}
+
+model Volunteer {
+  id                    String    @id @default(cuid())
+  userId                String    @unique
+  user                  User      @relation(fields: [userId], references: [id])
+  salutation            String?
+  firstName             String
+  lastName              String
+  dateOfBirth           DateTime?
+  gender                String?
+  homeStreet            String?
+  homeCity              String?
+  homeState             String?
+  postalCode            String?
+  homeCountry           String?   @default("India")
+  mobilePhone           String
+  employer              String?
+  educationalLevel      String?
+  maritalStatus         String?
+  employmentStatus      String?
+  willingTravelDistance String?
+  helpInDisaster        Boolean   @default(false)
+  hasDisability         Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
 }
 
 model CSR_Main_Table {
