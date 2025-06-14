@@ -1,5 +1,5 @@
+"use client";
 import {
-  Home,
   Inbox,
   Calendar,
   User2,
@@ -17,7 +17,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
@@ -28,20 +27,16 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import Image from "next/image";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useUser } from "@/hooks/useUser";
 
-
-
-const AppSidebar = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  console.log(user);
+const AppSidebar = () => {
+  const { user } = useUser();
 
   return (
     <Sidebar collapsible="icon">
@@ -50,28 +45,28 @@ const AppSidebar = async () => {
           <SidebarMenuItem>
             <SidebarMenuButton>
               <Image
-                src={user?.picture}
+                src={user?.profileImage || "https://avatar.windsor.io/john@doe.com"}
                 alt="logo"
                 width={30}
                 height={30}
                 className="rounded-full"
               />
-              <span>Welcome {user.given_name}</span>
+              <span>Welcome {user?.firstName}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <hr />
       <SidebarContent>
-         {/* Volunteer */}
-        <SidebarGroup>
+        {/* Volunteer */}
+        {user?.role.toLowerCase() === "volunteer" && <SidebarGroup>
           <SidebarGroupLabel>Volunteer</SidebarGroupLabel>
           <SidebarGroupContent>
-             <SidebarMenu>
+            <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/dashboard/volunteer/volunteerForm"}>
-                    <FormInput/>
+                    <FormInput />
                     <span>Volunteer Form</span>
                   </Link>
                 </SidebarMenuButton>
@@ -81,17 +76,17 @@ const AppSidebar = async () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/dashboard/volunteer/events"}>
-                    <Send/>
+                    <Send />
                     <span>Apply Now</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
-             <SidebarMenu>
+            <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/dashboard/volunteer/inbox"}>
-                    <Inbox/>
+                    <Inbox />
                     <span>Inbox</span>
                   </Link>
                 </SidebarMenuButton>
@@ -99,21 +94,21 @@ const AppSidebar = async () => {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup>}
         {/* All Events */}
-        <SidebarGroup>
+        {user?.role.toLowerCase() === "organization" && <SidebarGroup>
           <SidebarGroupLabel>Events</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/dashboard/yourEvents"}>
-                    <Calendar/>
+                    <Calendar />
                     <span>Your Events</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            </SidebarMenu> 
+            </SidebarMenu>
           </SidebarGroupContent>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -135,56 +130,55 @@ const AppSidebar = async () => {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup>}
         {/* CSR */}
-        <SidebarGroup>
+        {user?.role.toLowerCase() === "corporate" && <SidebarGroup>
           <SidebarGroupLabel>CSR</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"http://127.0.0.1:9050/"}>
-                    <Handshake/>
+                    <Handshake />
                     <span>CSR Dashboard</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup>}
         {/* NGO */}
-        <SidebarGroup>
+        {user?.role.toLowerCase() === "organization" && <SidebarGroup>
           <SidebarGroupLabel>NGO</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"http://127.0.0.1:8050/"}>
-                    <BarChart/>
+                    <BarChart />
                     <span>Impact Dashboard</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup>}
         {/* Region Suitability */}
-        <SidebarGroup>
+        {user?.role.toLowerCase() === "organization" && <SidebarGroup>
           <SidebarGroupLabel>Region Suitability</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"http://127.0.0.1:5000"}>
-                    <MapIcon/>
+                    <MapIcon />
                     <span>View Map</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
-       
+        </SidebarGroup>}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
@@ -192,7 +186,7 @@ const AppSidebar = async () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> {user.given_name} <ChevronUp className="ml-auto" />
+                  <User2 /> {user?.firstName} <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

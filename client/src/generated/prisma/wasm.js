@@ -126,7 +126,8 @@ exports.Prisma.UserScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   profileImage: 'profileImage',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  role: 'role'
 };
 
 exports.Prisma.EventScalarFieldEnum = {
@@ -223,7 +224,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Role = exports.$Enums.Role = {
+  VOLUNTEER: 'VOLUNTEER',
+  ORGANIZATION: 'ORGANIZATION',
+  CORPORATE: 'CORPORATE'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',

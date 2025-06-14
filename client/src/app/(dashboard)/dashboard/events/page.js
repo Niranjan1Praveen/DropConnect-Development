@@ -37,8 +37,6 @@ import {
 } from "@/components/ui/pagination";
 
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import AppSearchBar from "@/components/dashboard/AppSearchEvents";
 
 // Number of items per page
 const ITEMS_PER_PAGE = 10;
@@ -156,10 +154,6 @@ async function Page({ searchParams }) {
         </div>
       ) : (
         <main className="flex flex-col gap-10 p-8">
-          <div className="flex gap-4 flex-wrap md:flex-nowrap rounded-md items-center justify-center">
-            <Input className={"p-5"} placeholder="Search Events" disabled/>
-            <AppSearchBar />
-          </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">
             {data.map((item) => (
               <Card className="p-0 pb-5 flex flex-col h-full" key={item.id}>

@@ -9,6 +9,12 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum Role {
+  VOLUNTEER
+  ORGANIZATION
+  CORPORATE
+}
+
 model User {
   id           String   @id @unique
   email        String   @unique
@@ -16,6 +22,7 @@ model User {
   lastName     String
   profileImage String
   createdAt    DateTime @default(now())
+  role         Role     @default(VOLUNTEER)
   Event        Event[]
 }
 
@@ -31,8 +38,8 @@ model Event {
   registrationLink  String?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-  User              User?    @relation(fields: [userId], references: [id])
   userId            String?
+  User              User?    @relation(fields: [userId], references: [id])
 }
 
 model CSR_Main_Table {

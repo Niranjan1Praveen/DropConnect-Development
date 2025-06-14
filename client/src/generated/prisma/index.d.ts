@@ -55,6 +55,24 @@ export type ZentaraDynamicsCorporation = $Result.DefaultSelection<Prisma.$Zentar
 export type TrionyxSystemsWorldwide = $Result.DefaultSelection<Prisma.$TrionyxSystemsWorldwidePayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const Role: {
+  VOLUNTEER: 'VOLUNTEER',
+  ORGANIZATION: 'ORGANIZATION',
+  CORPORATE: 'CORPORATE'
+};
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+}
+
+export type Role = $Enums.Role
+
+export const Role: typeof $Enums.Role
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1553,6 +1571,7 @@ export namespace Prisma {
     lastName: string | null
     profileImage: string | null
     createdAt: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1562,6 +1581,7 @@ export namespace Prisma {
     lastName: string | null
     profileImage: string | null
     createdAt: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1571,6 +1591,7 @@ export namespace Prisma {
     lastName: number
     profileImage: number
     createdAt: number
+    role: number
     _all: number
   }
 
@@ -1582,6 +1603,7 @@ export namespace Prisma {
     lastName?: true
     profileImage?: true
     createdAt?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1591,6 +1613,7 @@ export namespace Prisma {
     lastName?: true
     profileImage?: true
     createdAt?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1600,6 +1623,7 @@ export namespace Prisma {
     lastName?: true
     profileImage?: true
     createdAt?: true
+    role?: true
     _all?: true
   }
 
@@ -1682,6 +1706,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt: Date
+    role: $Enums.Role
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1708,6 +1733,7 @@ export namespace Prisma {
     lastName?: boolean
     profileImage?: boolean
     createdAt?: boolean
+    role?: boolean
     Event?: boolean | User$EventArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1719,6 +1745,7 @@ export namespace Prisma {
     lastName?: boolean
     profileImage?: boolean
     createdAt?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1728,6 +1755,7 @@ export namespace Prisma {
     lastName?: boolean
     profileImage?: boolean
     createdAt?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1737,9 +1765,10 @@ export namespace Prisma {
     lastName?: boolean
     profileImage?: boolean
     createdAt?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "profileImage" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstName" | "lastName" | "profileImage" | "createdAt" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Event?: boolean | User$EventArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1759,6 +1788,7 @@ export namespace Prisma {
       lastName: string
       profileImage: string
       createdAt: Date
+      role: $Enums.Role
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2189,6 +2219,7 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly profileImage: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly role: FieldRef<"User", 'Role'>
   }
     
 
@@ -10312,7 +10343,8 @@ export namespace Prisma {
     firstName: 'firstName',
     lastName: 'lastName',
     profileImage: 'profileImage',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10477,6 +10509,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Role'
+   */
+  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+  /**
+   * Reference to a field of type 'Role[]'
+   */
+  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -10531,6 +10577,7 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     profileImage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     Event?: EventListRelationFilter
   }
 
@@ -10541,6 +10588,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    role?: SortOrder
     Event?: EventOrderByRelationAggregateInput
   }
 
@@ -10554,6 +10602,7 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     profileImage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     Event?: EventListRelationFilter
   }, "id" | "id" | "email">
 
@@ -10564,6 +10613,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -10579,6 +10629,7 @@ export namespace Prisma {
     lastName?: StringWithAggregatesFilter<"User"> | string
     profileImage?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
 
   export type EventWhereInput = {
@@ -11089,6 +11140,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    role?: $Enums.Role
     Event?: EventCreateNestedManyWithoutUserInput
   }
 
@@ -11099,6 +11151,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    role?: $Enums.Role
     Event?: EventUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -11109,6 +11162,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     Event?: EventUpdateManyWithoutUserNestedInput
   }
 
@@ -11119,6 +11173,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     Event?: EventUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -11129,6 +11184,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    role?: $Enums.Role
   }
 
   export type UserUpdateManyMutationInput = {
@@ -11138,6 +11194,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -11147,6 +11204,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type EventCreateInput = {
@@ -11734,6 +11792,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type EventListRelationFilter = {
     every?: EventWhereInput
     some?: EventWhereInput
@@ -11751,6 +11816,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -11760,6 +11826,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11769,6 +11836,7 @@ export namespace Prisma {
     lastName?: SortOrder
     profileImage?: SortOrder
     createdAt?: SortOrder
+    role?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11801,6 +11869,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -12256,6 +12334,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type EnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role
+  }
+
   export type EventUpdateManyWithoutUserNestedInput = {
     create?: XOR<EventCreateWithoutUserInput, EventUncheckedCreateWithoutUserInput> | EventCreateWithoutUserInput[] | EventUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EventCreateOrConnectWithoutUserInput | EventCreateOrConnectWithoutUserInput[]
@@ -12345,6 +12427,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12385,6 +12474,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -12562,6 +12661,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    role?: $Enums.Role
   }
 
   export type UserUncheckedCreateWithoutEventInput = {
@@ -12571,6 +12671,7 @@ export namespace Prisma {
     lastName: string
     profileImage: string
     createdAt?: Date | string
+    role?: $Enums.Role
   }
 
   export type UserCreateOrConnectWithoutEventInput = {
@@ -12596,6 +12697,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateWithoutEventInput = {
@@ -12605,6 +12707,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     profileImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type EventCreateManyUserInput = {
