@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function EventIdRoute({ params }) {
   const { eventId } = params;
@@ -99,6 +100,7 @@ export default async function EventIdRoute({ params }) {
       {/* Apply for this Opportunity */}
       <div className="p-8 space-y-4">
         <h2 className="text-3xl">Apply for this Opportunity</h2>
+        <Button className={"bg-indigo-600 text-white"} disabled>Apply Now</Button>
       </div>
     </main>
   );

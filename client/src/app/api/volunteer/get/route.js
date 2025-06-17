@@ -1,53 +1,57 @@
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { NextResponse } from "next/server";
+import prisma from "@/app/utils/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export async function GET(request) {
   try {
-    const { data, error } = await supabase
-      .from('Volunteer')
-      .select(`
-        id,
-        userId,
-        salutation,
-        firstName,
-        lastName,
-        dateOfBirth,
-        gender,
-        homeStreet,
-        homeCity,
-        homeState,
-        postalCode,
-        homeCountry,
-        mobilePhone,
-        employer,
-        educationalLevel,
-        maritalStatus,
-        employmentStatus,
-        willingTravelDistance,
-        helpInDisaster,
-        hasDisability,
-        createdAt,
-        updatedAt
-      `);
+    const { getUser } = getKindeServerSession();
+    const kindeUser = await getUser();
 
-    if (error) {
-      return new Response(JSON.stringify({ error: error.message }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    if (!kindeUser?.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    return new Response(JSON.stringify({ data, status: 'pending' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
+    if (!prisma.volunteer) {
+      throw new Error("Prisma volunteer model not available");
+    }
+
+    const volunteer = await prisma.volunteer.findMany({
+      select: {
+        id: true,
+        userId: true,
+        salutation: true,
+        firstName: true,
+        lastName: true,
+        dateOfBirth: true,
+        gender: true,
+        homeStreet: true,
+        homeCity: true,
+        homeState: true,
+        postalCode: true,
+        homeCountry: true,
+        mobilePhone: true,
+        employer: true,
+        educationalLevel: true,
+        maritalStatus: true,
+        employmentStatus: true,
+        willingTravelDistance: true,
+        helpInDisaster: true,
+        hasDisability: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
+
+    return NextResponse.json({ data: volunteer, status: "pending" }, { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error("Error fetching volunteer data:", error);
+    return NextResponse.json(
+      {
+        error: "Internal server error",
+        message: error.message,
+        stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
+      },
+      { status: 500 }
+    );
   }
 }

@@ -102,7 +102,7 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"/dashboard/yourEvents"}>
+                  <Link href={"/dashboard/yourevents"}>
                     <Calendar />
                     <span>Your Events</span>
                   </Link>
