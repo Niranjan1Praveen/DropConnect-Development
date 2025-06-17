@@ -138,7 +138,7 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"http://127.0.0.1:9050/"}>
+                  <Link href={"https://dropconnect-csr-dashboard.onrender.com/"}>
                     <Handshake />
                     <span>CSR Dashboard</span>
                   </Link>
@@ -154,7 +154,7 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"http://127.0.0.1:8050/"}>
+                  <Link href={"https://dropconnect-impact-assessment-dashboard.onrender.com"}>
                     <BarChart />
                     <span>Impact Dashboard</span>
                   </Link>
@@ -170,7 +170,7 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"http://127.0.0.1:5000"}>
+                  <Link href={"https://dropconnect-region-suitability-map.onrender.com"}>
                     <MapIcon />
                     <span>View Map</span>
                   </Link>
