@@ -15,7 +15,10 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24 px-4 flex items-center justify-center" id="features">
+    <section
+      className="py-24 px-4 flex items-center justify-center"
+      id="features"
+    >
       <div className="container">
         <div className="flex justify-center">
           <Tags title={"Platform Features"} />
@@ -34,9 +37,14 @@ export default function Features() {
             }
             className="md:col-span-2 lg:col-span-1"
           >
-            {/* Avatars */}
             <div className="aspect-video flex items-center justify-center">
-              <Image src={dashboard} className="rounded-xl" height={650} width={650} alt="CSR-dashboard-design"/>
+              <Image
+                src={dashboard}
+                className="rounded-xl"
+                height={650}
+                width={650}
+                alt="CSR-dashboard-design"
+              />
             </div>
           </FeatureCard>
 
@@ -48,10 +56,14 @@ export default function Features() {
             }
             className="md:col-span-2 lg:col-span-1"
           >
-            <div className="aspect-video flex items-center justify-center">
-              <p className="text-3xl font-bold text-white/20 text-center leading-relaxed">
-                Impact shouldn’t go unnoticed. <br /> We 
-                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text"> reward </span> it
+            <div className="relative aspect-video flex items-center justify-center overflow-hidden">
+              <p className="text-3xl font-bold text-white/20 text-center leading-relaxed z-10">
+                Impact shouldn’t go unnoticed. <br /> We
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  {" "}
+                  reward{" "}
+                </span>{" "}
+                it
               </p>
             </div>
           </FeatureCard>
