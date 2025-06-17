@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { PlusIcon, InboxIcon } from "lucide-react";
-import Link from "next/link";
+import { InboxIcon } from "lucide-react";
 import React from "react";
 
 function Page(props) {
