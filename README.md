@@ -130,13 +130,13 @@ python app.py
 ```
 
 ```bash
-cd ../server
+cd server
 cd MAP
 python app.py
 ```
 
 ```bash
-cd ../server
+cd server
 cd NGO
 python app.py
 ```
