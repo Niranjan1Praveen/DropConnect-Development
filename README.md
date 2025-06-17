@@ -1,4 +1,4 @@
-# 🌐 DropConnect
+# DropConnect
 
 **A Smart Platform for Water Resilience Volunteering & CSR Impact**
 
@@ -7,7 +7,7 @@
 
 ---
 
-## 🌍 Overview
+## Overview
 
 **DropConnect** is a digital platform that unites students, NGOs, and corporations to foster collective action for water resilience and climate-smart disaster management. Anchored in India’s Schedule VII CSR mandate, DropConnect empowers verified impact creation through:
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - 🎯 **NGO Event Listings:** Schedule and manage local water resilience events with roles, dates, and geo-tags.
 - 🔍 **Smart Matching:** AI/ML-based engine aligns volunteers by region, interest, and skill.
@@ -29,7 +29,7 @@
 
 ---
 
-## 🎯 Impact Areas
+## Impact Areas
 
 - ✅ Water Conservation
 - ✅ Climate Resilience
@@ -39,7 +39,7 @@
 
 ---
 
-## 👥 User Roles
+## User Roles
 
 | User        | Key Needs                                       |
 |-------------|-------------------------------------------------|
@@ -50,7 +50,7 @@
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 | Layer             | Technology                              |
 |------------------|------------------------------------------|
@@ -64,7 +64,7 @@
 
 ---
 
-## 🔄 Use Case Scenarios
+## Use Case Scenarios
 
 1. **Student Volunteer Experience**
    - Signup → Get matched to nearby events → Check-in via QR → Earn badges → Unlock internships.
@@ -75,7 +75,7 @@
 
 ---
 
-## 📡 Future Scope
+## Future Scope
 
 - 🤖 AI-based engagement recommendations
 - 🔗 Blockchain for verifiable social impact
@@ -84,7 +84,7 @@
 
 ---
 
-## 🧑‍🤝‍🧑 Team DropConnect
+## Team DropConnect
 
 - **Debshata Choudhury** – Team Leader, Backend Developer  
 - **Niranjan Praveen** – Frontend Developer  
@@ -94,6 +94,58 @@
 
 ---
 
-## 📜 License
+## Code Execution Instructions:
+
+### 1. Clone the Repository  
+```bash
+git https://github.com/Niranjan1Praveen/DropConnect.git
+```
+
+### 2. Install Frontend Dependencies  
+```bash
+cd client
+npm install
+```
+
+### 3. Install Backend Dependencies  
+```bash
+cd ../server
+pip install -r requirements.txt
+```
+
+### 4. Start Development Servers  
+
+#### Frontend (Next.js)  
+```bash
+cd client
+npm run dev
+```
+
+#### Backend (FastAPI/Flask)
+
+```bash
+cd server
+cd CSR
+python app.py
+```
+
+```bash
+cd ../server
+cd MAP
+python app.py
+```
+
+```bash
+cd ../server
+cd NGO
+python app.py
+```
+
+### 5. Access the Application  
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## License
 
 This project is developed as part of a mission-driven hackathon challenge to accelerate disaster resilience and water governance through civic tech collaboration.
