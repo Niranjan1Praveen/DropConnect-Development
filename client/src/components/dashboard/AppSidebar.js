@@ -90,7 +90,6 @@ const AppSidebar = () => {
                     <span>Inbox</span>
                   </Link>
                 </SidebarMenuButton>
-                <SidebarMenuBadge>0</SidebarMenuBadge>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

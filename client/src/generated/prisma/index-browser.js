@@ -142,7 +142,9 @@ exports.Prisma.EventScalarFieldEnum = {
   registrationLink: 'registrationLink',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  userId: 'userId',
+  SkillsRequired: 'SkillsRequired',
+  InternshipRoles: 'InternshipRoles'
 };
 
 exports.Prisma.VolunteerScalarFieldEnum = {

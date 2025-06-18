@@ -41,7 +41,10 @@ model Event {
   updatedAt         DateTime @updatedAt
   userId            String?
   User              User?    @relation(fields: [userId], references: [id])
+  SkillsRequired    String?
+  InternshipRoles   String?
 }
+
 
 model Volunteer {
   id                    String    @id @default(cuid())

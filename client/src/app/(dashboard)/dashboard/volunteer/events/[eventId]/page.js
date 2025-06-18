@@ -30,7 +30,7 @@ export default async function EventIdRoute({ params }) {
   return (
     <main className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* View Opportunity */}
-      <div className="p-8 space-y-4 max-w-3xl">
+      <div className="p-8 space-y-4 max-w-3xl rounded-xl">
         <Link
           href="/dashboard/volunteer/events"
           className="text-indigo-600 flex items-center gap-1 hover:underline"
@@ -38,8 +38,6 @@ export default async function EventIdRoute({ params }) {
           <ArrowLeftIcon />
           Go Back
         </Link>
-        <h2 className="text-3xl font-bold">Opportunity Details</h2>
-
         <Image
           src={event.eventImg ?? "/assets/images/ngo.png"}
           alt={event.eventName}
@@ -47,59 +45,72 @@ export default async function EventIdRoute({ params }) {
           height={600}
           className="rounded-md"
         />
-        <h1 className="text-2xl font-semibold">{event.eventName}</h1>
+        <h2 className="text-3xl font-bold text-indigo-600">Opportunity Details</h2>
 
-        {event.eventDescription && (
-          <p className="text-xl text-muted-foreground">
-            {event.eventDescription}
-          </p>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* LEFT COLUMN */}
+          <div className="space-y-3">
+            <h1 className="text-2xl font-semibold">{event.eventName}</h1>
 
-        <p className="text-lg">Organized by {event.organizerName}</p>
-        <div className="flex items-center gap-2">
-          <MailIcon className="h-4 w-4" />
-          <span>{event.email}</span>
-        </div>
+            {event.eventDescription && (
+              <p className="text-muted-foreground text-base">
+                {event.eventDescription}
+              </p>
+            )}
 
-        <div className="flex items-center gap-2">
-          <PhoneIcon className="h-4 w-4" />
-          <span>{event.contact}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <MapPinIcon className="h-4 w-4" />
-          <span>{event.eventLocation}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <UsersIcon className="h-4 w-4" />
-          <span>{event.volunteerCapacity} Volunteers</span>
-        </div>
-
-        {event.registrationLink && (
-          <div className="flex items-center gap-2">
-            <ExternalLinkIcon className="h-4 w-4 text-blue-600" />
-            <a
-              href={event.registrationLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600"
-            >
-              Registration Link
-            </a>
+            <p className="text-lg font-medium">
+              Organized by {event.organizerName}
+            </p>
           </div>
-        )}
 
-        <p className="text-sm text-gray-500 italic">
-          Created at: {new Date(event.createdAt).toLocaleString()}
-        </p>
+          {/* RIGHT COLUMN */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <MailIcon className="h-4 w-4" />
+              <span>{event.email}</span>
+            </div>
 
-        <p className="text-sm text-gray-500 italic">
-          Updated at: {new Date(event.updatedAt).toLocaleString()}
-        </p>
+            <div className="flex items-center gap-2">
+              <PhoneIcon className="h-4 w-4" />
+              <span>{event.contact}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <MapPinIcon className="h-4 w-4" />
+              <span>{event.eventLocation}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <UsersIcon className="h-4 w-4" />
+              <span>{event.volunteerCapacity} Volunteers</span>
+            </div>
+
+            {event.registrationLink && (
+              <div className="flex items-center gap-2">
+                <ExternalLinkIcon className="h-4 w-4 text-blue-600" />
+                <a
+                  href={event.registrationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  Registration Link
+                </a>
+              </div>
+            )}
+
+            <p className="text-sm text-gray-500 italic">
+              Created at: {new Date(event.createdAt).toLocaleString()}
+            </p>
+
+            <p className="text-sm text-gray-500 italic">
+              Updated at: {new Date(event.updatedAt).toLocaleString()}
+            </p>
+          </div>
+        </div>
       </div>
       {/* Apply for this Opportunity */}
-      <ApplyOpportunity event={event}/>
+      <ApplyOpportunity event={event} />
     </main>
   );
 }

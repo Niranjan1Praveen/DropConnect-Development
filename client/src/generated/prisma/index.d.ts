@@ -2888,6 +2888,8 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
+    SkillsRequired: string | null
+    InternshipRoles: string | null
   }
 
   export type EventMaxAggregateOutputType = {
@@ -2903,6 +2905,8 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
+    SkillsRequired: string | null
+    InternshipRoles: string | null
   }
 
   export type EventCountAggregateOutputType = {
@@ -2918,6 +2922,8 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     userId: number
+    SkillsRequired: number
+    InternshipRoles: number
     _all: number
   }
 
@@ -2943,6 +2949,8 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
+    SkillsRequired?: true
+    InternshipRoles?: true
   }
 
   export type EventMaxAggregateInputType = {
@@ -2958,6 +2966,8 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
+    SkillsRequired?: true
+    InternshipRoles?: true
   }
 
   export type EventCountAggregateInputType = {
@@ -2973,6 +2983,8 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
+    SkillsRequired?: true
+    InternshipRoles?: true
     _all?: true
   }
 
@@ -3075,6 +3087,8 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     userId: string | null
+    SkillsRequired: string | null
+    InternshipRoles: string | null
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -3109,6 +3123,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    SkillsRequired?: boolean
+    InternshipRoles?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3125,6 +3141,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    SkillsRequired?: boolean
+    InternshipRoles?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3141,6 +3159,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    SkillsRequired?: boolean
+    InternshipRoles?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3157,9 +3177,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    SkillsRequired?: boolean
+    InternshipRoles?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "contact" | "eventLocation" | "volunteerCapacity" | "registrationLink" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "contact" | "eventLocation" | "volunteerCapacity" | "registrationLink" | "createdAt" | "updatedAt" | "userId" | "SkillsRequired" | "InternshipRoles", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | Event$UserArgs<ExtArgs>
   }
@@ -3188,6 +3210,8 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       userId: string | null
+      SkillsRequired: string | null
+      InternshipRoles: string | null
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -3624,6 +3648,8 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
     readonly userId: FieldRef<"Event", 'String'>
+    readonly SkillsRequired: FieldRef<"Event", 'String'>
+    readonly InternshipRoles: FieldRef<"Event", 'String'>
   }
     
 
@@ -12910,7 +12936,9 @@ export namespace Prisma {
     registrationLink: 'registrationLink',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    userId: 'userId'
+    userId: 'userId',
+    SkillsRequired: 'SkillsRequired',
+    InternshipRoles: 'InternshipRoles'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -13248,6 +13276,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
+    SkillsRequired?: StringNullableFilter<"Event"> | string | null
+    InternshipRoles?: StringNullableFilter<"Event"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -13264,6 +13294,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
+    SkillsRequired?: SortOrderInput | SortOrder
+    InternshipRoles?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
   }
 
@@ -13283,6 +13315,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
+    SkillsRequired?: StringNullableFilter<"Event"> | string | null
+    InternshipRoles?: StringNullableFilter<"Event"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -13299,6 +13333,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
+    SkillsRequired?: SortOrderInput | SortOrder
+    InternshipRoles?: SortOrderInput | SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -13322,6 +13358,8 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    SkillsRequired?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    InternshipRoles?: StringNullableWithAggregatesFilter<"Event"> | string | null
   }
 
   export type VolunteerWhereInput = {
@@ -14032,6 +14070,8 @@ export namespace Prisma {
     registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
     User?: UserCreateNestedOneWithoutEventInput
   }
 
@@ -14048,6 +14088,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
   }
 
   export type EventUpdateInput = {
@@ -14062,6 +14104,8 @@ export namespace Prisma {
     registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
     User?: UserUpdateOneWithoutEventNestedInput
   }
 
@@ -14078,6 +14122,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventCreateManyInput = {
@@ -14093,6 +14139,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
   }
 
   export type EventUpdateManyMutationInput = {
@@ -14107,6 +14155,8 @@ export namespace Prisma {
     registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateManyInput = {
@@ -14122,6 +14172,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VolunteerCreateInput = {
@@ -14996,6 +15048,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    SkillsRequired?: SortOrder
+    InternshipRoles?: SortOrder
   }
 
   export type EventAvgOrderByAggregateInput = {
@@ -15015,6 +15069,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    SkillsRequired?: SortOrder
+    InternshipRoles?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
@@ -15030,6 +15086,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    SkillsRequired?: SortOrder
+    InternshipRoles?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
@@ -15926,6 +15984,8 @@ export namespace Prisma {
     registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
   }
 
   export type EventUncheckedCreateWithoutUserInput = {
@@ -15940,6 +16000,8 @@ export namespace Prisma {
     registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
   }
 
   export type EventCreateOrConnectWithoutUserInput = {
@@ -16039,6 +16101,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     userId?: StringNullableFilter<"Event"> | string | null
+    SkillsRequired?: StringNullableFilter<"Event"> | string | null
+    InternshipRoles?: StringNullableFilter<"Event"> | string | null
   }
 
   export type VolunteerUpsertWithoutUserInput = {
@@ -16234,6 +16298,8 @@ export namespace Prisma {
     registrationLink?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    SkillsRequired?: string | null
+    InternshipRoles?: string | null
   }
 
   export type EventUpdateWithoutUserInput = {
@@ -16248,6 +16314,8 @@ export namespace Prisma {
     registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateWithoutUserInput = {
@@ -16262,6 +16330,8 @@ export namespace Prisma {
     registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateManyWithoutUserInput = {
@@ -16276,6 +16346,8 @@ export namespace Prisma {
     registrationLink?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
+    InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

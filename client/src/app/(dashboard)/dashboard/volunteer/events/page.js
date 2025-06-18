@@ -6,6 +6,8 @@ import {
   PlusIcon,
   FileIcon,
   Send,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
@@ -40,7 +42,7 @@ import {
 import Image from "next/image";
 import { AppSearchEvents } from "@/components/dashboard/AppSearchEvents";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 9;
 
 async function Page({ searchParams }) {
   const { getUser } = getKindeServerSession();
@@ -51,25 +53,26 @@ async function Page({ searchParams }) {
 
   const currentPage = Number(searchParams?.page) || 1;
   const searchQuery = searchParams?.search || "";
-  const locationFilter = searchParams?.location === 'all' ? '' : searchParams?.location || '';
+  const locationFilter =
+    searchParams?.location === "all" ? "" : searchParams?.location || "";
 
   async function getData() {
     const whereClause = {};
-    
+
     if (searchQuery) {
       whereClause.eventName = {
         contains: searchQuery,
-        mode: 'insensitive'
+        mode: "insensitive",
       };
     }
-    
+
     if (locationFilter) {
       whereClause.eventLocation = {
         equals: locationFilter,
-        mode: 'insensitive'
+        mode: "insensitive",
       };
     }
-    
+
     const [data, totalCount, locations] = await Promise.all([
       prisma.Event.findMany({
         where: whereClause,
@@ -78,23 +81,30 @@ async function Page({ searchParams }) {
         orderBy: {
           createdAt: "desc",
         },
-        distinct: ['eventLocation'] // For getting unique locations
+        distinct: ["eventLocation"],
       }),
       prisma.Event.count({ where: whereClause }),
       prisma.Event.findMany({
         select: {
-          eventLocation: true
+          eventLocation: true,
         },
-        distinct: ['eventLocation']
-      })
+        distinct: ["eventLocation"],
+      }),
     ]);
 
     const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
-    const uniqueLocations = [...new Set(locations.map(l => l.eventLocation))].filter(Boolean);
-    
-    return { data, totalPages, locations: uniqueLocations.length > 0 ? uniqueLocations : [] };
+    const uniqueLocations = [
+      ...new Set(locations.map((l) => l.eventLocation)),
+    ].filter(Boolean);
+
+    return {
+      data,
+      totalPages,
+      locations: uniqueLocations.length > 0 ? uniqueLocations : [],
+    };
   }
-  const { data, totalPages,locations } = await getData();
+  const { data, totalPages, locations } = await getData();
+  console.log(data);
 
   function handleSearchSubmit(e) {
     e.preventDefault();
@@ -182,8 +192,10 @@ async function Page({ searchParams }) {
   return (
     <main className="flex flex-col gap-10 p-8">
       <div className="space-y-4">
-        <h2 className="text-3xl font-bold">Match with events that suit you best</h2>
-        <AppSearchEvents locations={locations}/>
+        <h2 className="text-3xl font-bold">
+          Match with events that suit you best
+        </h2>
+        <AppSearchEvents locations={locations} />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">
         {data.map((item) => (
@@ -225,6 +237,29 @@ async function Page({ searchParams }) {
                   >
                     Registration Link
                   </a>
+                </div>
+              )}
+              {item.SkillsRequired && (
+                <div className="flex gap-2 mt-3">
+                  <div>
+                    <p className="flex gap-2 font-semibold text-sm ">
+                      <GraduationCap className="h-4 w-4" />
+                      Skills Required
+                    </p>
+                    <p className="text-sm text-muted-foreground ml-6">{item.SkillsRequired}</p>
+                  </div>
+                </div>
+              )}
+
+              {item.InternshipRoles && (
+                <div className="flex items-start gap-2 mt-3">
+                  <div>
+                    <p className="flex gap-2 font-semibold text-sm ">
+                      <Briefcase className="h-4 w-4" />
+                      Internship Roles
+                    </p>
+                    <p className="text-sm text-muted-foreground ml-6">{item.InternshipRoles}</p>
+                  </div>
                 </div>
               )}
             </CardContent>

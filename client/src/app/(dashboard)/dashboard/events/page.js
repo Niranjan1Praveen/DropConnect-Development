@@ -5,6 +5,8 @@ import {
   ExternalLinkIcon,
   PlusIcon,
   FileIcon,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
@@ -50,7 +52,7 @@ async function Page({ searchParams }) {
 
   // Get current page from search params or default to 1
   const currentPage = Number(searchParams?.page) || 1;
-  
+
   async function getData() {
     const data = await prisma.Event.findMany({
       skip: (currentPage - 1) * ITEMS_PER_PAGE,
@@ -89,7 +91,7 @@ async function Page({ searchParams }) {
   const getPaginationLinks = () => {
     const links = [];
     const maxVisiblePages = 5; // Maximum number of visible page links
-    
+
     let startPage, endPage;
     if (totalPages <= maxVisiblePages) {
       startPage = 1;
@@ -97,7 +99,7 @@ async function Page({ searchParams }) {
     } else {
       const maxPagesBeforeCurrent = Math.floor(maxVisiblePages / 2);
       const maxPagesAfterCurrent = Math.ceil(maxVisiblePages / 2) - 1;
-      
+
       if (currentPage <= maxPagesBeforeCurrent) {
         startPage = 1;
         endPage = maxVisiblePages;
@@ -113,10 +115,7 @@ async function Page({ searchParams }) {
     for (let i = startPage; i <= endPage; i++) {
       links.push(
         <PaginationItem key={i}>
-          <PaginationLink 
-            href={`?page=${i}`} 
-            isActive={i === currentPage}
-          >
+          <PaginationLink href={`?page=${i}`} isActive={i === currentPage}>
             {i}
           </PaginationLink>
         </PaginationItem>
@@ -196,6 +195,33 @@ async function Page({ searchParams }) {
                       </a>
                     </div>
                   )}
+                  {item.SkillsRequired && (
+                    <div className="flex gap-2 mt-3">
+                      <div>
+                        <p className="flex gap-2 font-semibold text-sm ">
+                          <GraduationCap className="h-4 w-4" />
+                          Skills Required
+                        </p>
+                        <p className="text-sm text-muted-foreground ml-6">
+                          {item.SkillsRequired}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {item.InternshipRoles && (
+                    <div className="flex items-start gap-2 mt-3">
+                      <div>
+                        <p className="flex gap-2 font-semibold text-sm ">
+                          <Briefcase className="h-4 w-4" />
+                          Internship Roles
+                        </p>
+                        <p className="text-sm text-muted-foreground ml-6">
+                          {item.InternshipRoles}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
 
                 <CardFooter>
@@ -227,21 +253,21 @@ async function Page({ searchParams }) {
               </Card>
             ))}
           </div>
-          
+
           {totalPages > 1 && (
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious 
-                    href={`?page=${Math.max(1, currentPage - 1)}`} 
+                  <PaginationPrevious
+                    href={`?page=${Math.max(1, currentPage - 1)}`}
                     aria-disabled={currentPage <= 1}
                   />
                 </PaginationItem>
-                
+
                 {getPaginationLinks()}
-                
+
                 <PaginationItem>
-                  <PaginationNext 
+                  <PaginationNext
                     href={`?page=${Math.min(totalPages, currentPage + 1)}`}
                     aria-disabled={currentPage >= totalPages}
                   />
