@@ -32,15 +32,25 @@ export async function GET(request) {
   }
 
   let redirectUrl;
+  // switch(userType) {
+  //   case 'organization':
+  //     redirectUrl = 'https://drop-connect-development.vercel.app/dashboard/events';
+  //     break;
+  //   case 'corporate':
+  //     redirectUrl = 'https://drop-connect-development.vercel.app/dashboard';
+  //     break;
+  //   default: 
+  //     redirectUrl = 'https://drop-connect-development.vercel.app/dashboard/volunteer/volunteerForm';
+  // }
   switch(userType) {
     case 'organization':
-      redirectUrl = 'https://drop-connect-development.vercel.app/dashboard/events';
+      redirectUrl = 'http://localhost:3000/dashboard/events';
       break;
     case 'corporate':
-      redirectUrl = 'https://drop-connect-development.vercel.app/dashboard';
+      redirectUrl = 'http://localhost:3000/dashboard';
       break;
     default: 
-      redirectUrl = 'https://drop-connect-development.vercel.app/dashboard/volunteer/volunteerForm';
+      redirectUrl = 'http://localhost:3000/dashboard/volunteer/volunteerForm';
   }
 
   return NextResponse.redirect(redirectUrl);

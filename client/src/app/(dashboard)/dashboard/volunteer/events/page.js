@@ -176,17 +176,6 @@ async function Page({ searchParams }) {
           There are currently no events here. Please create some so you can see
           them right here!
         </p>
-        <Button
-          variant={"secondary"}
-          size={"lg"}
-          className={"bg-indigo-600 text-white"}
-          asChild
-        >
-          <Link href={"events/new"}>
-            <PlusIcon />
-            Create
-          </Link>
-        </Button>
       </div>
     );
   }

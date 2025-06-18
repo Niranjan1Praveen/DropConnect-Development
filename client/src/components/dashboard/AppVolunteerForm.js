@@ -15,6 +15,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Toaster } from "../ui/sonner";
+import { Checkbox } from "../ui/checkbox";
 
 export default function AppVolunteerForm() {
   const [formData, setFormData] = useState({
@@ -34,6 +35,7 @@ export default function AppVolunteerForm() {
     maritalStatus: "",
     employmentStatus: "",
     willingTravelDistance: "",
+    skills: [],
     helpInDisaster: false,
     hasDisability: false,
   });
@@ -50,7 +52,8 @@ export default function AppVolunteerForm() {
     setFormData((prev) => ({ ...prev, [name]: value === "yes" }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const dob = formData.dateOfBirth
         ? new Date(
@@ -78,7 +81,9 @@ export default function AppVolunteerForm() {
       toast.success("Your information has been saved successfully!");
     } catch (error) {
       console.error("Error saving volunteer data:", error);
-      toast.error("There was an error saving your information. Please try again.");
+      toast.error(
+        "There was an error saving your information. Please try again."
+      );
     }
   };
 
@@ -137,7 +142,7 @@ export default function AppVolunteerForm() {
           </div>
           <div className="grid grid-cols-3 gap-2">
             <div className="space-y-3">
-              <Label>Date of Birth - Day</Label>
+              <Label>D.O.B - Day</Label>
               <Input
                 name="dateOfBirth.day"
                 value={formData.dateOfBirth?.day || ""}
@@ -387,9 +392,50 @@ export default function AppVolunteerForm() {
               </div>
             </RadioGroup>
           </div>
+          <div className="space-y-3 md:col-span-2">
+            <Label>Skills You Can Contribute</Label>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              {[
+                "Teaching",
+                "First Aid",
+                "Counseling",
+                "Construction",
+                "Cooking",
+                "Driving",
+                "Language Translation",
+                "IT Skills",
+                "Medical",
+                "Art/Drawing",
+                "Music",
+                "Sports Coaching",
+                "Fundraising",
+              ].map((skill) => (
+                <div key={skill} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`skill-${skill}`}
+                    checked={formData.skills.includes(skill)}
+                    onCheckedChange={(checked) => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        skills: checked
+                          ? [...prev.skills, skill]
+                          : prev.skills.filter((s) => s !== skill),
+                      }));
+                    }}
+                  />
+                  <label
+                    htmlFor={`skill-${skill}`}
+                    className="text-sm font-medium leading-none"
+                  >
+                    {skill}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
         </CardContent>
       </Card>
-      <div className="flex flex-col gap-4 items-center justify-center">
+      <div className="flex flex-col gap-4">
         <small className="text-muted-foreground">
           By clicking the button, you are indicating your acceptance with the{" "}
           <span className="text-indigo-600 cursor-pointer">
@@ -397,7 +443,9 @@ export default function AppVolunteerForm() {
           </span>{" "}
           for this site.{" "}
         </small>
-        <Button type="submit">Save Now</Button>
+        <Button type="submit" className={"w-fit"}>
+          Save Now
+        </Button>
       </div>
       <Toaster richColor />
     </form>

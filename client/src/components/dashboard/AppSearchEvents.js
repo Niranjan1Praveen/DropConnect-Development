@@ -37,7 +37,7 @@ export function AppSearchEvents({ locations = [] }) {
       <div className="flex gap-2 w-full items-center justify-center flex-wrap">
         <Input
           className="p-5 flex-1"
-          placeholder="Search Events by name"
+          placeholder="🔎 Search Events by name"
           name="search"
           defaultValue={searchQuery}
         />

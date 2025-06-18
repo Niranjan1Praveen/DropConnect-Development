@@ -1,0 +1,91 @@
+/* ====== GLOBAL BODY ====== */
+body {
+    background-color: #121212;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== MAIN HEADING ====== */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 36px;
+}
+
+/* ====== KPI CARD STYLING ====== */
+.kpi-card {
+    border: 1px solid #2a2a2a;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    width: 22%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: scale(1.02);
+}
+
+.kpi-card h4 {
+    color: #cccccc;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.kpi-card p {
+    color: #00d1b2;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* KPI ROW */
+.kpi-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 40px;
+}
+
+/* ====== TAB STYLING ====== */
+.tab {
+    background-color: #222 !important;
+    color: #aaa !important;
+    border: none !important;
+    padding: 10px;
+}
+
+.tab--selected {
+    background-color: #333 !important;
+    color: #fff !important;
+    border-bottom: 2px solid #00d1b2 !important;
+}
+
+/* ====== GRAPH STYLING ====== */
+.dash-graph {
+    background-color: #1e1e1e !important;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 40px 40px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}

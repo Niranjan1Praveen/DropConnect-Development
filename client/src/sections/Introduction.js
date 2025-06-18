@@ -1,9 +1,8 @@
 "use client";
 import Tags from "@/components/ui/tags";
-import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-
 const text = `Despite growing CSR funding and a motivated youth population, real-world volunteer impact remains fragmented, impulsively untracked, and severely undervalued.`;
 const words = text.split(" ");
 export default function Introduction() {
@@ -20,7 +19,7 @@ export default function Introduction() {
     });
   }, [wordIndex]);
   return (
-    <section className="py-28 px-4 lg:py-30 flex items-center justify-center">
+    <section className="relative py-28 px-4 lg:py-30 flex items-center justify-center">
       <div className="container">
         <div className="sticky top-20 md:top-28 lg:top-40">
           <div className="flex justify-center">

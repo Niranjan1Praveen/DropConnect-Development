@@ -1,8 +1,10 @@
 import FeatureCard from "@/components/ui/featureCard";
 import Tags from "@/components/ui/tags";
 import Image from "next/image";
-import Key from "@/components/ui/key";
 import dashboard from "@/assets/images/dashboard-new.png";
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import Key from "@/components/ui/key";
+import { ShineBorder } from "@/components/magicui/shine-border";
 const features = [
   "CSR Impact Dashboards",
   "Verified Internships",
@@ -76,10 +78,17 @@ export default function Features() {
             }
             className="md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto"
           >
-            <div className="aspect-video flex items-center justify-center gap-4 flex-wrap">
+            {/* <div className="aspect-video flex items-center justify-center gap-4 flex-wrap">
               <Key className={"w-28"}>Skill</Key>
               <Key className={"w-28"}>Location</Key>
               <Key className={"w-28"}>Interest</Key>
+            </div> */}
+            <div className="aspect-video flex items-center justify-center relative w-full overflow-hidden min-h-[200px]">
+              <OrbitingCircles radius={100}>
+                <Key className={"w-28 p-5 text-sm md:text-lg"}>Skill</Key>
+                <Key className={"w-28 p-5 text-sm md:text-lg"}>Location</Key>
+                <Key className={"w-28 p-5 text-sm md:text-lg"}>Interest</Key>
+              </OrbitingCircles>
             </div>
           </FeatureCard>
         </div>

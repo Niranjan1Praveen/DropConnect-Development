@@ -1,7 +1,9 @@
 "use client";
+import { AnimatedGradientTextDemo } from "@/components/ui/animatedGradientTextDemo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
 export default function Hero() {
   const heroStrong = ["Volunteering", "Community Impact", "Social Good"];
 
@@ -25,9 +27,9 @@ export default function Hero() {
     <section className="py-24 px-4 flex items-center justify-center overflow-x-clip">
       <div className="container relative">
         <div className="flex justify-center">
-          <div className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-neutral-950 font-semibold">
-            Trusted by 100+ NGOs and corporates
-          </div>
+          <AnimatedGradientTextDemo
+            title={"Trusted by 100+ NGOs and corporates"}
+          />
         </div>
 
         <h1 className="text-5xl md:text-7xl font-medium text-center mt-6 max-w-6xl mx-auto leading-[1.15]">
@@ -53,14 +55,7 @@ export default function Hero() {
             placeholder="Enter your email"
             className="border-none px-4 !bg-transparent md:flex-1 w-full"
           />
-          <Button
-            type="submit"
-            variant="signup"
-            size="sm"
-            className="whitespace-nowrap"
-          >
-            Sign Up
-          </Button>
+          <Button variant={"signup"}>Sign Up</Button>
         </form>
       </div>
     </section>

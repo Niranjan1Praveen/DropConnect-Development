@@ -235,6 +235,14 @@ exports.Prisma.TrionyxSystemsWorldwideScalarFieldEnum = {
   HygieneKitsDistributed: 'HygieneKitsDistributed'
 };
 
+exports.Prisma.InboxScalarFieldEnum = {
+  id: 'id',
+  eventName: 'eventName',
+  eventDescription: 'eventDescription',
+  organizerName: 'organizerName',
+  status: 'status'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -264,7 +272,8 @@ exports.Prisma.ModelName = {
   NoventraTechnologiesInc: 'NoventraTechnologiesInc',
   AureviaInternationalHoldings: 'AureviaInternationalHoldings',
   ZentaraDynamicsCorporation: 'ZentaraDynamicsCorporation',
-  TrionyxSystemsWorldwide: 'TrionyxSystemsWorldwide'
+  TrionyxSystemsWorldwide: 'TrionyxSystemsWorldwide',
+  Inbox: 'Inbox'
 };
 
 /**

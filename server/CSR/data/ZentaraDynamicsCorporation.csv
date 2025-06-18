@@ -1,0 +1,51 @@
+EventID,PitsInstalled,EstimatedStorageLitersPerMonth,StructureType,InstallationBy,MaintenanceResponsibility
+3a6e61e3,7,10802,Rooftop,Govt.,True
+0df1522a,8,24558,Ground Pit,Community,False
+5bc09a51,47,10623,Rooftop,NGO,True
+5b8782f4,37,38933,Rooftop,Community,False
+3a5a9a4c,50,34035,Rooftop,Community,True
+b0aa5c15,48,21440,Ground Pit,NGO,True
+330a162d,36,47332,Rooftop,Community,False
+9a964aac,27,10157,Rooftop,NGO,True
+1cfbcf10,22,41747,Ground Pit,Govt.,False
+637df07e,30,38380,Ground Pit,NGO,False
+aef3562b,25,39344,Ground Pit,Community,True
+784f3569,50,20809,Rooftop,Community,True
+48ca4877,10,20177,Ground Pit,NGO,False
+af3d57dd,23,42985,Ground Pit,Community,True
+7c1dd882,50,45789,Ground Pit,NGO,True
+bac3dcfe,31,36587,Rooftop,Govt.,False
+b753bc9c,49,17197,Ground Pit,Community,True
+fd89f2bc,23,31415,Ground Pit,NGO,True
+dd70325f,28,11430,Rooftop,Govt.,False
+bbc6cb45,46,41633,Ground Pit,Community,True
+aee4fab7,24,36027,Rooftop,Govt.,False
+db153441,43,11687,Rooftop,Community,False
+14af585b,45,43496,Ground Pit,Govt.,False
+dde2f8fb,10,13007,Rooftop,Community,False
+b99bfb0d,25,15518,Ground Pit,Govt.,True
+a80c3720,47,30270,Rooftop,Community,True
+f21f95d6,12,40685,Rooftop,Community,True
+59464de5,12,29295,Ground Pit,Govt.,False
+9e49ef57,22,11548,Ground Pit,Community,True
+a3b19e12,40,29963,Rooftop,Community,True
+1f74f826,15,11110,Rooftop,Community,False
+40261b46,27,21088,Rooftop,NGO,True
+6ff73e1d,49,24868,Ground Pit,NGO,True
+fd343395,15,35529,Ground Pit,Govt.,False
+35c18f75,47,24617,Rooftop,Govt.,True
+b305a8ca,43,16155,Rooftop,Govt.,True
+7b6226ae,9,14609,Rooftop,NGO,True
+bee6bccc,8,34702,Rooftop,Community,False
+00d098aa,34,10842,Rooftop,NGO,True
+c0f60894,8,14347,Rooftop,Govt.,False
+9d4fcbc0,7,25582,Rooftop,Govt.,False
+eacdf1be,40,28911,Ground Pit,NGO,False
+54fe8992,11,43722,Ground Pit,Community,True
+b2246d13,20,33123,Ground Pit,Govt.,False
+402ed254,8,32426,Rooftop,Community,False
+639a407a,5,12618,Rooftop,Community,True
+d6e4a9bf,6,34382,Ground Pit,Community,True
+d06ca50a,18,30851,Rooftop,Community,False
+1545d099,5,48045,Ground Pit,Govt.,True
+76ea350d,22,22630,Rooftop,Govt.,False
