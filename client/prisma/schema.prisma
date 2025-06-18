@@ -65,7 +65,7 @@ model Volunteer {
   willingTravelDistance String?
   helpInDisaster        Boolean   @default(false)
   hasDisability         Boolean   @default(false)
-  // skills                String[]  @default([])
+  skills                String[]  @default([])
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 }
@@ -136,9 +136,11 @@ model TrionyxSystemsWorldwide {
 }
 
 model Inbox {
-  id               Int    @id @default(autoincrement())
+  id               Int      @id @default(autoincrement())
+  eventId          String
   eventName        String
   eventDescription String
   organizerName    String
-  status           String @default("pending")
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
 }

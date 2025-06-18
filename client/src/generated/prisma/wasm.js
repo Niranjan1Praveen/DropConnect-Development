@@ -166,6 +166,7 @@ exports.Prisma.VolunteerScalarFieldEnum = {
   willingTravelDistance: 'willingTravelDistance',
   helpInDisaster: 'helpInDisaster',
   hasDisability: 'hasDisability',
+  skills: 'skills',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -237,10 +238,12 @@ exports.Prisma.TrionyxSystemsWorldwideScalarFieldEnum = {
 
 exports.Prisma.InboxScalarFieldEnum = {
   id: 'id',
+  eventId: 'eventId',
   eventName: 'eventName',
   eventDescription: 'eventDescription',
   organizerName: 'organizerName',
-  status: 'status'
+  status: 'status',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {

@@ -4138,6 +4138,7 @@ export namespace Prisma {
     willingTravelDistance: number
     helpInDisaster: number
     hasDisability: number
+    skills: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4215,6 +4216,7 @@ export namespace Prisma {
     willingTravelDistance?: true
     helpInDisaster?: true
     hasDisability?: true
+    skills?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4313,6 +4315,7 @@ export namespace Prisma {
     willingTravelDistance: string | null
     helpInDisaster: boolean
     hasDisability: boolean
+    skills: string[]
     createdAt: Date
     updatedAt: Date
     _count: VolunteerCountAggregateOutputType | null
@@ -4355,6 +4358,7 @@ export namespace Prisma {
     willingTravelDistance?: boolean
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4381,6 +4385,7 @@ export namespace Prisma {
     willingTravelDistance?: boolean
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4407,6 +4412,7 @@ export namespace Prisma {
     willingTravelDistance?: boolean
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4433,11 +4439,12 @@ export namespace Prisma {
     willingTravelDistance?: boolean
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type VolunteerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "salutation" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "homeStreet" | "homeCity" | "homeState" | "postalCode" | "homeCountry" | "mobilePhone" | "employer" | "educationalLevel" | "maritalStatus" | "employmentStatus" | "willingTravelDistance" | "helpInDisaster" | "hasDisability" | "createdAt" | "updatedAt", ExtArgs["result"]["volunteer"]>
+  export type VolunteerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "salutation" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "homeStreet" | "homeCity" | "homeState" | "postalCode" | "homeCountry" | "mobilePhone" | "employer" | "educationalLevel" | "maritalStatus" | "employmentStatus" | "willingTravelDistance" | "helpInDisaster" | "hasDisability" | "skills" | "createdAt" | "updatedAt", ExtArgs["result"]["volunteer"]>
   export type VolunteerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4474,6 +4481,7 @@ export namespace Prisma {
       willingTravelDistance: string | null
       helpInDisaster: boolean
       hasDisability: boolean
+      skills: string[]
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["volunteer"]>
@@ -4920,6 +4928,7 @@ export namespace Prisma {
     readonly willingTravelDistance: FieldRef<"Volunteer", 'String'>
     readonly helpInDisaster: FieldRef<"Volunteer", 'Boolean'>
     readonly hasDisability: FieldRef<"Volunteer", 'Boolean'>
+    readonly skills: FieldRef<"Volunteer", 'String[]'>
     readonly createdAt: FieldRef<"Volunteer", 'DateTime'>
     readonly updatedAt: FieldRef<"Volunteer", 'DateTime'>
   }
@@ -11829,26 +11838,32 @@ export namespace Prisma {
 
   export type InboxMinAggregateOutputType = {
     id: number | null
+    eventId: string | null
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
     status: string | null
+    createdAt: Date | null
   }
 
   export type InboxMaxAggregateOutputType = {
     id: number | null
+    eventId: string | null
     eventName: string | null
     eventDescription: string | null
     organizerName: string | null
     status: string | null
+    createdAt: Date | null
   }
 
   export type InboxCountAggregateOutputType = {
     id: number
+    eventId: number
     eventName: number
     eventDescription: number
     organizerName: number
     status: number
+    createdAt: number
     _all: number
   }
 
@@ -11863,26 +11878,32 @@ export namespace Prisma {
 
   export type InboxMinAggregateInputType = {
     id?: true
+    eventId?: true
     eventName?: true
     eventDescription?: true
     organizerName?: true
     status?: true
+    createdAt?: true
   }
 
   export type InboxMaxAggregateInputType = {
     id?: true
+    eventId?: true
     eventName?: true
     eventDescription?: true
     organizerName?: true
     status?: true
+    createdAt?: true
   }
 
   export type InboxCountAggregateInputType = {
     id?: true
+    eventId?: true
     eventName?: true
     eventDescription?: true
     organizerName?: true
     status?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -11974,10 +11995,12 @@ export namespace Prisma {
 
   export type InboxGroupByOutputType = {
     id: number
+    eventId: string
     eventName: string
     eventDescription: string
     organizerName: string
     status: string
+    createdAt: Date
     _count: InboxCountAggregateOutputType | null
     _avg: InboxAvgAggregateOutputType | null
     _sum: InboxSumAggregateOutputType | null
@@ -12001,47 +12024,57 @@ export namespace Prisma {
 
   export type InboxSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    eventId?: boolean
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
     status?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["inbox"]>
 
   export type InboxSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    eventId?: boolean
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
     status?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["inbox"]>
 
   export type InboxSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    eventId?: boolean
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
     status?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["inbox"]>
 
   export type InboxSelectScalar = {
     id?: boolean
+    eventId?: boolean
     eventName?: boolean
     eventDescription?: boolean
     organizerName?: boolean
     status?: boolean
+    createdAt?: boolean
   }
 
-  export type InboxOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "status", ExtArgs["result"]["inbox"]>
+  export type InboxOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventId" | "eventName" | "eventDescription" | "organizerName" | "status" | "createdAt", ExtArgs["result"]["inbox"]>
 
   export type $InboxPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Inbox"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      eventId: string
       eventName: string
       eventDescription: string
       organizerName: string
       status: string
+      createdAt: Date
     }, ExtArgs["result"]["inbox"]>
     composites: {}
   }
@@ -12466,10 +12499,12 @@ export namespace Prisma {
    */
   interface InboxFieldRefs {
     readonly id: FieldRef<"Inbox", 'Int'>
+    readonly eventId: FieldRef<"Inbox", 'String'>
     readonly eventName: FieldRef<"Inbox", 'String'>
     readonly eventDescription: FieldRef<"Inbox", 'String'>
     readonly organizerName: FieldRef<"Inbox", 'String'>
     readonly status: FieldRef<"Inbox", 'String'>
+    readonly createdAt: FieldRef<"Inbox", 'DateTime'>
   }
     
 
@@ -12902,6 +12937,7 @@ export namespace Prisma {
     willingTravelDistance: 'willingTravelDistance',
     helpInDisaster: 'helpInDisaster',
     hasDisability: 'hasDisability',
+    skills: 'skills',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -12994,10 +13030,12 @@ export namespace Prisma {
 
   export const InboxScalarFieldEnum: {
     id: 'id',
+    eventId: 'eventId',
     eventName: 'eventName',
     eventDescription: 'eventDescription',
     organizerName: 'organizerName',
-    status: 'status'
+    status: 'status',
+    createdAt: 'createdAt'
   };
 
   export type InboxScalarFieldEnum = (typeof InboxScalarFieldEnum)[keyof typeof InboxScalarFieldEnum]
@@ -13310,6 +13348,7 @@ export namespace Prisma {
     willingTravelDistance?: StringNullableFilter<"Volunteer"> | string | null
     helpInDisaster?: BoolFilter<"Volunteer"> | boolean
     hasDisability?: BoolFilter<"Volunteer"> | boolean
+    skills?: StringNullableListFilter<"Volunteer">
     createdAt?: DateTimeFilter<"Volunteer"> | Date | string
     updatedAt?: DateTimeFilter<"Volunteer"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -13336,6 +13375,7 @@ export namespace Prisma {
     willingTravelDistance?: SortOrderInput | SortOrder
     helpInDisaster?: SortOrder
     hasDisability?: SortOrder
+    skills?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -13365,6 +13405,7 @@ export namespace Prisma {
     willingTravelDistance?: StringNullableFilter<"Volunteer"> | string | null
     helpInDisaster?: BoolFilter<"Volunteer"> | boolean
     hasDisability?: BoolFilter<"Volunteer"> | boolean
+    skills?: StringNullableListFilter<"Volunteer">
     createdAt?: DateTimeFilter<"Volunteer"> | Date | string
     updatedAt?: DateTimeFilter<"Volunteer"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -13391,6 +13432,7 @@ export namespace Prisma {
     willingTravelDistance?: SortOrderInput | SortOrder
     helpInDisaster?: SortOrder
     hasDisability?: SortOrder
+    skills?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: VolunteerCountOrderByAggregateInput
@@ -13422,6 +13464,7 @@ export namespace Prisma {
     willingTravelDistance?: StringNullableWithAggregatesFilter<"Volunteer"> | string | null
     helpInDisaster?: BoolWithAggregatesFilter<"Volunteer"> | boolean
     hasDisability?: BoolWithAggregatesFilter<"Volunteer"> | boolean
+    skills?: StringNullableListFilter<"Volunteer">
     createdAt?: DateTimeWithAggregatesFilter<"Volunteer"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Volunteer"> | Date | string
   }
@@ -13840,18 +13883,22 @@ export namespace Prisma {
     OR?: InboxWhereInput[]
     NOT?: InboxWhereInput | InboxWhereInput[]
     id?: IntFilter<"Inbox"> | number
+    eventId?: StringFilter<"Inbox"> | string
     eventName?: StringFilter<"Inbox"> | string
     eventDescription?: StringFilter<"Inbox"> | string
     organizerName?: StringFilter<"Inbox"> | string
     status?: StringFilter<"Inbox"> | string
+    createdAt?: DateTimeFilter<"Inbox"> | Date | string
   }
 
   export type InboxOrderByWithRelationInput = {
     id?: SortOrder
+    eventId?: SortOrder
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InboxWhereUniqueInput = Prisma.AtLeast<{
@@ -13859,18 +13906,22 @@ export namespace Prisma {
     AND?: InboxWhereInput | InboxWhereInput[]
     OR?: InboxWhereInput[]
     NOT?: InboxWhereInput | InboxWhereInput[]
+    eventId?: StringFilter<"Inbox"> | string
     eventName?: StringFilter<"Inbox"> | string
     eventDescription?: StringFilter<"Inbox"> | string
     organizerName?: StringFilter<"Inbox"> | string
     status?: StringFilter<"Inbox"> | string
+    createdAt?: DateTimeFilter<"Inbox"> | Date | string
   }, "id">
 
   export type InboxOrderByWithAggregationInput = {
     id?: SortOrder
+    eventId?: SortOrder
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
     _count?: InboxCountOrderByAggregateInput
     _avg?: InboxAvgOrderByAggregateInput
     _max?: InboxMaxOrderByAggregateInput
@@ -13883,10 +13934,12 @@ export namespace Prisma {
     OR?: InboxScalarWhereWithAggregatesInput[]
     NOT?: InboxScalarWhereWithAggregatesInput | InboxScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Inbox"> | number
+    eventId?: StringWithAggregatesFilter<"Inbox"> | string
     eventName?: StringWithAggregatesFilter<"Inbox"> | string
     eventDescription?: StringWithAggregatesFilter<"Inbox"> | string
     organizerName?: StringWithAggregatesFilter<"Inbox"> | string
     status?: StringWithAggregatesFilter<"Inbox"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Inbox"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -14091,6 +14144,7 @@ export namespace Prisma {
     willingTravelDistance?: string | null
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: VolunteerCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutVolunteerInput
@@ -14117,6 +14171,7 @@ export namespace Prisma {
     willingTravelDistance?: string | null
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: VolunteerCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14141,6 +14196,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutVolunteerNestedInput
@@ -14167,6 +14223,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14192,6 +14249,7 @@ export namespace Prisma {
     willingTravelDistance?: string | null
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: VolunteerCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14216,6 +14274,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14241,6 +14300,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14701,56 +14761,70 @@ export namespace Prisma {
   }
 
   export type InboxCreateInput = {
+    eventId: string
     eventName: string
     eventDescription: string
     organizerName: string
     status?: string
+    createdAt?: Date | string
   }
 
   export type InboxUncheckedCreateInput = {
     id?: number
+    eventId: string
     eventName: string
     eventDescription: string
     organizerName: string
     status?: string
+    createdAt?: Date | string
   }
 
   export type InboxUpdateInput = {
+    eventId?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InboxUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    eventId?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InboxCreateManyInput = {
     id?: number
+    eventId: string
     eventName: string
     eventDescription: string
     organizerName: string
     status?: string
+    createdAt?: Date | string
   }
 
   export type InboxUpdateManyMutationInput = {
+    eventId?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InboxUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    eventId?: StringFieldUpdateOperationsInput | string
     eventName?: StringFieldUpdateOperationsInput | string
     eventDescription?: StringFieldUpdateOperationsInput | string
     organizerName?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15012,6 +15086,14 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -15038,6 +15120,7 @@ export namespace Prisma {
     willingTravelDistance?: SortOrder
     helpInDisaster?: SortOrder
     hasDisability?: SortOrder
+    skills?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15424,10 +15507,12 @@ export namespace Prisma {
 
   export type InboxCountOrderByAggregateInput = {
     id?: SortOrder
+    eventId?: SortOrder
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InboxAvgOrderByAggregateInput = {
@@ -15436,18 +15521,22 @@ export namespace Prisma {
 
   export type InboxMaxOrderByAggregateInput = {
     id?: SortOrder
+    eventId?: SortOrder
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InboxMinOrderByAggregateInput = {
     id?: SortOrder
+    eventId?: SortOrder
     eventName?: SortOrder
     eventDescription?: SortOrder
     organizerName?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type InboxSumOrderByAggregateInput = {
@@ -15568,6 +15657,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventInput, UserUpdateWithoutEventInput>, UserUncheckedUpdateWithoutEventInput>
   }
 
+  export type VolunteerCreateskillsInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutVolunteerInput = {
     create?: XOR<UserCreateWithoutVolunteerInput, UserUncheckedCreateWithoutVolunteerInput>
     connectOrCreate?: UserCreateOrConnectWithoutVolunteerInput
@@ -15580,6 +15673,11 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type VolunteerUpdateskillsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type UserUpdateOneRequiredWithoutVolunteerNestedInput = {
@@ -15874,6 +15972,7 @@ export namespace Prisma {
     willingTravelDistance?: string | null
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: VolunteerCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15898,6 +15997,7 @@ export namespace Prisma {
     willingTravelDistance?: string | null
     helpInDisaster?: boolean
     hasDisability?: boolean
+    skills?: VolunteerCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15972,6 +16072,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15996,6 +16097,7 @@ export namespace Prisma {
     willingTravelDistance?: NullableStringFieldUpdateOperationsInput | string | null
     helpInDisaster?: BoolFieldUpdateOperationsInput | boolean
     hasDisability?: BoolFieldUpdateOperationsInput | boolean
+    skills?: VolunteerUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

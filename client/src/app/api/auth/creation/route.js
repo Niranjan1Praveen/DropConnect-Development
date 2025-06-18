@@ -47,7 +47,7 @@ export async function GET(request) {
       redirectUrl = 'http://localhost:3000/dashboard/events';
       break;
     case 'corporate':
-      redirectUrl = 'http://localhost:3000/dashboard';
+      redirectUrl = 'http://127.0.0.1:9050/';
       break;
     default: 
       redirectUrl = 'http://localhost:3000/dashboard/volunteer/volunteerForm';
