@@ -137,14 +137,14 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  {/* <Link href={"https://dropconnect-csr-dashboard.onrender.com/"}>
-                    <Handshake />
-                    <span>CSR Dashboard</span>
-                  </Link> */}
-                  <Link href={"http://127.0.0.1:9050/"}>
+                  <Link href={"https://dropconnect-csr-dashboard.onrender.com/"}>
                     <Handshake />
                     <span>CSR Dashboard</span>
                   </Link>
+                  {/* <Link href={"http://127.0.0.1:9050/"}>
+                    <Handshake />
+                    <span>CSR Dashboard</span>
+                  </Link> */}
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -157,14 +157,14 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  {/* <Link href={"https://dropconnect-impact-assessment-dashboard.onrender.com"}>
-                    <BarChart />
-                    <span>Impact Dashboard</span>
-                  </Link> */}
-                  <Link href={"http://127.0.0.1:8050/"}>
+                  <Link href={"https://dropconnect-impact-assessment-dashboard.onrender.com"}>
                     <BarChart />
                     <span>Impact Dashboard</span>
                   </Link>
+                  {/* <Link href={"http://127.0.0.1:8050/"}>
+                    <BarChart />
+                    <span>Impact Dashboard</span>
+                  </Link> */}
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -177,14 +177,14 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  {/* <Link href={"https://dropconnect-region-suitability-map.onrender.com"}>
-                    <MapIcon />
-                    <span>View Map</span>
-                  </Link> */}
-                  <Link href={"http://127.0.0.1:5000"}>
+                  <Link href={"https://dropconnect-region-suitability-map.onrender.com"}>
                     <MapIcon />
                     <span>View Map</span>
                   </Link>
+                  {/* <Link href={"http://127.0.0.1:5000"}>
+                    <MapIcon />
+                    <span>View Map</span>
+                  </Link> */}
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
