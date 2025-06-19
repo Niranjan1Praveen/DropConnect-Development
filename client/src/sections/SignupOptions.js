@@ -15,7 +15,7 @@ const SignUpOptions = () => {
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
           {signUpOptionsData.map((item) => (
-            <BoxReveal key={item.id} boxColor="limegreen">
+            <BoxReveal key={item.id} boxColor="none">
               <DropCard item={item} />
             </BoxReveal>
           ))}
