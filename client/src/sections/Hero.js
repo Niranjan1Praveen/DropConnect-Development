@@ -2,13 +2,16 @@
 import { AnimatedGradientTextDemo } from "@/components/ui/animatedGradientTextDemo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-import { RainbowButton } from "@/components/magicui/rainbow-button";
+import { useEffect, useState, useMemo } from "react";
 export default function Hero() {
-  const heroStrong = ["Volunteering", "Community Impact", "Social Good"];
+  const heroStrong = useMemo(
+    () => ["Volunteering", "Community Impact", "Social Good"],
+    []
+  );
 
   const [currentText, setCurrentText] = useState(heroStrong[0]);
   const [fade, setFade] = useState(true);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setFade(false);

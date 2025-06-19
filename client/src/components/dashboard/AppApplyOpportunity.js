@@ -76,8 +76,8 @@ export default function ApplyOpportunity({ event }) {
         Apply for this Opportunity
       </h2>
       <p className="text-muted-foreground text-lg">
-        Step into the heart of impact — this isn't just another opportunity,
-        it's your chance to grow, give back, and spark change where it matters
+        Step into the heart of impact — this isn&apos;t just another opportunity,
+        it&apos;s your chance to grow, give back, and spark change where it matters
         most.
       </p>
 
