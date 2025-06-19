@@ -1,126 +1,330 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Region Suitability Analyzer – India</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8">
+  <title>Region Suitability Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Favicon Section - Add these lines -->
-    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/static/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/static/favicon-32x32.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/static/apple-touch-icon.png"
-    />
-    <link rel="manifest" href="/static/site.webmanifest" />
+  <style>
+    #map { height: 100vh; }
+    
+    /* Enhanced Popup Styles */
+    .leaflet-popup-content {
+      min-width: 280px;
+      padding: 12px;
+      margin: 0;
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+    .score-badge {
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .metric {
+      background: #f8f9fa;
+      padding: 6px 8px;
+      border-radius: 4px;
+    }
+    .metric-label {
+      font-size: 12px;
+      color: #666;
+      display: block;
+    }
+    .metric-value {
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .recommendation-box {
+      padding: 10px;
+      background: #f8fafc;
+      margin-top: 12px;
+      border-left: 4px solid;
+      font-size: 13px;
+    }
+    .issues {
+      font-size: 12px;
+      color: #e74c3c;
+      margin-top: 6px;
+    }
+    
+    /* Legend & Controls */
+    .legend {
+      background: white;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 18px;
+      color: #555;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 50%;
+    }
+    .clear-btn {
+      padding: 6px 10px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s;
+    }
+    .clear-btn:hover {
+      background: #f5f5f5;
+    }
+    .clear-btn.cleared {
+      background-color: #2ecc71;
+      color: white;
+      border-color: #27ae60;
+    }
+    
+    /* Spinner */
+    .spinner {
+      background: rgba(255,255,255,0.8);
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .spinner i {
+      animation: spin 1s linear infinite;
+      margin-right: 5px;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
 
-    <!-- Existing assets -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <script>
+    // Initialize map centered on India
+    const map = L.map('map').setView([22.0, 78.0], 5);
+    const analyzedLocations = new L.FeatureGroup().addTo(map);
+    let adminLayer;
 
-    <style>
-      #map {
-        height: 100vh;
-      }
-      .leaflet-popup-content {
-        font-size: 14px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+    // 1. Enhanced Base Maps (3 options now)
+    const baseLayers = {
+      "Street Map": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map),
+      "Satellite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri'
+      }),
+      "Terrain": L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 17
+      })
+    };
 
-    <script>
-      const map = L.map("map").setView([22.0, 78.0], 5);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
+    // Load GeoJSON boundaries
+    Promise.all([
+      fetch("/static/india-composite.geojson").then(r => r.json()),
+      fetch("/static/india-admin.geojson").then(r => r.json())
+    ]).then(([boundary, admin]) => {
+      // Add boundary layer
+      L.geoJSON(boundary, { 
+        style: { color: 'blue', weight: 1, fillOpacity: 0 } 
       }).addTo(map);
-
-      let indiaBoundary, indiaAdmin, marker;
-
-      // Load boundaries
-      Promise.all([
-        fetch("/static/india-composite.geojson").then((r) => r.json()),
-        fetch("/static/india-admin.geojson").then((r) => r.json()),
-      ]).then(([boundary, admin]) => {
-        indiaBoundary = boundary;
-        indiaAdmin = admin;
-
-        // Show India boundary
-        L.geoJSON(indiaBoundary, { style: { color: "blue", weight: 1 } }).addTo(
-          map
-        );
-      });
-
-      // On map click
-      map.on("click", function (e) {
-        const point = turf.point([e.latlng.lng, e.latlng.lat]);
-
-        if (!indiaBoundary || !indiaAdmin)
-          return alert("India map not loaded yet");
-
-        const inside = turf.booleanPointInPolygon(
-          point,
-          indiaBoundary.features[0]
-        );
-        if (!inside) return alert("Please click inside India's land area.");
-
-        // Find region name
-        let regionName = "Unknown region";
-        for (const feature of indiaAdmin.features) {
-          if (turf.booleanPointInPolygon(point, feature)) {
-            regionName =
-              feature.properties.NAME_1 ||
-              feature.properties.STATE ||
-              feature.properties.NAME;
-            break;
-          }
-        }
-
-        fetch("/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            latitude: e.latlng.lat,
-            longitude: e.latlng.lng,
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (marker) map.removeLayer(marker);
-            marker = L.marker([data.latitude, data.longitude]).addTo(map);
-            marker
-              .bindPopup(
-                `
-          <b>${regionName}</b><br>
-          <b>Suitability Score:</b> ${data.score}<br>
-          <b>Vegetation:</b> ${data.vegetation_index}<br>
-          <b>Water Index:</b> ${data.water_index}<br>
-          <b>Elevation:</b> ${data.elevation} m<br>
-          <b>Urban Proximity:</b> ${data.urban_proximity} km<br>
-          <b>Recommendation:</b> ${data.recommendation}
-        `
-              )
-              .openPopup();
+      
+      // Add admin layer with hover effects
+      adminLayer = L.geoJSON(admin, {
+        style: { color: '#666', weight: 1, opacity: 0.7, fillOpacity: 0.1 },
+        onEachFeature: function(feature, layer) {
+          layer.on({
+            mouseover: function() {
+              this.setStyle({ weight: 2, color: '#222' });
+            },
+            mouseout: function() {
+              this.setStyle({ weight: 1, color: '#666' });
+            }
           });
+        }
+      }).addTo(map);
+      
+      // Add layer control
+      L.control.layers(baseLayers, {
+        "State Boundaries": adminLayer,
+        "Analyzed Locations": analyzedLocations
+      }, {collapsed: false}).addTo(map);
+    }).catch(err => {
+      console.error("Failed to load GeoJSON:", err);
+      alert("Map data failed to load. Please refresh the page.");
+    });
+
+    // Click handler for location analysis
+    map.on('click', function(e) {
+      const point = turf.point([e.latlng.lng, e.latlng.lat]);
+      
+      // Show loading spinner
+      const spinner = L.control({position: 'topleft'});
+      spinner.onAdd = function() {
+        const div = L.DomUtil.create('div', 'spinner');
+        div.innerHTML = '<i class="fas fa-spinner"></i> Analyzing...';
+        return div;
+      };
+      spinner.addTo(map);
+
+      // Check if point is in India
+      fetch("/static/india-composite.geojson")
+        .then(r => r.json())
+        .then(indiaBoundary => {
+          const inside = turf.booleanPointInPolygon(point, indiaBoundary.features[0]);
+          if (!inside) {
+            alert("Please click inside India's land area.");
+            throw new Error("Clicked outside India");
+          }
+          
+          return fetch("/analyze", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              latitude: e.latlng.lat,
+              longitude: e.latlng.lng
+            })
+          });
+        })
+        .then(res => {
+          if (!res.ok) throw new Error(`Analysis failed: ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (data.error) throw new Error(data.error);
+          
+          // Get region name from admin boundaries
+          let regionName = "Unknown Region";
+          if (adminLayer) {
+            adminLayer.eachLayer(function(layer) {
+              if (layer.feature && turf.booleanPointInPolygon(point, layer.feature)) {
+                const props = layer.feature.properties;
+                regionName = props.NAME_1 || props.STATE || props.NAME || "Unknown Region";
+              }
+            });
+          }
+          
+          // Add analysis result to map
+          addAnalysisResult(e.latlng, data, regionName);
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          if (!error.message.includes("Clicked outside India")) {
+            alert(error.message || "Analysis failed. Please try again.");
+          }
+        })
+        .finally(() => map.removeControl(spinner));
+    });
+
+    function addAnalysisResult(latlng, data, regionName) {
+      // Determine color based on score
+      let color;
+      if (data.score >= 0.75) color = "#2ecc71"; // green
+      else if (data.score >= 0.5) color = "#f39c12"; // orange
+      else color = "#e74c3c"; // red
+
+      // Create circle marker
+      const circle = L.circle(latlng, {
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.3,
+        radius: 10000,  // 10km radius
+        weight: 2
       });
-    </script>
-  </body>
+      
+      // 3. Enhanced Popup Content
+      const popupContent = `
+        <div class="popup-header">
+          <h3 style="margin:0;font-size:16px;">${regionName}</h3>
+          <div class="score-badge" style="background:${color}">${data.score.toFixed(2)}</div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="metric-label">Vegetation</span>
+            <span class="metric-value">${data.vegetation_index.toFixed(2)}</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Water</span>
+            <span class="metric-value">${data.water_index.toFixed(2)}</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Elevation</span>
+            <span class="metric-value">${data.elevation}m</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Urban</span>
+            <span class="metric-value">${data.urban_proximity.toFixed(1)}km</span>
+          </div>
+        </div>
+        <div class="recommendation-box" style="border-left-color:${color}">
+          <p style="margin:0;">${data.recommendation}</p>
+          ${data.issues && data.issues.length ? `
+            <div class="issues">
+              <strong>Note:</strong> ${data.issues.join(', ')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+      
+      // Bind popup and add to map
+      circle.bindPopup(popupContent).openPopup();
+      analyzedLocations.addLayer(circle);
+    }
+
+    // Add legend
+    const legend = L.control({ position: "bottomright" });
+    legend.onAdd = function() {
+      const div = L.DomUtil.create("div", "legend");
+      div.innerHTML = `
+        <b>Suitability Score</b><br>
+        <span style='background:#2ecc71'></span> High (≥ 0.75)<br>
+        <span style='background:#f39c12'></span> Medium (0.5–0.75)<br>
+        <span style='background:#e74c3c'></span> Low (< 0.5)
+      `;
+      return div;
+    };
+    legend.addTo(map);
+
+    // 2. Enhanced Clear Results Button
+    L.control({
+      position: 'topright'
+    }).onAdd = function() {
+      const container = L.DomUtil.create('div', 'clear-container');
+      const btn = L.DomUtil.create('button', 'clear-btn');
+      btn.innerHTML = '<i class="fas fa-trash"></i> Clear Results';
+      btn.onclick = () => {
+        analyzedLocations.clearLayers();
+        btn.innerHTML = '<i class="fas fa-check"></i> Cleared!';
+        L.DomUtil.addClass(btn, 'cleared');
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-trash"></i> Clear Results';
+          L.DomUtil.removeClass(btn, 'cleared');
+        }, 1500);
+      };
+      container.appendChild(btn);
+      return container;
+    }.addTo(map);
+  </script>
+</body>
 </html>
