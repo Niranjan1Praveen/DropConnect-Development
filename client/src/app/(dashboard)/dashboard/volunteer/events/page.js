@@ -9,6 +9,7 @@ import {
   GraduationCap,
   Briefcase,
   Handshake,
+  AlertCircle,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
@@ -192,6 +193,12 @@ async function Page({ searchParams }) {
   }
   return (
     <main className="flex flex-col gap-10 p-8">
+      <small className="text-muted-foreground">
+        <AlertCircle /> All organizations, events, and NGOs listed currently are
+        for prototype and demonstration purposes only. The data is entirely
+        fictional and used to illustrate platform functionality.
+      </small>
+
       <div className="space-y-4">
         <h2 className="text-3xl font-bold">
           Match with events that suit you best

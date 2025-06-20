@@ -8,6 +8,7 @@ import {
   GraduationCap,
   Briefcase,
   Handshake,
+  AlertCircle,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
@@ -153,6 +154,7 @@ async function Page({ searchParams }) {
         </div>
       ) : (
         <main className="flex flex-col gap-10 p-8">
+          <small className="text-muted-foreground"><AlertCircle/> All organizations, events, and NGOs listed currently are for prototype and demonstration purposes only. The data is entirely fictional and used to illustrate platform functionality.</small>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 items-stretch">
             {data.map((item) => (
               <Card className="p-0 pb-5 flex flex-col h-full" key={item.id}>
