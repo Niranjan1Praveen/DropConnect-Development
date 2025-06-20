@@ -70,15 +70,27 @@ export default function ApplyOpportunity({ event }) {
             </p>
           </div>
         )}
+
+        {event.VolunteerExperience && (
+          <div className="rounded-xl border border-purple-300 bg-purple-50 p-4 shadow-md">
+            <p className="flex items-center gap-2 text-lg font-bold text-purple-800">
+              <Briefcase className="h-5 w-5 text-purple-700" />
+              Volunteer Experience
+            </p>
+            <p className="mt-2 text-purple-900 leading-relaxed">
+              {event.VolunteerExperience}
+            </p>
+          </div>
+        )}
       </div>
 
       <h2 className="text-3xl font-bold text-indigo-600 mb-2">
         Apply for this Opportunity
       </h2>
       <p className="text-muted-foreground text-lg">
-        Step into the heart of impact — this isn&apos;t just another opportunity,
-        it&apos;s your chance to grow, give back, and spark change where it matters
-        most.
+        Step into the heart of impact — this isn&apos;t just another
+        opportunity, it&apos;s your chance to grow, give back, and spark change
+        where it matters most.
       </p>
 
       <Button

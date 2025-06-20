@@ -28,23 +28,23 @@ model User {
 }
 
 model Event {
-  id                String   @id @default(cuid())
-  eventName         String
-  eventDescription  String
-  organizerName     String
-  email             String
-  contact           String
-  eventLocation     String
-  volunteerCapacity Int
-  registrationLink  String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  userId            String?
-  User              User?    @relation(fields: [userId], references: [id])
-  SkillsRequired    String?
-  InternshipRoles   String?
+  id                  String   @id @default(cuid())
+  eventName           String
+  eventDescription    String
+  organizerName       String
+  email               String
+  contact             String
+  eventLocation       String
+  volunteerCapacity   Int
+  registrationLink    String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  userId              String?
+  User                User?    @relation(fields: [userId], references: [id])
+  SkillsRequired      String?
+  InternshipRoles     String?
+  VolunteerExperience String?
 }
-
 
 model Volunteer {
   id                    String    @id @default(cuid())

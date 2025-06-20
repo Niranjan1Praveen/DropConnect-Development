@@ -2890,6 +2890,7 @@ export namespace Prisma {
     userId: string | null
     SkillsRequired: string | null
     InternshipRoles: string | null
+    VolunteerExperience: string | null
   }
 
   export type EventMaxAggregateOutputType = {
@@ -2907,6 +2908,7 @@ export namespace Prisma {
     userId: string | null
     SkillsRequired: string | null
     InternshipRoles: string | null
+    VolunteerExperience: string | null
   }
 
   export type EventCountAggregateOutputType = {
@@ -2924,6 +2926,7 @@ export namespace Prisma {
     userId: number
     SkillsRequired: number
     InternshipRoles: number
+    VolunteerExperience: number
     _all: number
   }
 
@@ -2951,6 +2954,7 @@ export namespace Prisma {
     userId?: true
     SkillsRequired?: true
     InternshipRoles?: true
+    VolunteerExperience?: true
   }
 
   export type EventMaxAggregateInputType = {
@@ -2968,6 +2972,7 @@ export namespace Prisma {
     userId?: true
     SkillsRequired?: true
     InternshipRoles?: true
+    VolunteerExperience?: true
   }
 
   export type EventCountAggregateInputType = {
@@ -2985,6 +2990,7 @@ export namespace Prisma {
     userId?: true
     SkillsRequired?: true
     InternshipRoles?: true
+    VolunteerExperience?: true
     _all?: true
   }
 
@@ -3089,6 +3095,7 @@ export namespace Prisma {
     userId: string | null
     SkillsRequired: string | null
     InternshipRoles: string | null
+    VolunteerExperience: string | null
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -3125,6 +3132,7 @@ export namespace Prisma {
     userId?: boolean
     SkillsRequired?: boolean
     InternshipRoles?: boolean
+    VolunteerExperience?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3143,6 +3151,7 @@ export namespace Prisma {
     userId?: boolean
     SkillsRequired?: boolean
     InternshipRoles?: boolean
+    VolunteerExperience?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3161,6 +3170,7 @@ export namespace Prisma {
     userId?: boolean
     SkillsRequired?: boolean
     InternshipRoles?: boolean
+    VolunteerExperience?: boolean
     User?: boolean | Event$UserArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -3179,9 +3189,10 @@ export namespace Prisma {
     userId?: boolean
     SkillsRequired?: boolean
     InternshipRoles?: boolean
+    VolunteerExperience?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "contact" | "eventLocation" | "volunteerCapacity" | "registrationLink" | "createdAt" | "updatedAt" | "userId" | "SkillsRequired" | "InternshipRoles", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventName" | "eventDescription" | "organizerName" | "email" | "contact" | "eventLocation" | "volunteerCapacity" | "registrationLink" | "createdAt" | "updatedAt" | "userId" | "SkillsRequired" | "InternshipRoles" | "VolunteerExperience", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | Event$UserArgs<ExtArgs>
   }
@@ -3212,6 +3223,7 @@ export namespace Prisma {
       userId: string | null
       SkillsRequired: string | null
       InternshipRoles: string | null
+      VolunteerExperience: string | null
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -3650,6 +3662,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"Event", 'String'>
     readonly SkillsRequired: FieldRef<"Event", 'String'>
     readonly InternshipRoles: FieldRef<"Event", 'String'>
+    readonly VolunteerExperience: FieldRef<"Event", 'String'>
   }
     
 
@@ -12938,7 +12951,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     userId: 'userId',
     SkillsRequired: 'SkillsRequired',
-    InternshipRoles: 'InternshipRoles'
+    InternshipRoles: 'InternshipRoles',
+    VolunteerExperience: 'VolunteerExperience'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -13278,6 +13292,7 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Event"> | string | null
     SkillsRequired?: StringNullableFilter<"Event"> | string | null
     InternshipRoles?: StringNullableFilter<"Event"> | string | null
+    VolunteerExperience?: StringNullableFilter<"Event"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -13296,6 +13311,7 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     SkillsRequired?: SortOrderInput | SortOrder
     InternshipRoles?: SortOrderInput | SortOrder
+    VolunteerExperience?: SortOrderInput | SortOrder
     User?: UserOrderByWithRelationInput
   }
 
@@ -13317,6 +13333,7 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Event"> | string | null
     SkillsRequired?: StringNullableFilter<"Event"> | string | null
     InternshipRoles?: StringNullableFilter<"Event"> | string | null
+    VolunteerExperience?: StringNullableFilter<"Event"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -13335,6 +13352,7 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     SkillsRequired?: SortOrderInput | SortOrder
     InternshipRoles?: SortOrderInput | SortOrder
+    VolunteerExperience?: SortOrderInput | SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -13360,6 +13378,7 @@ export namespace Prisma {
     userId?: StringNullableWithAggregatesFilter<"Event"> | string | null
     SkillsRequired?: StringNullableWithAggregatesFilter<"Event"> | string | null
     InternshipRoles?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    VolunteerExperience?: StringNullableWithAggregatesFilter<"Event"> | string | null
   }
 
   export type VolunteerWhereInput = {
@@ -14072,6 +14091,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
     User?: UserCreateNestedOneWithoutEventInput
   }
 
@@ -14090,6 +14110,7 @@ export namespace Prisma {
     userId?: string | null
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
   }
 
   export type EventUpdateInput = {
@@ -14106,6 +14127,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
     User?: UserUpdateOneWithoutEventNestedInput
   }
 
@@ -14124,6 +14146,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventCreateManyInput = {
@@ -14141,6 +14164,7 @@ export namespace Prisma {
     userId?: string | null
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
   }
 
   export type EventUpdateManyMutationInput = {
@@ -14157,6 +14181,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateManyInput = {
@@ -14174,6 +14199,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VolunteerCreateInput = {
@@ -15050,6 +15076,7 @@ export namespace Prisma {
     userId?: SortOrder
     SkillsRequired?: SortOrder
     InternshipRoles?: SortOrder
+    VolunteerExperience?: SortOrder
   }
 
   export type EventAvgOrderByAggregateInput = {
@@ -15071,6 +15098,7 @@ export namespace Prisma {
     userId?: SortOrder
     SkillsRequired?: SortOrder
     InternshipRoles?: SortOrder
+    VolunteerExperience?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
@@ -15088,6 +15116,7 @@ export namespace Prisma {
     userId?: SortOrder
     SkillsRequired?: SortOrder
     InternshipRoles?: SortOrder
+    VolunteerExperience?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
@@ -15986,6 +16015,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
   }
 
   export type EventUncheckedCreateWithoutUserInput = {
@@ -16002,6 +16032,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
   }
 
   export type EventCreateOrConnectWithoutUserInput = {
@@ -16103,6 +16134,7 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Event"> | string | null
     SkillsRequired?: StringNullableFilter<"Event"> | string | null
     InternshipRoles?: StringNullableFilter<"Event"> | string | null
+    VolunteerExperience?: StringNullableFilter<"Event"> | string | null
   }
 
   export type VolunteerUpsertWithoutUserInput = {
@@ -16300,6 +16332,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     SkillsRequired?: string | null
     InternshipRoles?: string | null
+    VolunteerExperience?: string | null
   }
 
   export type EventUpdateWithoutUserInput = {
@@ -16316,6 +16349,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateWithoutUserInput = {
@@ -16332,6 +16366,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUncheckedUpdateManyWithoutUserInput = {
@@ -16348,6 +16383,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     SkillsRequired?: NullableStringFieldUpdateOperationsInput | string | null
     InternshipRoles?: NullableStringFieldUpdateOperationsInput | string | null
+    VolunteerExperience?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

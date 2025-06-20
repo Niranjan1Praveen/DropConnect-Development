@@ -28,19 +28,22 @@ model User {
 }
 
 model Event {
-  id                String   @id @default(cuid())
-  eventName         String
-  eventDescription  String
-  organizerName     String
-  email             String
-  contact           String
-  eventLocation     String
-  volunteerCapacity Int
-  registrationLink  String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  userId            String?
-  User              User?    @relation(fields: [userId], references: [id])
+  id                  String   @id @default(cuid())
+  eventName           String
+  eventDescription    String
+  organizerName       String
+  email               String
+  contact             String
+  eventLocation       String
+  volunteerCapacity   Int
+  registrationLink    String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  userId              String?
+  User                User?    @relation(fields: [userId], references: [id])
+  SkillsRequired      String?
+  InternshipRoles     String?
+  VolunteerExperience String?
 }
 
 model Volunteer {
@@ -65,6 +68,7 @@ model Volunteer {
   willingTravelDistance String?
   helpInDisaster        Boolean   @default(false)
   hasDisability         Boolean   @default(false)
+  skills                String[]  @default([])
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 }
@@ -132,4 +136,14 @@ model TrionyxSystemsWorldwide {
   HouseholdsReached       Int
   WaterDistributionPoints Int
   HygieneKitsDistributed  Int
+}
+
+model Inbox {
+  id               Int      @id @default(autoincrement())
+  eventId          String
+  eventName        String
+  eventDescription String
+  organizerName    String
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
 }

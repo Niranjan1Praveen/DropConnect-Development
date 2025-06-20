@@ -8,6 +8,7 @@ import {
   Send,
   GraduationCap,
   Briefcase,
+  Handshake,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
@@ -246,7 +247,9 @@ async function Page({ searchParams }) {
                       <GraduationCap className="h-4 w-4" />
                       Skills Required
                     </p>
-                    <p className="text-sm text-muted-foreground ml-6">{item.SkillsRequired}</p>
+                    <p className="text-sm text-muted-foreground ml-6">
+                      {item.SkillsRequired}
+                    </p>
                   </div>
                 </div>
               )}
@@ -258,7 +261,23 @@ async function Page({ searchParams }) {
                       <Briefcase className="h-4 w-4" />
                       Internship Roles
                     </p>
-                    <p className="text-sm text-muted-foreground ml-6">{item.InternshipRoles}</p>
+                    <p className="text-sm text-muted-foreground ml-6">
+                      {item.InternshipRoles}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {item.VolunteerExperience && (
+                <div className="flex items-start gap-2 mt-3">
+                  <div>
+                    <p className="flex gap-2 font-semibold text-sm ">
+                      <Handshake className="h-4 w-4" />
+                      Volunteer Experience
+                    </p>
+                    <p className="text-sm text-muted-foreground ml-6">
+                      {item.VolunteerExperience}
+                    </p>
                   </div>
                 </div>
               )}

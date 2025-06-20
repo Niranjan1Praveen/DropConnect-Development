@@ -7,13 +7,13 @@ import {
   FileIcon,
   GraduationCap,
   Briefcase,
+  Handshake,
 } from "lucide-react";
 import veltrix from "@/assets/images/eventImg/1.svg";
 import noventra from "@/assets/images/eventImg/2.svg";
 import aurevia from "@/assets/images/eventImg/3.svg";
 import zentara from "@/assets/images/eventImg/4.svg";
 import trionyx from "@/assets/images/eventImg/5.svg";
-
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import React from "react";
@@ -218,6 +218,19 @@ async function Page({ searchParams }) {
                         </p>
                         <p className="text-sm text-muted-foreground ml-6">
                           {item.InternshipRoles}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  {item.VolunteerExperience && (
+                    <div className="flex items-start gap-2 mt-3">
+                      <div>
+                        <p className="flex gap-2 font-semibold text-sm ">
+                          <Handshake className="h-4 w-4" />
+                          Volunteer Experience
+                        </p>
+                        <p className="text-sm text-muted-foreground ml-6">
+                          {item.VolunteerExperience}
                         </p>
                       </div>
                     </div>
